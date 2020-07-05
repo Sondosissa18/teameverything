@@ -1,13 +1,26 @@
-import React, { Component } from "react";
+import React, { useContext } from 'react';
+import { StoreContext } from '../main';
+import { useObserver } from 'mobx-react';
 
-class Messages extends Component {
-  render() {
-    return (
-      <div>
-        <h2>Message PAGE</h2>
-      </div>
-    );
-  }
+export default function Messages() {
+    const store = useContext(StoreContext)
+    return useObserver(() => (
+        <table className="table">
+            <tbody>
+                {
+                    store.messages.map((message, index) => {
+                        return (
+                            <tr key={index}>
+                                <td>
+                                    {message}
+                                </td>
+                            </tr>
+                        )
+
+                    })
+                }
+            </tbody>
+        </table>
+    )
+    )
 }
-
-export default Messages;

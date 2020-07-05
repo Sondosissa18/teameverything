@@ -1,3 +1,9 @@
+npm add react-app-rewired customize-cra @babel/plugin-proposal-decorators
+npm i babel-plugin-transform-decorators-legacy
+npm add --dev @babel/plugin-proposal-class-properties @babel/plugin-proposal-decorators
+npm install --save-dev @babel/plugin-proposal-decorators
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
