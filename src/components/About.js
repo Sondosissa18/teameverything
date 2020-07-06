@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+//import { observer } from "mobx";
+
 
 class About extends Component {
   render() {
@@ -17,3 +19,4 @@ class About extends Component {
 }
 
 export default About;
+//export default observer(About)

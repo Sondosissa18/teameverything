@@ -1,5 +1,5 @@
 import React from 'react';
-import { StoreContext } from '../main';
+import { StoreContext } from '../store/useStore';
 
 export default class Form extends React.Component {
 

@@ -1,9 +1,9 @@
-import React, { useContext } from 'react';
-import { StoreContext } from '../main';
+import React from 'react';
+import { useStore } from '../store/useStore';
 import { useObserver } from 'mobx-react';
 
 export default function Messages() {
-    const store = useContext(StoreContext)
+    const store = useStore()
     return useObserver(() => (
         <table className="table">
             <tbody>
