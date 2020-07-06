@@ -21,7 +21,6 @@ const startServer = async () => {
   });
 
   registerExpressRoutes(app);
-  console.log(SERVER_PORT)
   app.listen(SERVER_PORT, () =>
     logger.info(`Example app listening at http://localhost:${SERVER_PORT}`)
   );
