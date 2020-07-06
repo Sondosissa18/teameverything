@@ -2,6 +2,7 @@ import React from 'react';
 import { useStore } from '../store/useStore';
 import { useObserver } from 'mobx-react';
 
+
 export default function Messages() {
     const store = useStore()
     return useObserver(() => (

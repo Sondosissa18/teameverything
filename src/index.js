@@ -1,14 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import Messages from './components/Messages';
 import { StoreProvider } from './store/useStore';
 import Nav from './Nav';
+//import Message from './components/Message';
 import * as serviceWorker from './serviceWorker';
+
 ReactDOM.render(
   <StoreProvider>
     <Nav />
-    
+ 
   </StoreProvider>,
   document.getElementById('app')
 );
