@@ -1,4 +1,4 @@
-import exampleController from "./example.js";
+import authController from "./auth.js";
 
 
 export const registerExpressRoutes = (app) => {
@@ -6,5 +6,5 @@ export const registerExpressRoutes = (app) => {
     res.send("Hello World");
   });
 
-  exampleController(app);
+  authController(app);
 };

@@ -1,5 +1,6 @@
 import express from "express";
 import mongoose from "mongoose";
+import cors from "cors";
 import {
   staticDirectory,
   SERVER_PORT,
@@ -13,6 +14,7 @@ const startServer = async () => {
     useNewUrlParser: true,
   });
   const app = express();
+  app.use(cors());
   app.use(express.json());
   app.use(express.urlencoded({ extended: false }));
   app.use(express.static(staticDirectory));
