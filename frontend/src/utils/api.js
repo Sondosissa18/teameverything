@@ -18,13 +18,12 @@ class API {
           Authorization: `Bearer ${getToken()}`,
         },
       }),
-      (error) => Promise.reject(error)
+      (error) => Promise.reject(error),
     );
-
 
     axiosInstance.interceptors.response.use(
       ({ data }) => data,
-      (error) => Promise.reject(error)
+      (error) => Promise.reject(error),
     );
 
     this.axiosInstance = axiosInstance;
@@ -42,6 +41,18 @@ class API {
   async register(data) {
     try {
       const result = await this.axiosInstance.post("/auth/register", data);
+      return result;
+    } catch (err) {
+      console.error(err);
+      throw err;
+    }
+  }
+
+  async uploadPic(file) {
+    try {
+      const data = new FormData();
+      data.append("picture", file);
+      const result = await this.axiosInstance.post("/user/upload-pic", data);
       return result;
     } catch (err) {
       console.error(err);

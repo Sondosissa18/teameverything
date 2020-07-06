@@ -1,5 +1,5 @@
 import authController from "./auth.js";
-
+import userController from "./user.js";
 
 export const registerExpressRoutes = (app) => {
   app.get("/", (req, res) => {
@@ -7,4 +7,5 @@ export const registerExpressRoutes = (app) => {
   });
 
   authController(app);
+  userController(app);
 };

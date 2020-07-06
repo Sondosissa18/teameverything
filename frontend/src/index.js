@@ -1,17 +1,17 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import { StoreProvider } from './store/useStore';
-import Nav from './Nav';
+import React from "react";
+import ReactDOM from "react-dom";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./index.css";
+import { StoreProvider } from "./store/useStore";
+import Nav from "./Nav";
 //import Message from './components/Message';
-import * as serviceWorker from './serviceWorker';
+import * as serviceWorker from "./serviceWorker";
 
 ReactDOM.render(
   <StoreProvider>
     <Nav />
- 
   </StoreProvider>,
-  document.getElementById('app')
+  document.getElementById("app"),
 );
 if (module.hot) {
   // enables hot module replacement if plugin is installed
