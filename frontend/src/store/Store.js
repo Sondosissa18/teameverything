@@ -29,12 +29,9 @@ class Store {
     return this.messages.length;
   }
 
-  // @action login(data) {
-  //     this.api.login(data).then(results => {
-  //         console.log(results)
-  //         this.user=results
-  //     })
-  // }
+  @computed get isLoggedIn() {
+    return !!this.user.token;
+  }
 
   @action
   async login(data) {
