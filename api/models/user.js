@@ -2,25 +2,43 @@ import mongoose from "mongoose";
 
 const UserSchema = mongoose.Schema(
   {
-    name: String,
-    email: String,
-    location: String,
-    password: String,
-    school: String,
-    //children: [{ name: String, age: Number }],
+    email: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+    password: {
+      type: String,
+      required: true,
+    },
+    role: {
+      type: String,
+      default: "basic",
+      enum: ["basic", "admin", "super-admin"],
+    },
+    accessToken: {
+      type: String,
+    },
+    location: {
+      type: String,
+      trim: true,
+    },
+    school: {
+      type: String,
+      trim: true,
+    },
   },
   {
     timestamps: true,
-  }
+  },
 );
 
 export const UserModel = mongoose.model("User", UserSchema);
 export const exampleUser = {
-  "id": 1,
-  "name": "name",
-  "email": "email@me.com",
-  "token": "token",
-  "location": "houston, tx",
-  "school": "Westpoint School"
-}
-
+  id: 1,
+  name: "name",
+  email: "email@me.com",
+  token: "token",
+  location: "houston, tx",
+  school: "Westpoint School",
+};
