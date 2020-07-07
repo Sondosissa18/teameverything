@@ -2,13 +2,31 @@ import mongoose from "mongoose";
 
 const UserSchema = mongoose.Schema(
   {
-    name: String,
-    email: String,
-    location: String,
-    password: String,
-    school: String,
-    photo: String,
-    //children: [{ name: String, age: Number }],
+    email: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+    password: {
+      type: String,
+      required: true,
+    },
+    role: {
+      type: String,
+      default: "basic",
+      enum: ["basic", "admin", "super-admin"],
+    },
+    accessToken: {
+      type: String,
+    },
+    location: {
+      type: String,
+      trim: true,
+    },
+    school: {
+      type: String,
+      trim: true,
+    },
   },
   {
     timestamps: true,
@@ -23,5 +41,4 @@ export const exampleUser = {
   token: "token",
   location: "houston, tx",
   school: "Westpoint School",
-  photo: "https://via.placeholder.com/250x250.png?text=Fake+Image+Bruh",
 };

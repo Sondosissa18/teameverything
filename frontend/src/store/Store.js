@@ -15,7 +15,6 @@ class Store {
     token: "",
     location: "",
     school: "",
-    photo: "",
   };
 
   @action updateCount() {
@@ -30,6 +29,13 @@ class Store {
     return this.messages.length;
   }
 
+  // @action login(data) {
+  //     this.api.login(data).then(results => {
+  //         console.log(results)
+  //         this.user=results
+  //     })
+  // }
+
   @action
   async login(data) {
     try {
@@ -39,18 +45,6 @@ class Store {
       });
     } catch (err) {
       console.error("store.login failed", err);
-    }
-  }
-
-  @action
-  async uploadPic(data) {
-    try {
-      const user = await this.api.uploadPic(data);
-      runInAction(() => {
-        this.user = user;
-      });
-    } catch (err) {
-      console.error("store.uploadPic failed", err);
     }
   }
 }
