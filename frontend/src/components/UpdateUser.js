@@ -1,12 +1,27 @@
-// import React, { Component } from "react";
-// import { toJS } from "mobx";
-// import { useObserver, observer } from "mobx-react";
+//import React, { Component } from "react";
+// import React from "react";
 // import { useStore } from "../store/useStore";
+// import { useObserver, useLocalStore } from "mobx-react";
+// import Button from "react-bootstrap/Button";
 
 // class UpdateUser extends Component {
 //   render() {
-//     return useObserver(() => <div></div>);
+//     return (
+//       <div>
+//         <h2></h2>
+//       </div>
+//     );
 //   }
 // }
 
 // export default UpdateUser;
+
+// export default function UpdateUser() =>{
+//   const store = useStore();
+//   const state = useLocalStore(() => {
+//     return {}
+//   }
+
+// return useObserver(() => <div></div>);
+
+// }

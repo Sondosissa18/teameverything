@@ -1,6 +1,8 @@
 import React from "react";
+import mongoose from "mongoose";
 import { useStore } from "../store/useStore";
 import { useObserver, useLocalStore } from "mobx-react";
+//import "bootstrap/dist/css/bootstrap.min.css";
 import Button from "react-bootstrap/Button";
 
 export default function UploadImg() {
@@ -23,6 +25,7 @@ export default function UploadImg() {
   };
 
   return useObserver(() => (
+    //<Card onSubmit={this.handleSubmit} style={{ display: "flex", flexDirection: "row" }}>
     <div>
       <input
         onChange={handleChange}
@@ -38,5 +41,6 @@ export default function UploadImg() {
         Upload
       </Button>
     </div>
+    //</Card>
   ));
 }

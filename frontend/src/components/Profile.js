@@ -1,32 +1,26 @@
-import React, { Component } from "react";
+//import React, { Component } from "react";
 import UploadImg from "./UploadImg";
-
-class Profile extends Component {
-  render() {
-    return (
-      <div>
-        <h2>Profile Page</h2>
-        <UploadImg />
-      </div>
-    );
-  }
-}
-
-export default Profile;
-
-// import React, { Component } from "react";
-// import { toJS } from "mobx";
-// import { useObserver, observer } from "mobx-react";
-// import { useStore } from "../store/useStore";
+import React from "react";
+import { useObserver } from "mobx-react";
 
 // class Profile extends Component {
 //   render() {
-//     return useObserver(() => (
+//     return (
 //       <div>
 //         <h2>Profile Page</h2>
+//         <UploadImg />
 //       </div>
-//     ));
+//     );
 //   }
 // }
 
 // export default Profile;
+
+export default function Profile() {
+  return useObserver(() => (
+    <div>
+      <h2>Profile Page</h2>
+      <UploadImg />
+    </div>
+  ));
+}
