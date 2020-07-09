@@ -59,6 +59,36 @@ class API {
       throw err;
     }
   }
+
+  async getUser(user) {
+    try {
+      const result = await this.axiosInstance.get("/user/getUser", user);
+      return result;
+    } catch (err) {
+      console.error(err);
+      throw err;
+    }
+  }
+
+  // async deleteUser(data) {
+  //   try {
+  //     const result = await this.axiosInstance.post("/user/delete-user", data);
+  //     return result;
+  //   } catch (err) {
+  //     console.error(err);
+  //     throw err;
+  //   }
+  // }
+
+  // async updateUser(data) {
+  //   try {
+  //     const result = await this.axiosInstance.post("/user/", data);
+  //     return result;
+  //   } catch (err) {
+  //     console.error(err);
+  //     throw err;
+  //   }
+  // }
 }
 
 // WARNING.. do not touch below this line if you want to have a good day =]

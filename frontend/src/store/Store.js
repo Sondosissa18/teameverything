@@ -15,6 +15,9 @@ class Store {
     token: "",
     location: "",
     school: "",
+    photo: "",
+    //displayName: "",
+    //about: ""
   };
 
   @action updateCount() {
@@ -29,13 +32,6 @@ class Store {
     return this.messages.length;
   }
 
-  // @action login(data) {
-  //     this.api.login(data).then(results => {
-  //         console.log(results)
-  //         this.user=results
-  //     })
-  // }
-
   @action
   async login(data) {
     try {
@@ -47,6 +43,55 @@ class Store {
       console.error("store.login failed", err);
     }
   }
+
+  @action
+  async uploadPic(data) {
+    try {
+      const user = await this.api.uploadPic(data);
+      runInAction(() => {
+        this.user = user;
+      });
+    } catch (err) {
+      console.error("store.uploadPic failed", err);
+    }
+  }
+
+  @action
+  async getUser(data) {
+    try {
+      const user = await this.api.getUser(data);
+      runInAction(() => {
+        this.user = user;
+      });
+    } catch (err) {
+      console.error("store.getUser failed", err);
+    }
+  }
+
+  // LogOut need to be added to deleteUser .....  I think here
+  //   @action <-- prob don't need
+  //   async deleteUser(data) {
+  //     try {
+  //       const user = await this.api.deleteUser(data);
+  //       runInAction(() => {
+  //         this.user = user;
+  //       });
+  //     } catch (err) {
+  //       console.error("store.deleteUser failed", err);
+  //     }
+  //   }
+
+  //   @action
+  //   async updateUser(data) {
+  //     try {
+  //       const user = await this.api.updateUser(data);
+  //       runInAction(() => {
+  //         this.user = user;
+  //       });
+  //     } catch (err) {
+  //       console.error("store.updateUser failed", err);
+  //     }
+  //   }
 }
 
 const storeInstance = new Store({ api: apiInstance });

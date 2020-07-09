@@ -27,6 +27,17 @@ const UserSchema = mongoose.Schema(
       type: String,
       trim: true,
     },
+    picLocation: {
+      type: String,
+    },
+    displayName: {
+      type: String,
+      trim: true,
+    },
+    about: {
+      type: String,
+      trim: true,
+    },
   },
   {
     timestamps: true,
@@ -41,4 +52,7 @@ export const exampleUser = {
   token: "token",
   location: "houston, tx",
   school: "Westpoint School",
+  displayName: "Stephanie",
+  about: "Best Coder in the World.. and Loving It!! I wish!",
+  picLocation: "uploads/4dcd5a3b-93e4-4af0-977c-730974a2ed1d.jpg",
 };
