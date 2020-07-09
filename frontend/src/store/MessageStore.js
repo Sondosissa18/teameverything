@@ -5,13 +5,16 @@ class MessageStore {
     this.rootStore = rootStore;
   }
 
-  @observable messages = ["Team", "Everything"];
+  @observable _messages = ["Team", "Everything"];
   @action postMessage(message) {
-    this.messages.push(message);
+    this._messages.push(message);
   }
 
   @computed get messageCount() {
-    return this.messages.length;
+    return this._messages.length;
+  }
+  @computed get messages() {
+    return this._messages.slice();
   }
 
   doSomethingCrazy() {

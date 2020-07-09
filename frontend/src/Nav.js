@@ -7,8 +7,8 @@ import About from "./components/About";
 import Message from "./components/Message";
 import Contact from "./components/Contact";
 import Profile from "./components/Profile";
-import SignUp from "./components/SignUp"
-import { Route, NavLink, BrowserRouter } from "react-router-dom";
+// import SignUp from "./components/SignUp"
+import { Route } from "react-router-dom";
 
 class Nav extends Component {
   render() {
@@ -38,7 +38,7 @@ class Nav extends Component {
               </NavLink>{" "}
             </li>
             <li>
-              <NavLink to="/Messages">Messages</NavLink>
+              <NavLink to="/message">Messages</NavLink>
             </li>
             <li>
               <NavLink to="/RecView">Recruiter View</NavLink>
@@ -57,22 +57,12 @@ class Nav extends Component {
             </li>
           </ul>
           <div className="content">
-<<<<<<< HEAD
-            <Route path="/" component={Home} />
-            <Route path="/blog" component={Blog} />
-            <Route path="/contact" component={Contact} />
-            <Route path="/profile" component={Profile} />
-            <Route path="/messages" component={Message} />
-            <Route path="/about" component={About} />
-            <Route path="signup" component={SignUp}/>
-=======
             <ConnectedRoute exact redirectIfAuthenticated path="/" component={Home} />
             <ConnectedRoute exact path="/blog" component={Blog} />
             <ConnectedRoute exact path="/contact" component={Contact} />
             <ConnectedRoute exact isProtected path="/profile" component={Profile} />
-            <ConnectedRoute exact isProtected path="/messages" component={Message} />
+            <ConnectedRoute exact isProtected path="/message" component={Message} />
             <ConnectedRoute exact path="/about" component={About} />
->>>>>>> 113559bb40e84ca86dd2e62468bd795503503c49
           </div>
         </div>
       </BrowserRouter>
