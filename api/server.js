@@ -27,11 +27,10 @@ const startServer = async () => {
 try {
   startServer();
 } catch (err) {
-  logger.error("Server crashed :(", err);
+  console.error("Server crashed :(", err);
 }
 
 process.on("unhandledRejection", (reason, p) => {
-  logger.error("Unhandled Rejection at:", p, "reason:", reason);
+  console.error("Unhandled Rejection at:", p, "reason:", reason);
   // send entire app down.Process manager will restart it
-  process.exit(1);
 });
