@@ -26,12 +26,24 @@ export default (app) => {
         res.status(500).send(LOGIN_ERROR);
         return;
       }
-      const accessToken = signToken(omit(JSON.parse(JSON.stringify(user)), ["password"]));
+      const accessToken = signToken(
+        omit(JSON.parse(JSON.stringify(user)), ["password"])
+      );
       await UserModel.findByIdAndUpdate(user._id, { accessToken });
       res.json({ accessToken });
     } catch (err) {
-      req.log.error(err.message);
+      console.error(err.message);
       res.status(500).send("Internal Server Error");
+    }
+  });
+
+  router.get("/logout", async (req, res) => {
+    try {
+      await UserModel.findByIdAndUpdate(req.loggedInUser._id, {
+        accessToken: "",
+      });
+    } finally {
+      res.json("ok!");
     }
   });
 
@@ -45,19 +57,23 @@ export default (app) => {
 
       const user = await UserModel.findOne({ email });
       if (user) {
-        res.status(500).send("Unable to register this account. Try again later");
+        res
+          .status(500)
+          .send("Unable to register this account. Try again later");
         return;
       }
       const hashedPassword = await hashPassword(password);
       const newUser = new UserModel({ email, password: hashedPassword, role });
-      const accessToken = signToken(omit(JSON.parse(JSON.stringify(newUser)), ["password"]));
+      const accessToken = signToken(
+        omit(JSON.parse(JSON.stringify(newUser)), ["password"])
+      );
       newUser.accessToken = accessToken;
       await newUser.save();
       res.json({
         accessToken,
       });
     } catch (err) {
-      req.log.error(err.message);
+      console.error(err.message);
       res.status(500).send("Unable to register this account. Try again later.");
     }
   });
