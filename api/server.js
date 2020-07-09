@@ -34,5 +34,4 @@ try {
 process.on("unhandledRejection", (reason, p) => {
   console.error("Unhandled Rejection at:", p, "reason:", reason);
   // send entire app down.Process manager will restart it
-  //process.exit(1);
 });
