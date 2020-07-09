@@ -6,7 +6,7 @@ class Profile extends Component {
     return (
       <div>
         <h2>Profile Page</h2>
-        <UploadImg />
+        {/*<UploadImg />*/}
       </div>
     );
   }
