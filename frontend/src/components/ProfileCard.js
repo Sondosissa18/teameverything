@@ -1,11 +1,10 @@
 //import React, { Component } from "react";
 import UploadImg from "./UploadImg";
 //import DeleteUser from "./DeleteUser";
-//import UpdateUser from "./UpdateUser";
+import UpdateUser from "./UpdateUser";
 import React, { useEffect } from "react";
 import { useStore } from "../store/useStore";
 import { useObserver, useLocalStore } from "mobx-react";
-import "bootstrap/dist/css/bootstrap.min.css";
 import Card from "react-bootstrap/Card";
 
 export default function ProfileCard() {

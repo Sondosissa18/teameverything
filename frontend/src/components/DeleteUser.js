@@ -1,55 +1,50 @@
-import React, { Component } from "react";
+//import React, { Component } from "react";
 import mongoose from "mongoose";
-// import React from "react";
-// import { useStore } from "../store/useStore";
-// import { useObserver, useLocalStore } from "mobx-react";
-import "bootstrap/dist/css/bootstrap.min.css";
+import React from "react";
+import { useStore } from "../store/useStore";
+import { useObserver, useLocalStore } from "mobx-react";
 import Button from "react-bootstrap/Button";
 
-class DeleteUser extends React.Component {
-  handleDeleteUser = (e) => {
-    event.preventDefault();
-    const confirmed = window.confirm("Delete will be Final");
+export default function DeleteUser() {
+  //const store = useStore();
+  // const state = useLocalStore(() => {
+  //   return {}
+  // }
+
+  const handleDeleteUser = (e) => {
+    e.preventDefault();
+    const confirmed = window.confirm("DELETE WILL BE FINAL ...");
     if (confirmed) {
-      this.props.deleteUser(this.props.user);
+      store.state.deleteUser(store.state.user);
     }
   };
-
-  render() {
-    return (
-      <React.Fragment>
-        <Button variant="outline-danger" size="sm" onClick={this.handleDeleteUser}>
-          Delete Profile
-        </Button>
-      </React.Fragment>
-    );
-  }
+  return useObserver(() => (
+    // <React.Fragment>
+    <Button variant="outline-danger" size="sm" onClick={handleDeleteUser}>
+      DELETE PROFILE
+    </Button>
+    // </React.Fragment>
+  ));
 }
 
-export default DeleteUser;
-
-// export default function DeleteUser() =>{
-//   const store = useStore();
-//   const state = useLocalStore(() => {
-//     return {}
-//   }
-
-//   const handleSubmit = async (e) => {
-//     e.preventDefault();
+// class DeleteUser extends React.Component {
+//   handleDeleteUser = (e) => {
+//     event.preventDefault();
 //     const confirmed = window.confirm("Delete will be Final");
 //     if (confirmed) {
-//       await.store.deleteUser(state.user);
+//       this.props.deleteUser(this.props.user);
 //     }
+//   };
+
+//   render() {
+//     return (
+//       <React.Fragment>
+//         <Button variant="outline-danger" size="sm" onClick={this.handleDeleteUser}>
+//           Delete Profile
+//         </Button>
+//       </React.Fragment>
+//     );
 //   }
-// return useObserver(() => (
-// <React.Fragment>
-// <Button
-// variant="outline-danger"
-// size="sm"
-// onClick={this.handleDeleteUser}
-// >
-// Delete Profile
-// </Button>
-// </React.Fragment>
-// ))
-//  }
+// }
+
+// export default DeleteUser;
