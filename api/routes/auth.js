@@ -17,21 +17,33 @@ export default (app) => {
     try {
       const { email, password } = req.body;
       const user = await UserModel.findOne({ email });
+
       if (!user) {
         res.status(500).send(LOGIN_ERROR);
         return;
       }
-      const validPassword = await validatePassword(password, user.password);
+
+      const validPassword = await validatePassword(`${password}`, user.password);
+
       if (!validPassword) {
         res.status(500).send(LOGIN_ERROR);
         return;
       }
       const accessToken = signToken(omit(JSON.parse(JSON.stringify(user)), ["password"]));
+
       await UserModel.findByIdAndUpdate(user._id, { accessToken });
       res.json({ accessToken });
     } catch (err) {
-      req.log.error(err.message);
+      console.error(err.message);
       res.status(500).send("Internal Server Error");
+    }
+  });
+
+  router.get("/logout", async (req, res) => {
+    try {
+      await UserModel.findByIdAndUpdate(req.loggedInUser._id, { accessToken: "" });
+    } finally {
+      res.json("ok!");
     }
   });
 
@@ -57,7 +69,7 @@ export default (app) => {
         accessToken,
       });
     } catch (err) {
-      req.log.error(err.message);
+      console.error(err.message);
       res.status(500).send("Unable to register this account. Try again later.");
     }
   });

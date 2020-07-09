@@ -14,7 +14,6 @@ function ConnectedRoute({ isProtected, redirectIfAuthenticated, component: Compo
     throw new Error("ConnectedRoute MUST have a prop named 'component'");
   }
 
-  // https://react-redux.js.org/api/hooks#useselector
   const store = useStore();
 
   if (redirectIfAuthenticated && store.isLoggedIn) {

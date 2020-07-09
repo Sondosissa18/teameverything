@@ -38,6 +38,16 @@ class API {
     }
   }
 
+  async logout() {
+    try {
+      await this.axiosInstance.get("/auth/logout");
+    } catch (err) {
+      // helpMeInstructor(err);
+      console.error(err);
+      throw err;
+    }
+  }
+
   async registerUser(data) {
     try {
       return await this.axiosInstance.post("/auth/register", data);

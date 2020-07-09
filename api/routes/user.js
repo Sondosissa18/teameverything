@@ -10,14 +10,11 @@ export default (app) => {
    */
   router.post("/upload-pic", uploader.single("picture"), async (req, res) => {
     try {
-      // create an instance of the person model
-      //const user = new UserModel(req.body);
-      //await user.save();
       //TODO: save user.photo = `/uploads/${req.file.filename}`
 
       res.json({ ...exampleUser, photo: `/uploads/${req.file.filename}` });
     } catch (err) {
-      req.log.error(err.message);
+      console.error(err.message);
       res.status(500).send(err.message);
     }
   });

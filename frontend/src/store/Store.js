@@ -56,6 +56,19 @@ class Store {
     }
   }
 
+  @action
+  async logout() {
+    try {
+      this.api.logout();
+
+      runInAction(() => {
+        this.user = { ...defaultUser };
+      });
+    } catch (err) {
+      console.error("store.logout failed", err);
+    }
+  }
+
   async registerUser(data) {
     try {
       const { accessToken } = await this.api.registerUser(data);

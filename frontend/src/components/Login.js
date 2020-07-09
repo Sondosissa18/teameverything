@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from "react";
 import FormInput from "./FormInput";
-// import LoginStore from "../store/LoginStore";
+
 import { Container, Button, Row, Col } from "react-bootstrap";
 
 import { observer, useLocalStore, useObserver } from "mobx-react";
@@ -44,7 +44,6 @@ const LoginForm = () => {
         <br />
         <button type="submit">Login</button>
 
-        {/* {form.meta.error && <div> {form.meta.error} </div>} */}
         <br />
         <input value="Continue" type="submit" />
       </form>
