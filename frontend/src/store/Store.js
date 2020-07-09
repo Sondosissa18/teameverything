@@ -42,13 +42,8 @@ class Store {
     return !!this.user.accessToken;
   }
 
-<<<<<<< HEAD
-  @computed get isLoggedIn() {
-    return !!this.user.token;
-=======
   fetchUserIfLoggedIn() {
     this.handleAccessToken(getToken());
->>>>>>> 113559bb40e84ca86dd2e62468bd795503503c49
   }
 
   @action
