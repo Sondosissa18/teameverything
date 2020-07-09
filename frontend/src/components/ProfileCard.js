@@ -16,11 +16,12 @@ export default function ProfileCard() {
       about: "",
       school: "",
       location: "",
+      picLocation: "",
     };
   });
 
   // useEffect(() => {
-  //   const userInfo = await store.getUser()
+  //   const userInfo = await store.getUser(state.userInfo)
   // });
 
   return useObserver((props) => (
@@ -31,7 +32,7 @@ export default function ProfileCard() {
         variant="top"
         src={
           state.photo
-            ? "https://kwitter-api.herokuapp.com" + state.photo
+            ? "https://" + state.photo
             : "https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png"
         }
       />

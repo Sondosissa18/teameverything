@@ -11,6 +11,8 @@ class UpdateUser extends Component {
   state = {
     displayName: "",
     about: "",
+    school: "",
+    location: "",
   };
   componentDidMount() {}
 
@@ -25,6 +27,8 @@ class UpdateUser extends Component {
     const data = {
       displayName: this.state.displayName,
       about: this.state.about,
+      school: this.state.school,
+      location: this.state.location,
     };
     this.props.updateUser(data);
     this.setState({
@@ -115,12 +119,14 @@ export default UpdateUser;
 //     return {
 //  displayName: "",
 //  about:""
+//  displayName: state.displayName,
+//  about: state.about,
 // }
 //    }
 
-//    componentDidMount() {
+//    useEffect(() {
 
-//   }
+//   })
 
 //   handleChange = (e) => {
 //     setState({
@@ -131,13 +137,17 @@ export default UpdateUser;
 //   handleSubmit = (e) => {
 //     event.preventDefault();
 //     const data = {
-//       displayName: state.displayName,
-//       about: state.about,
+//     displayName: state.displayName,
+//     about: state.about,
+//     school: state.school,
+//     location: state.location
 //     };
 //     state.updateUser(data);
 //     setState({
 //       displayName: "",
 //       about: "",
+//       school: "",
+//       location: "",
 //     });
 //   }
 
