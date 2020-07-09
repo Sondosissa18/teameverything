@@ -38,10 +38,9 @@ class API {
     }
   }
 
-  async register(data) {
+  async registerUser(data) {
     try {
-      const result = await this.axiosInstance.post("/auth/register", data);
-      return result;
+      return await this.axiosInstance.post("/auth/register", data);
     } catch (err) {
       console.error(err);
       throw err;
@@ -61,15 +60,19 @@ class API {
   }
 }
 
-// WARNING.. do not touch below this line if you want to have a good day =]
+const TOKEN_KEY = "auth:token";
 
-function getToken() {
+export function getToken() {
   try {
-    const storedState = JSON.parse(localStorage.getItem("persist:root"));
+    const storedState = JSON.parse(localStorage.getItem(TOKEN_KEY));
     return JSON.parse(storedState.auth).isAuthenticated;
   } catch {
     return "";
   }
+}
+
+export function setToken(token) {
+  localStorage.setItem(TOKEN_KEY, token);
 }
 
 export default new API();
