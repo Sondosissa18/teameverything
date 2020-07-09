@@ -18,12 +18,12 @@ class API {
           Authorization: `Bearer ${getToken()}`,
         },
       }),
-      (error) => Promise.reject(error),
+      (error) => Promise.reject(error)
     );
 
     axiosInstance.interceptors.response.use(
       ({ data }) => data,
-      (error) => Promise.reject(error),
+      (error) => Promise.reject(error)
     );
 
     this.axiosInstance = axiosInstance;
@@ -32,6 +32,15 @@ class API {
   async login(data) {
     try {
       return await this.axiosInstance.post("/auth/login", data);
+    } catch (err) {
+      console.error(err);
+      throw err;
+    }
+  }
+
+  async logout() {
+    try {
+      await this.axiosInstance.get("/auth/logout");
     } catch (err) {
       console.error(err);
       throw err;
@@ -61,18 +70,15 @@ class API {
 }
 
 const TOKEN_KEY = "auth:token";
-
 export function getToken() {
   try {
-    const storedState = JSON.parse(localStorage.getItem(TOKEN_KEY));
-    return JSON.parse(storedState.auth).isAuthenticated;
+    const storedState = localStorage.getItem(TOKEN_KEY);
+    return storedState;
   } catch {
     return "";
   }
 }
-
 export function setToken(token) {
-  localStorage.setItem(TOKEN_KEY, token);
+  localStorage.setItem(TOKEN_KEY, `${token}`);
 }
-
 export default new API();
