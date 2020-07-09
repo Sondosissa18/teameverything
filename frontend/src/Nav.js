@@ -5,6 +5,7 @@ import About from "./components/About";
 import Message from "./components/Message";
 import Contact from "./components/Contact";
 import Profile from "./components/Profile";
+import SignUp from "./components/SignUp"
 import { Route, NavLink, BrowserRouter } from "react-router-dom";
 
 class Nav extends Component {
@@ -17,6 +18,11 @@ class Nav extends Component {
             <li>
               <NavLink exact to="/">
                 Login
+              </NavLink>{" "}
+            </li>
+            <li>
+              <NavLink exact to="/SignUp">
+                Sign Up
               </NavLink>{" "}
             </li>
             <li>
@@ -55,6 +61,7 @@ class Nav extends Component {
             <Route path="/profile" component={Profile} />
             <Route path="/messages" component={Message} />
             <Route path="/about" component={About} />
+            <Route path="signup" component={SignUp}/>
           </div>
         </div>
       </BrowserRouter>
