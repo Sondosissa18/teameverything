@@ -1,47 +1,77 @@
-import { observable, action, computed } from "mobx";
-import apiInstance from "../utils/api";
+import { observable, action, computed, runInAction, autorun } from "mobx";
+import jwtDecode from "jwt-decode";
+import apiInstance, { setToken, getToken } from "../utils/api";
+import MessageStore from "./MessageStore";
+const defaultUser = {
+  id: 0,
+  name: "",
+  role: "",
+  email: "",
+  location: "",
+  school: "",
+  accessToken: "",
+  picLocation: "",
+  displayName: "",
+  about: "",
+};
 
 class Store {
   constructor({ api }) {
     this.api = api;
+    this.messageStore = new MessageStore(this);
+    this.fetchUserIfLoggedIn();
   }
   @observable likesCount = 7;
-
-  @observable messages = ["Team", "Everything"];
-  @observable user = {
-    id: 0,
-    name: "",
-    email: "",
-    token: "",
-    location: "",
-    school: "",
-    photo: "",
-    //displayName: "",
-    //about: ""
-  };
-
+  @observable user = defaultUser;
   @action updateCount() {
     this.likesCount++;
   }
-
-  @action postMessage(message) {
-    this.messages.push(message);
+  @computed get isLoggedIn() {
+    return !!this.user.accessToken;
   }
-
-  @computed get messageCount() {
-    return this.messages.length;
+  fetchUserIfLoggedIn() {
+    this.handleAccessToken(getToken());
   }
-
   @action
   async login(data) {
     try {
-      const user = await this.api.login(data);
-      runInAction(() => {
-        this.user = user;
-      });
+      const { accessToken } = await this.api.login(data);
+      this.handleAccessToken(accessToken);
     } catch (err) {
       console.error("store.login failed", err);
     }
+  }
+  @action
+  async logout() {
+    try {
+      this.api.logout().catch((err) => {});
+      runInAction(() => {
+        this.user = { ...defaultUser };
+      });
+      this.handleAccessToken("");
+    } catch (err) {
+      console.error("store.logout failed", err);
+    }
+  }
+  async registerUser(data) {
+    try {
+      const { accessToken } = await this.api.registerUser(data);
+      this.handleAccessToken(accessToken);
+    } catch (err) {
+      console.error("store.registerUser failed", err);
+    }
+  }
+  handleAccessToken(accessToken) {
+    if (!accessToken) {
+      setToken("");
+      return;
+    }
+    setToken(accessToken);
+    const { iat, exp, ...data } = jwtDecode(accessToken);
+    // TODO check expiration here
+    runInAction(() => {
+      this.user = { ...defaultUser, ...data, accessToken };
+    });
   }
 
   @action
@@ -93,7 +123,6 @@ class Store {
   //     }
   //   }
 }
-
 const storeInstance = new Store({ api: apiInstance });
 window.storeInstance = storeInstance; //this is just for testing. Do not use in source code.
 export default storeInstance;

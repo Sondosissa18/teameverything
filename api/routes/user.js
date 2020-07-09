@@ -25,6 +25,15 @@ export default (app) => {
     }
   });
 
+  router.delete("/", async (req, res) => {
+    try {
+      res.json({ ...exampleUser });
+    } catch (err) {
+      req.log.error(err.message);
+      res.status(500).send(err.message);
+    }
+  });
+
   // router.put("/update-user", async (req, res) => {
   //   try {
   //    const user = await UserModel.findOneAndUpdate(displayName: req.params.update-userdisplayName),

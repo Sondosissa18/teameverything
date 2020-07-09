@@ -10,41 +10,27 @@ import Card from "react-bootstrap/Card";
 
 export default function ProfileCard() {
   const store = useStore();
-  const state = useLocalStore(() => {
-    return {
-      displayName: "",
-      about: "",
-      school: "",
-      location: "",
-      picLocation: "",
-    };
-  });
 
-  // useEffect(() => {
-  //   const userInfo = await store.getUser(state.userInfo)
-  // });
-
-  return useObserver((props) => (
+  return useObserver(() => (
     <Card style={{ Width: "100", backgroundColor: "#B9DEDF", border: "1px solid" }}>
       <Card.Img
         style={{ Width: "100", padding: "47px", border: "1px solid", color: "#5EA1A6", backgroundColor: "#B9DEDF" }}
         className="cardImg"
         variant="top"
         src={
-          state.photo
-            ? "https://" + state.photo
-            : "https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png"
+          store.user.picLocation ||
+          "https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png"
         }
       />
       <UploadImg />
-      <Card.Title className="title">{state.displayName}</Card.Title>
+      <Card.Title className="title">{store.user.displayName}</Card.Title>
       <div className="bio">
-        {state.displayName ? state.about : "You Do Not Have A Bio Yet :)"}
+        {store.user.about || "You Do Not Have A Bio Yet :)"}
         <br />
         <br />
         <br />
-        <div>{state.school}</div>
-        <div>{state.location}</div>
+        <div>{store.user.school}</div>
+        <div>{store.user.location}</div>
         <br />
         <br />
       </div>

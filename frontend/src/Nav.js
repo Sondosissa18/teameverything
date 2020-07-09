@@ -1,11 +1,13 @@
 import React, { Component } from "react";
+import { NavLink, BrowserRouter } from "react-router-dom";
+import ConnectedRoute from "./components/ConnectedRoute";
 import Home from "./components/Home";
 import Blog from "./components/Blog";
 import About from "./components/About";
 import Message from "./components/Message";
 import Contact from "./components/Contact";
 import Profile from "./components/Profile";
-import { Route, NavLink, BrowserRouter } from "react-router-dom";
+import Logout from './components/Logout';
 
 class Nav extends Component {
   render() {
@@ -45,16 +47,16 @@ class Nav extends Component {
               <NavLink to="/Contact">Contact</NavLink>
             </li>
             <li>
-              <NavLink to="/Logout">Logout</NavLink>
+              <Logout />
             </li>
           </ul>
           <div className="content">
-            <Route path="/" component={Home} />
-            <Route path="/blog" component={Blog} />
-            <Route path="/contact" component={Contact} />
-            <Route path="/profile" component={Profile} />
-            <Route path="/messages" component={Message} />
-            <Route path="/about" component={About} />
+            <ConnectedRoute exact redirectIfAuthenticated path="/" component={Home} />
+            <ConnectedRoute exact path="/blog" component={Blog} />
+            <ConnectedRoute exact path="/contact" component={Contact} />
+            <ConnectedRoute exact isProtected path="/profile" component={Profile} />
+            <ConnectedRoute exact isProtected path="/messages" component={Message} />
+            <ConnectedRoute exact path="/about" component={About} />
           </div>
         </div>
       </BrowserRouter>

@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import "mobx-react/batchingForReactDom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./index.css";
 import { StoreProvider } from "./store/useStore";
