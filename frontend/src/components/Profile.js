@@ -20,20 +20,3 @@ export default function Profile() {
     </div>
   ));
 }
-
-// class Profile extends Component {
-//   render() {
-//     return (
-//       <div>
-//         <h2>Profile Page</h2>
-//         <Card>
-//           <ProfileCard />
-//           <UpdateUser />
-//           <DeleteUser />
-//         </Card>
-//       </div>
-//     );
-//   }
-// }
-
-//export default Profile;

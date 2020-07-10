@@ -26,25 +26,3 @@ export default function DeleteUser() {
     // </React.Fragment>
   ));
 }
-
-// class DeleteUser extends React.Component {
-//   handleDeleteUser = (e) => {
-//     event.preventDefault();
-//     const confirmed = window.confirm("Delete will be Final");
-//     if (confirmed) {
-//       this.props.deleteUser(this.props.user);
-//     }
-//   };
-
-//   render() {
-//     return (
-//       <React.Fragment>
-//         <Button variant="outline-danger" size="sm" onClick={this.handleDeleteUser}>
-//           Delete Profile
-//         </Button>
-//       </React.Fragment>
-//     );
-//   }
-// }
-
-// export default DeleteUser;

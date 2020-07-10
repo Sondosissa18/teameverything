@@ -77,9 +77,9 @@ class Store {
   @action
   async uploadPic(data) {
     try {
-      const user = await this.api.uploadPic(data);
+      const picLocation = await this.api.uploadPic(data);
       runInAction(() => {
-        this.user = user;
+        this.user.picLocation = picLocation;
       });
     } catch (err) {
       console.error("store.uploadPic failed", err);

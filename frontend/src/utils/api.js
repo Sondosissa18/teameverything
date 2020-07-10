@@ -7,7 +7,6 @@ class API {
     const axiosInstance = axios.create({
       baseURL: process.env.REACT_APP_API_URL,
       timeout: 30000,
-      headers: { Authorization: `Bearer ${getToken()}` },
     });
 
     axiosInstance.interceptors.request.use(
@@ -18,12 +17,12 @@ class API {
           Authorization: `Bearer ${getToken()}`,
         },
       }),
-      (error) => Promise.reject(error)
+      (error) => Promise.reject(error),
     );
 
     axiosInstance.interceptors.response.use(
       ({ data }) => data,
-      (error) => Promise.reject(error)
+      (error) => Promise.reject(error),
     );
 
     this.axiosInstance = axiosInstance;
@@ -61,7 +60,7 @@ class API {
       const data = new FormData();
       data.append("picture", file);
       const result = await this.axiosInstance.post("/user/upload-pic", data);
-      return result;
+      return result.picLocation;
     } catch (err) {
       console.error(err);
       throw err;
@@ -80,7 +79,7 @@ class API {
 
   // async deleteUser(data) {
   //   try {
-  //     const result = await this.axiosInstance.post("/user/delete-user", data);
+  //     const result = await this.axiosInstance.post("/user", data);
   //     return result;
   //   } catch (err) {
   //     console.error(err);
