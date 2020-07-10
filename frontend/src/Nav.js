@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { NavLink, BrowserRouter } from "react-router-dom";
+import {Switch} from "react-router";
 import ConnectedRoute from "./components/ConnectedRoute";
 import Home from "./components/Home";
 import Blog from "./components/Blog";
@@ -51,7 +52,9 @@ class Nav extends Component {
               <Logout />
             </li>
           </ul>
+          
           <div className="content">
+            <Switch>
             <ConnectedRoute exact redirectIfAuthenticated path="/" component={Home} />
             <ConnectedRoute exact path="/blog" component={Blog} />
             <ConnectedRoute exact path="/contact" component={Contact} />
@@ -59,7 +62,9 @@ class Nav extends Component {
             <ConnectedRoute exact isProtected path="/messages" component={Message} />
             <ConnectedRoute exact path="/about" component={About} />
             <ConnectedRoute component={Errorpage} />
+            </Switch>
           </div>
+          
         </div>
       </BrowserRouter>
     );
