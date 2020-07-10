@@ -8,6 +8,7 @@ import Message from "./components/Message";
 import Contact from "./components/Contact";
 import Profile from "./components/Profile";
 import Logout from './components/Logout';
+import Errorpage from './components/Errorpage';
 
 class Nav extends Component {
   render() {
@@ -57,6 +58,7 @@ class Nav extends Component {
             <ConnectedRoute exact isProtected path="/profile" component={Profile} />
             <ConnectedRoute exact isProtected path="/messages" component={Message} />
             <ConnectedRoute exact path="/about" component={About} />
+            <ConnectedRoute component={Errorpage} />
           </div>
         </div>
       </BrowserRouter>
