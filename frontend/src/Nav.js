@@ -7,6 +7,7 @@ import About from "./components/About";
 import Message from "./components/Message";
 import Contact from "./components/Contact";
 import Profile from "./components/Profile";
+import Logout from './components/Logout';
 
 class Nav extends Component {
   render() {
@@ -46,7 +47,7 @@ class Nav extends Component {
               <NavLink to="/Contact">Contact</NavLink>
             </li>
             <li>
-              <NavLink to="/Logout">Logout</NavLink>
+              <Logout />
             </li>
           </ul>
           <div className="content">

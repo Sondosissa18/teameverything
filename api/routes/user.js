@@ -10,17 +10,35 @@ export default (app) => {
    */
   router.post("/upload-pic", uploader.single("picture"), async (req, res) => {
     try {
-      // create an instance of the person model
-      //const user = new UserModel(req.body);
-      //await user.save();
-      //TODO: save user.photo = `/uploads/${req.file.filename}`
-
-      res.json({ ...exampleUser, photo: `/uploads/${req.file.filename}` });
+      const picLocation = `/uploads/${req.file.filename}`;
+      const user = await UserModel.findOneAndUpdate({ _id: req.loggedInUser._id }, { picLocation });
+      res.json({ picLocation });
     } catch (err) {
-      req.log.error(err.message);
+      console.error(err.message);
       res.status(500).send(err.message);
     }
   });
+
+  router.delete("/", async (req, res) => {
+    try {
+      res.json({ ...defaultUser });
+    } catch (err) {
+      console.error(err.message);
+      res.status(500).send(err.message);
+    }
+  });
+
+  // router.put("/update-user", async (req, res) => {
+  //   try {
+  //    const user = await UserModel.findOneAndUpdate(displayName: req.params.update-userdisplayName),
+  //    req.body, {new: true}
+  //    res.json({...exampleUser})
+  //     res.json({ ...exampleUser, school:"", location:"", displayName:"", about:"" });
+  //   } catch (err) {
+  //     req.log.error(err.message);
+  //     res.status(500).send(err.message);
+  //   }
+  // });
 
   app.use("/user", router);
 };

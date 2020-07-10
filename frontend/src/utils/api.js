@@ -7,7 +7,6 @@ class API {
     const axiosInstance = axios.create({
       baseURL: process.env.REACT_APP_API_URL,
       timeout: 30000,
-      headers: { Authorization: `Bearer ${getToken()}` },
     });
 
     axiosInstance.interceptors.request.use(
@@ -38,6 +37,15 @@ class API {
     }
   }
 
+  async logout() {
+    try {
+      await this.axiosInstance.get("/auth/logout");
+    } catch (err) {
+      console.error(err);
+      throw err;
+    }
+  }
+
   async registerUser(data) {
     try {
       return await this.axiosInstance.post("/auth/register", data);
@@ -52,27 +60,54 @@ class API {
       const data = new FormData();
       data.append("picture", file);
       const result = await this.axiosInstance.post("/user/upload-pic", data);
+      return result.picLocation;
+    } catch (err) {
+      console.error(err);
+      throw err;
+    }
+  }
+
+  async getUser(user) {
+    try {
+      const result = await this.axiosInstance.get("/user/getUser", user);
       return result;
     } catch (err) {
       console.error(err);
       throw err;
     }
   }
+
+  // async deleteUser(data) {
+  //   try {
+  //     const result = await this.axiosInstance.post("/user", data);
+  //     return result;
+  //   } catch (err) {
+  //     console.error(err);
+  //     throw err;
+  //   }
+  // }
+
+  // async updateUser(data) {
+  //   try {
+  //     const result = await this.axiosInstance.post("/user/", data);
+  //     return result;
+  //   } catch (err) {
+  //     console.error(err);
+  //     throw err;
+  //   }
+  // }
 }
 
 const TOKEN_KEY = "auth:token";
-
 export function getToken() {
   try {
-    const storedState = JSON.parse(localStorage.getItem(TOKEN_KEY));
-    return JSON.parse(storedState.auth).isAuthenticated;
+    const storedState = localStorage.getItem(TOKEN_KEY);
+    return storedState;
   } catch {
     return "";
   }
 }
-
 export function setToken(token) {
-  localStorage.setItem(TOKEN_KEY, token);
+  localStorage.setItem(TOKEN_KEY, `${token}`);
 }
-
 export default new API();

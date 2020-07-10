@@ -1,13 +1,8 @@
-import React, { Component } from "react";
-
-class Logout extends Component {
-  render() {
-    return (
-      <div>
-        <h2>You are Logged out.</h2>
-      </div>
-    );
-  }
-}
-
+import React from "react";
+import { useStore } from "../store/useStore";
+import { useObserver } from "mobx-react";
+const Logout = () => {
+  const store = useStore();
+  return useObserver(() => store.isLoggedIn && <button onClick={() => store.logout()}>Logout</button>);
+};
 export default Logout;
