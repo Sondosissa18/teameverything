@@ -39,7 +39,7 @@ export default (app) => {
 
   router.get("/logout", async (req, res) => {
     try {
-      await UserModel.findByIdAndUpdate(req.loggedInUser._id, {
+      await UserModel.findOneAndUpdate(req.loggedInUser._id, {
         accessToken: "",
       });
     } finally {

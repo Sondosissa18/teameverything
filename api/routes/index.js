@@ -1,5 +1,6 @@
 import authController from "./auth.js";
 import userController from "./user.js";
+import chatController from "./chat.js";
 import { verifyToken } from "../helpers.js";
 
 export const registerExpressRoutes = (app) => {
@@ -11,6 +12,7 @@ export const registerExpressRoutes = (app) => {
     try {
       const user = await verifyToken(authToken);
       req.loggedInUser = user;
+      console.log({ user })
       await next();
     } catch (err) {
       await next(err);
@@ -19,4 +21,5 @@ export const registerExpressRoutes = (app) => {
   });
   authController(app);
   userController(app);
+  chatController(app);
 };
