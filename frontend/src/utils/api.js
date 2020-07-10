@@ -7,7 +7,6 @@ class API {
     const axiosInstance = axios.create({
       baseURL: process.env.REACT_APP_API_URL,
       timeout: 30000,
-      headers: { Authorization: `Bearer ${getToken()}` },
     });
 
     axiosInstance.interceptors.request.use(
@@ -18,12 +17,12 @@ class API {
           Authorization: `Bearer ${getToken()}`,
         },
       }),
-      (error) => Promise.reject(error)
+      (error) => Promise.reject(error),
     );
 
     axiosInstance.interceptors.response.use(
       ({ data }) => data,
-      (error) => Promise.reject(error)
+      (error) => Promise.reject(error),
     );
 
     this.axiosInstance = axiosInstance;
@@ -61,12 +60,42 @@ class API {
       const data = new FormData();
       data.append("picture", file);
       const result = await this.axiosInstance.post("/user/upload-pic", data);
+      return result.picLocation;
+    } catch (err) {
+      console.error(err);
+      throw err;
+    }
+  }
+
+  async getUser(user) {
+    try {
+      const result = await this.axiosInstance.get("/user/getUser", user);
       return result;
     } catch (err) {
       console.error(err);
       throw err;
     }
   }
+
+  // async deleteUser(data) {
+  //   try {
+  //     const result = await this.axiosInstance.post("/user", data);
+  //     return result;
+  //   } catch (err) {
+  //     console.error(err);
+  //     throw err;
+  //   }
+  // }
+
+  // async updateUser(data) {
+  //   try {
+  //     const result = await this.axiosInstance.post("/user/", data);
+  //     return result;
+  //   } catch (err) {
+  //     console.error(err);
+  //     throw err;
+  //   }
+  // }
 }
 
 const TOKEN_KEY = "auth:token";
