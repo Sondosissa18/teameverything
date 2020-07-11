@@ -1,5 +1,7 @@
 import React from "react";
 import FormInput from "./FormInput";
+import "./Register.css";
+
 import { Container, Button, Row, Col, Form } from "react-bootstrap";
 
 import { useLocalStore, useObserver } from "mobx-react";
@@ -37,13 +39,23 @@ const Register = () => {
 
   return useObserver(
     () => (
-      <form onSubmit={submitForm}>
+      <form id="Register-form" onSubmit={submitForm}>
         <h3>Register PAGE</h3>
         <label htmlFor="email">Email</label>
-        <input type="email" value={state.email} onChange={(e) => state.updateEmail(e.target.value)} />
+        <input
+          type="email"
+          value={state.email}
+          placeholder="email"
+          onChange={(e) => state.updateEmail(e.target.value)}
+        />
         <br />
         <label htmlFor="password">Password</label>
-        <input type="password" value={state.password} onChange={(e) => state.updatePassword(e.target.value)} />
+        <input
+          type="password"
+          value={state.password}
+          placeholder="password"
+          onChange={(e) => state.updatePassword(e.target.value)}
+        />
         <br />
         <Form.Group controlId="register.role">
           <Form.Label>Are you a student or recruiter?</Form.Label>
@@ -53,11 +65,18 @@ const Register = () => {
             <option value="recruiter">Recruiter</option>
           </Form.Control>
         </Form.Group>
-        <button type="submit">Register</button>
-
-        {/* {form.meta.error && <div> {form.meta.error} </div>} */}
+        {/* <button type="submit">Register</button> */}
+        <Button
+        className="button2"
+          type="submit"
+          variant="primary"
+          size="1g"
+          style={{ marginLeft: "1%", marginRight: "1%", backgroundColor: "#3248A8", size: "px" }}
+        >
+          Register
+        </Button>{" "}
         <br />
-        <input value="Continue" type="submit" />
+        {/* <input value="Continue" type="submit" /> */}
       </form>
       //<Link to="/signup">
       //<>
