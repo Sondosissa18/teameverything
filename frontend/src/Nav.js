@@ -69,6 +69,7 @@ class Nav extends Component {
             <ConnectedRoute exact path="/recview" component={RecView} />
             <ConnectedRoute exact path="/collegesearch" component={CollegeSearch} />
             <ConnectedRoute component={Errorpage} />
+           
             </Switch>
           </div>
           

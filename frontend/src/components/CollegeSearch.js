@@ -5,7 +5,13 @@ class CollegeSearch extends Component {
   render() {
     return (
       <div>
-        <h2>this is the college search page</h2>
+        <h2>College Search</h2>
+        <h3>Enter a college name below</h3>
+        
+         <input  placeholder= "Enter College Name Here"></input>
+          <button> Search </button>
+
+       
 
       </div>
     );
