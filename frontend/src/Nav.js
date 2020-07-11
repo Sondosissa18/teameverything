@@ -9,6 +9,7 @@ import Message from "./components/Message";
 import Contact from "./components/Contact";
 import Profile from "./components/Profile";
 import Logout from './components/Logout';
+import RecView from './components/RecView';
 import Errorpage from './components/Errorpage';
 
 class Nav extends Component {
@@ -61,6 +62,7 @@ class Nav extends Component {
             <ConnectedRoute exact isProtected path="/profile" component={Profile} />
             <ConnectedRoute exact isProtected path="/messages" component={Message} />
             <ConnectedRoute exact path="/about" component={About} />
+            <ConnectedRoute exact path="/recview" component={RecView} />
             <ConnectedRoute component={Errorpage} />
             </Switch>
           </div>
