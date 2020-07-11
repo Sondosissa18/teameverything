@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from "react";
 import FormInput from "./FormInput";
 // import LoginStore from "../store/LoginStore";
 import { Container, Button, Row, Col } from "react-bootstrap";
-
+import "./Login.css";
 import { observer, useLocalStore, useObserver } from "mobx-react";
 import { useStore } from "../store/useStore";
 const LoginForm = () => {
@@ -34,19 +34,36 @@ const LoginForm = () => {
 
   return useObserver(
     () => (
-      <form onSubmit={submitForm}>
+      <form id="login-form" onSubmit={submitForm}>
         <h3>LOGIN PAGE</h3>
         <label htmlFor="email">Email</label>
-        <input type="email" value={state.email} onChange={(e) => state.updateEmail(e.target.value)} />
+        <input
+          type="email"
+          value={state.email}
+          placeholder="email"
+          onChange={(e) => state.updateEmail(e.target.value)}
+        />
         <br />
         <label htmlFor="password">Password</label>
-        <input type="password" value={state.password} onChange={(e) => state.updatePassword(e.target.value)} />
+        <input
+          type="password"
+          value={state.password}
+          placeholder="password"
+          onChange={(e) => state.updatePassword(e.target.value)}
+        />
         <br />
-        <button type="submit">Login</button>
-
-        {/* {form.meta.error && <div> {form.meta.error} </div>} */}
+        {/* <button type="submit">Login</button> */}
+        <Button
+          className="button1"
+          type="submit"
+          variant="primary"
+          size="1g"
+          style={{ marginLeft: "1%", marginRight: "1%", backgroundColor: " #3248A8", size: "px" }}
+        >
+          Login
+        </Button>{" "}
         <br />
-        <input value="Continue" type="submit" />
+        {/* <input value="Continue" type="submit" /> */}
       </form>
       //<Link to="/signup">
       //<>
@@ -59,10 +76,6 @@ const LoginForm = () => {
     [],
   );
 };
-
-// @observer
-// class LoginForm extends Component {
-//   // state= {
 
 //   // }
 //   render() {
@@ -127,17 +140,5 @@ const LoginForm = () => {
 //     // }
 //   };
 // }
-
-// LoginForm.propTypes = {
-//   onChange: PropTypes.func.isRequired,
-
-//   onSubmit: PropTypes.func.isRequired,
-
-//   form: PropTypes.shape({
-//     fields: Object,
-
-//     meta: Object,
-//   }).isRequired,
-// };
 
 export default LoginForm;

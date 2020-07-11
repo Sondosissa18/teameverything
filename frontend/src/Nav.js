@@ -7,7 +7,7 @@ import About from "./components/About";
 import Message from "./components/Message";
 import Contact from "./components/Contact";
 import Profile from "./components/Profile";
-import Logout from './components/Logout';
+import Logout from "./components/Logout";
 
 class Nav extends Component {
   render() {
