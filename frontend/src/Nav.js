@@ -8,10 +8,14 @@ import About from "./components/About";
 import Message from "./components/Message";
 import Contact from "./components/Contact";
 import Profile from "./components/Profile";
+<<<<<<< HEAD
 import Logout from './components/Logout';
 import RecView from './components/RecView';
 import CollegeSearch from './components/CollegeSearch';
 import Errorpage from './components/Errorpage';
+=======
+import Logout from "./components/Logout";
+>>>>>>> bbfc55c357fb1eab4d97a388414059896acffe7c
 
 class Nav extends Component {
   render() {
