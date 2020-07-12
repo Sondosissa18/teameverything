@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { NavLink, BrowserRouter } from "react-router-dom";
+import {Switch} from "react-router";
 import ConnectedRoute from "./components/ConnectedRoute";
 //import Login from "./components/Login";
 import Blog from "./components/Blog";
@@ -8,6 +9,10 @@ import Message from "./components/Message";
 import Contact from "./components/Contact";
 import Profile from "./components/Profile";
 import Logout from './components/Logout';
+import RecView from './components/RecView';
+import CollegeSearch from './components/CollegeSearch';
+import Errorpage from './components/Errorpage';
+import Login from "./components/Login";
 import Home from './components/Home';
 
 class Nav extends Component {
@@ -48,18 +53,28 @@ class Nav extends Component {
               <NavLink to="/contact">Contact</NavLink>
             </li>
             <li>
+              <NavLink to="/Collegesearch">College Search</NavLink>
+            </li>
+            <li>
               <Logout />
             </li>
           </ul>
+          
           <div className="content">
-            <ConnectedRoute exact redirectIfAuthenticated path="/" component={Home} />
+            <Switch>
+            <ConnectedRoute exact redirectIfAuthenticated path="/" component={Login} />
             <ConnectedRoute exact isProtected path="/home" component={Home} />
             <ConnectedRoute exact path="/blog" component={Blog} />
             <ConnectedRoute exact path="/contact" component={Contact} />
             <ConnectedRoute exact isProtected path="/profile" component={Profile} />
             <ConnectedRoute exact isProtected path="/messages" component={Message} />
             <ConnectedRoute exact path="/about" component={About} />
+            <ConnectedRoute exact path="/recview" component={RecView} />
+            <ConnectedRoute exact path="/collegesearch" component={CollegeSearch} />
+            <ConnectedRoute component={Errorpage} />
+            </Switch>
           </div>
+          
         </div>
       </BrowserRouter>
     );
