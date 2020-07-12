@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { NavLink, BrowserRouter } from "react-router-dom";
-import {Switch} from "react-router";
+import { Switch } from "react-router";
 import ConnectedRoute from "./components/ConnectedRoute";
 import Home from "./components/Home";
 import Blog from "./components/Blog";
@@ -8,10 +8,11 @@ import About from "./components/About";
 import Message from "./components/Message";
 import Contact from "./components/Contact";
 import Profile from "./components/Profile";
-import Logout from './components/Logout';
-import RecView from './components/RecView';
-import CollegeSearch from './components/CollegeSearch';
-import Errorpage from './components/Errorpage';
+import Logout from "./components/Logout";
+import RecView from "./components/RecView";
+import CollegeSearch from "./components/CollegeSearch";
+import Errorpage from "./components/Errorpage";
+import Chat from "./components/Chat";
 
 class Nav extends Component {
   render() {
@@ -54,24 +55,27 @@ class Nav extends Component {
               <NavLink to="/Collegesearch">College Search</NavLink>
             </li>
             <li>
+              <NavLink to="/chat">Chat</NavLink>
+            </li>
+            <li>
               <Logout />
             </li>
           </ul>
-          
+
           <div className="content">
             <Switch>
-            <ConnectedRoute exact redirectIfAuthenticated path="/" component={Home} />
-            <ConnectedRoute exact path="/blog" component={Blog} />
-            <ConnectedRoute exact path="/contact" component={Contact} />
-            <ConnectedRoute exact isProtected path="/profile" component={Profile} />
-            <ConnectedRoute exact isProtected path="/messages" component={Message} />
-            <ConnectedRoute exact path="/about" component={About} />
-            <ConnectedRoute exact path="/recview" component={RecView} />
-            <ConnectedRoute exact path="/collegesearch" component={CollegeSearch} />
-            <ConnectedRoute component={Errorpage} />
+              <ConnectedRoute exact redirectIfAuthenticated path="/" component={Home} />
+              <ConnectedRoute exact path="/blog" component={Blog} />
+              <ConnectedRoute exact path="/contact" component={Contact} />
+              <ConnectedRoute exact isProtected path="/profile" component={Profile} />
+              <ConnectedRoute exact isProtected path="/messages" component={Message} />
+              <ConnectedRoute exact path="/about" component={About} />
+              <ConnectedRoute exact path="/recview" component={RecView} />
+              <ConnectedRoute exact isProtected path="/collegesearch" component={CollegeSearch} />
+              <ConnectedRoute exact isProtected path="/chat" component={Chat} />
+              <ConnectedRoute component={Errorpage} />
             </Switch>
           </div>
-          
         </div>
       </BrowserRouter>
     );
