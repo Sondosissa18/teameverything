@@ -17,12 +17,11 @@ export default class ChatStore {
     return this._threads.slice();
   }
 
-  chattingWith = "";
   @observable currentThread = "";
   @action changeThread(thread) {
+    this.stopPolling();
     this.currentThread = thread._id;
-    this.chattingWith = thread.participants[0]._id;
-    this.pollForMessages();
+    this.startPolling();
   }
 
   @action
@@ -30,7 +29,7 @@ export default class ChatStore {
     try {
       const { chatMessage } = await this.rootStore.api.postMessage({
         text,
-        to: this.chattingWith,
+        thread: this.currentThread,
       });
       runInAction(() => {
         this._chats.push(chatMessage);
@@ -68,6 +67,18 @@ export default class ChatStore {
     }
   }
 
+  @action
+  async startThread(threadSelect) {
+    try {
+      const userId = threadSelect.state.value.value;
+      const { thread } = await this.rootStore.api.startThread(userId);
+      await this.getThreads();
+      this.changeThread(thread);
+    } catch (err) {
+      console.error("store.getThreads failed", err);
+    }
+  }
+
   startPolling() {
     this.stopPolling();
     this.pollForMessages();
@@ -84,9 +95,5 @@ export default class ChatStore {
 
   @computed get messageCount() {
     return this._chats.length;
-  }
-
-  doSomethingCrazy() {
-    this.rootStore.api.login(null).catch((err) => console.error(err));
   }
 }

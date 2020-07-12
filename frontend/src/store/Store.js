@@ -1,4 +1,4 @@
-import { observable, action, computed, runInAction, autorun } from "mobx";
+import { observable, action, computed, runInAction, toJS } from "mobx";
 import jwtDecode from "jwt-decode";
 import apiInstance, { setToken, getToken } from "../utils/api";
 import MessageStore from "./MessageStore";
@@ -23,7 +23,7 @@ class Store {
     this.chatStore = new ChatStore(this);
     this.fetchUserIfLoggedIn();
   }
-  @observable likesCount = 7;
+
   @observable user = defaultUser;
   @action updateCount() {
     this.likesCount++;
@@ -94,6 +94,26 @@ class Store {
       const user = await this.api.getUser(data);
       runInAction(() => {
         this.user = user;
+      });
+    } catch (err) {
+      console.error("store.getUser failed", err);
+    }
+  }
+
+  @observable _userList = [];
+  @computed get userList() {
+    return toJS(this._userList);
+  }
+
+  @action
+  async fetchUserList() {
+    try {
+      const { users: userList } = await this.api.getUserList();
+      runInAction(() => {
+        this._userList = userList.map((item) => ({
+          label: item.displayName,
+          value: item._id,
+        }));
       });
     } catch (err) {
       console.error("store.getUser failed", err);

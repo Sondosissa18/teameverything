@@ -24,7 +24,7 @@ function ConnectedRoute({ isProtected, redirectIfAuthenticated, component: Compo
         render={({ location }) => (
           <Redirect
             to={{
-              pathname: "/login",
+              pathname: "/profile",
               state: { from: location },
             }}
           />

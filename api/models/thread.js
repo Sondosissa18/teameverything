@@ -3,6 +3,7 @@ import { sanitizeUser } from "./user";
 
 const ThreadSchema = mongoose.Schema(
   {
+    threadId: String,
     participants: [
       {
         type: mongoose.Schema.Types.ObjectId,
@@ -18,10 +19,16 @@ const ThreadSchema = mongoose.Schema(
 
 export const ThreadModel = mongoose.model("Thread", ThreadSchema);
 
-export const findOrCreateThread = async (participants = []) => {
-  let thread = await ThreadModel.findOne({ participants: { $in: participants } });
+const genThreadId = (participants) => participants.sort((a, b) => a.length - b.length).join("::");
+
+export const findOrCreateThread = async (people = []) => {
+  const participants = people.map((p) => `${p}`);
+  const threadId = genThreadId(participants);
+  const params = { threadId };
+  let thread = await ThreadModel.findOne(params);
   if (!thread) {
     thread = ThreadModel.create({
+      threadId,
       participants,
     });
   }
@@ -35,7 +42,7 @@ export const fetchThreadAndParticipants = async (user, threadId) => {
   };
   const threadsRaw = await ThreadModel.find(params).populate("participants");
   const threads = threadsRaw.map((thread) => {
-    const participants = thread.participants.filter((p) => `${p._id}` !== `${user._id}`).map(sanitizeUser);
+    const participants = thread.participants.map(sanitizeUser);
     const threadName = participants.map((p) => p.displayName).join(" & ");
     return {
       ...thread._doc,

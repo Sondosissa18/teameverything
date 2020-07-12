@@ -3,6 +3,7 @@ import { useObserver } from "mobx-react";
 import { Row, Col } from "react-bootstrap";
 import ChatMessages from "./ChatMessages";
 import ThreadList from "./ThreadList";
+import UserSelect from "./UserSelect";
 import ChatInput from "./ChatInput";
 import { useStore } from "../../store/useStore";
 
@@ -19,6 +20,7 @@ const Chat = () => {
   return useObserver(() => (
     <Row>
       <Col>
+        <UserSelect />
         <ThreadList />
       </Col>
       <Col>

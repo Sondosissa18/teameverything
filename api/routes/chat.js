@@ -4,7 +4,6 @@ import keyBy from "lodash/keyBy";
 import {
   ChatMessageModel,
   ThreadModel,
-  UserModel,
   createNewMessage,
   findOrCreateThread,
   sanitizeUser,
@@ -18,6 +17,22 @@ export default (app) => {
     try {
       const threads = await fetchThreadAndParticipants(req.loggedInUser);
       res.json({ threads });
+    } catch (err) {
+      console.error(err.message);
+      res.status(500).send("Internal Server Error");
+    }
+  });
+
+  router.post("/threads", [body("to").not().isEmpty()], async (req, res, next) => {
+    try {
+      const errors = validationResult(req);
+      if (!errors.isEmpty()) {
+        return res.status(422).json({ errors: errors.array() });
+      }
+
+      const thread = await findOrCreateThread([req.loggedInUser._id, req.body.to]);
+
+      res.json({ thread });
     } catch (err) {
       console.error(err.message);
       res.status(500).send("Internal Server Error");
@@ -46,7 +61,7 @@ export default (app) => {
 
   router.post(
     "/",
-    [body("to").not().isEmpty(), body("text").not().isEmpty().trim().escape()],
+    [body("thread").not().isEmpty(), body("text").not().isEmpty().trim().escape()],
     async (req, res, next) => {
       try {
         const errors = validationResult(req);
@@ -54,7 +69,7 @@ export default (app) => {
           return res.status(422).json({ errors: errors.array() });
         }
 
-        const thread = await findOrCreateThread([req.loggedInUser._id, req.body.to]);
+        const thread = await ThreadModel.findById(req.body.thread);
 
         const chatMessage = await createNewMessage({
           thread,

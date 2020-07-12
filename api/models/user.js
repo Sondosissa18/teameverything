@@ -47,9 +47,10 @@ const UserSchema = mongoose.Schema(
 
 export const UserModel = mongoose.model("User", UserSchema);
 
-export const USER_FILEDS = "_id name email location school displayName about picLocation";
-export const findUserById = (id) => UserModel.findById(id, USER_FILEDS);
-export const sanitizeUser = (user) => pick(user, USER_FILEDS.split(" "));
+export const USER_FIELDS = "_id name email location school displayName about picLocation";
+export const findUserById = (id) => UserModel.findById(id, USER_FIELDS);
+export const findUsers = () => UserModel.find({}, USER_FIELDS);
+export const sanitizeUser = (user) => pick(user, USER_FIELDS.split(" "));
 
 export const exampleUser = {
   _id: "82te8gb23bbu263gd232e3",

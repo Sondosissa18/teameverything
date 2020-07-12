@@ -1,19 +1,17 @@
 import React, { Component } from "react";
 import { NavLink, BrowserRouter } from "react-router-dom";
-import {Switch} from "react-router";
+import { Switch } from "react-router";
 import ConnectedRoute from "./components/ConnectedRoute";
-//import Login from "./components/Login";
+import Home from "./components/Home";
 import Blog from "./components/Blog";
 import About from "./components/About";
 import Message from "./components/Message";
 import Contact from "./components/Contact";
 import Profile from "./components/Profile";
-import Logout from './components/Logout';
-import RecView from './components/RecView';
-import CollegeSearch from './components/CollegeSearch';
-import Errorpage from './components/Errorpage';
-import Login from "./components/Login";
-import Home from './components/Home';
+import Logout from "./components/Logout";
+import RecView from "./components/RecView";
+import CollegeSearch from "./components/CollegeSearch";
+import Errorpage from "./components/Errorpage";
 import Chat from "./components/Chat";
 
 class Nav extends Component {
@@ -24,34 +22,34 @@ class Nav extends Component {
           <h1>Everything Sports</h1>
           <ul className="header">
             <li>
-              <NavLink exact to="/login">
+              <NavLink exact to="/">
                 Login
               </NavLink>{" "}
             </li>
             <li>
-              <NavLink exact to="/home">
+              <NavLink exact to="/Home">
                 Home
               </NavLink>{" "}
             </li>
             <li>
-              <NavLink exact to="/profile">
+              <NavLink exact to="/Profile">
                 Profile
               </NavLink>{" "}
             </li>
             <li>
-              <NavLink to="/messages">Messages</NavLink>
+              <NavLink to="/Messages">Messages</NavLink>
             </li>
             <li>
-              <NavLink to="/recview">Recruiter View</NavLink>
+              <NavLink to="/RecView">Recruiter View</NavLink>
             </li>
             <li>
-              <NavLink to="/about">About</NavLink>
+              <NavLink to="/About">About</NavLink>
             </li>
             <li>
-              <NavLink to="/blog">Blog</NavLink>
+              <NavLink to="/Blog">Blog</NavLink>
             </li>
             <li>
-              <NavLink to="/contact">Contact</NavLink>
+              <NavLink to="/Contact">Contact</NavLink>
             </li>
             <li>
               <NavLink to="/Collegesearch">College Search</NavLink>
@@ -63,31 +61,25 @@ class Nav extends Component {
               <Logout />
             </li>
           </ul>
-          
+
           <div className="content">
             <Switch>
-            <ConnectedRoute exact redirectIfAuthenticated path="/" component={Login} />
-            <ConnectedRoute exact isProtected path="/home" component={Home} />
-            <ConnectedRoute exact path="/blog" component={Blog} />
-            <ConnectedRoute exact path="/contact" component={Contact} />
-            <ConnectedRoute exact isProtected path="/profile" component={Profile} />
-            <ConnectedRoute exact isProtected path="/messages" component={Message} />
-            <ConnectedRoute exact path="/about" component={About} />
-            <ConnectedRoute exact path="/recview" component={RecView} />
-            <ConnectedRoute exact path="/collegesearch" component={CollegeSearch} />
-            <ConnectedRoute exact isProtected path="/chat" component={Chat} />
-            <ConnectedRoute path="*" component={Errorpage} />
+              <ConnectedRoute exact redirectIfAuthenticated path="/" component={Home} />
+              <ConnectedRoute exact path="/blog" component={Blog} />
+              <ConnectedRoute exact path="/contact" component={Contact} />
+              <ConnectedRoute exact isProtected path="/profile" component={Profile} />
+              <ConnectedRoute exact isProtected path="/messages" component={Message} />
+              <ConnectedRoute exact path="/about" component={About} />
+              <ConnectedRoute exact path="/recview" component={RecView} />
+              <ConnectedRoute exact isProtected path="/collegesearch" component={CollegeSearch} />
+              <ConnectedRoute exact isProtected path="/chat" component={Chat} />
+              <ConnectedRoute component={Errorpage} />
             </Switch>
           </div>
-          
         </div>
       </BrowserRouter>
     );
   }
- 
-
-
-
 }
 
 export default Nav;

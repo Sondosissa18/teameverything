@@ -4,7 +4,7 @@ import { useStore } from "../../store/useStore";
 
 const ChatInput = () => {
   const store = useStore();
-  const [err, setError] = useState("");
+  const [err, setError] = useState("err");
   const messageRef = useRef(null);
 
   const sendMessage = async (e) => {
