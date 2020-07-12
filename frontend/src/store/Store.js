@@ -2,6 +2,7 @@ import { observable, action, computed, runInAction, autorun } from "mobx";
 import jwtDecode from "jwt-decode";
 import apiInstance, { setToken, getToken } from "../utils/api";
 import MessageStore from "./MessageStore";
+import ChatStore from "./ChatStore";
 const defaultUser = {
   id: 0,
   name: "",
@@ -19,6 +20,7 @@ class Store {
   constructor({ api }) {
     this.api = api;
     this.messageStore = new MessageStore(this);
+    this.chatStore = new ChatStore(this);
     this.fetchUserIfLoggedIn();
   }
   @observable likesCount = 7;

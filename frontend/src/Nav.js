@@ -14,6 +14,7 @@ import CollegeSearch from './components/CollegeSearch';
 import Errorpage from './components/Errorpage';
 import Login from "./components/Login";
 import Home from './components/Home';
+import Chat from "./components/Chat";
 
 class Nav extends Component {
   render() {
@@ -56,6 +57,9 @@ class Nav extends Component {
               <NavLink to="/Collegesearch">College Search</NavLink>
             </li>
             <li>
+              <NavLink to="/chat">Chat</NavLink>
+            </li>
+            <li>
               <Logout />
             </li>
           </ul>
@@ -71,7 +75,8 @@ class Nav extends Component {
             <ConnectedRoute exact path="/about" component={About} />
             <ConnectedRoute exact path="/recview" component={RecView} />
             <ConnectedRoute exact path="/collegesearch" component={CollegeSearch} />
-            <ConnectedRoute component={Errorpage} />
+            <ConnectedRoute exact isProtected path="/chat" component={Chat} />
+            <ConnectedRoute path="*" component={Errorpage} />
             </Switch>
           </div>
           
@@ -79,6 +84,10 @@ class Nav extends Component {
       </BrowserRouter>
     );
   }
+ 
+
+
+
 }
 
 export default Nav;

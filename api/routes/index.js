@@ -12,7 +12,6 @@ export const registerExpressRoutes = (app) => {
     try {
       const user = await verifyToken(authToken);
       req.loggedInUser = user;
-      console.log({ user })
       await next();
     } catch (err) {
       await next(err);
