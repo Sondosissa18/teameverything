@@ -28,17 +28,7 @@ export default (app) => {
     }
   });
 
-  // router.put("/update-user", async (req, res) => {
-  //   try {
-  //    const user = await UserModel.findOneAndUpdate(displayName: req.params.update-userdisplayName),
-  //    req.body, {new: true}
-  //    res.json({...exampleUser})
-  //     res.json({ ...exampleUser, school:"", location:"", displayName:"", about:"" });
-  //   } catch (err) {
-  //     req.log.error(err.message);
-  //     res.status(500).send(err.message);
-  //   }
-  // });
+
 
   app.use("/user", router);
 };

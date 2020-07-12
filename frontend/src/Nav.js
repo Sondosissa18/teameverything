@@ -1,13 +1,14 @@
 import React, { Component } from "react";
 import { NavLink, BrowserRouter } from "react-router-dom";
 import ConnectedRoute from "./components/ConnectedRoute";
-import Home from "./components/Home";
+//import Login from "./components/Login";
 import Blog from "./components/Blog";
 import About from "./components/About";
 import Message from "./components/Message";
 import Contact from "./components/Contact";
 import Profile from "./components/Profile";
 import Logout from './components/Logout';
+import Home from './components/Home';
 
 class Nav extends Component {
   render() {
@@ -17,34 +18,34 @@ class Nav extends Component {
           <h1>Everything Sports</h1>
           <ul className="header">
             <li>
-              <NavLink exact to="/">
+              <NavLink exact to="/login">
                 Login
               </NavLink>{" "}
             </li>
             <li>
-              <NavLink exact to="/Home">
+              <NavLink exact to="/home">
                 Home
               </NavLink>{" "}
             </li>
             <li>
-              <NavLink exact to="/Profile">
+              <NavLink exact to="/profile">
                 Profile
               </NavLink>{" "}
             </li>
             <li>
-              <NavLink to="/Messages">Messages</NavLink>
+              <NavLink to="/messages">Messages</NavLink>
             </li>
             <li>
-              <NavLink to="/RecView">Recruiter View</NavLink>
+              <NavLink to="/recview">Recruiter View</NavLink>
             </li>
             <li>
-              <NavLink to="/About">About</NavLink>
+              <NavLink to="/about">About</NavLink>
             </li>
             <li>
-              <NavLink to="/Blog">Blog</NavLink>
+              <NavLink to="/blog">Blog</NavLink>
             </li>
             <li>
-              <NavLink to="/Contact">Contact</NavLink>
+              <NavLink to="/contact">Contact</NavLink>
             </li>
             <li>
               <Logout />
@@ -52,6 +53,7 @@ class Nav extends Component {
           </ul>
           <div className="content">
             <ConnectedRoute exact redirectIfAuthenticated path="/" component={Home} />
+            <ConnectedRoute exact isProtected path="/home" component={Home} />
             <ConnectedRoute exact path="/blog" component={Blog} />
             <ConnectedRoute exact path="/contact" component={Contact} />
             <ConnectedRoute exact isProtected path="/profile" component={Profile} />
