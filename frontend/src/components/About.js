@@ -1,19 +1,36 @@
 import React, { Component } from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
+import Jumbotron from "react-bootstrap/Jumbotron";
+import "./About.css";
+
 //import { observable } from "mobx";
 //import { observer } from "mobx";
-
 
 class About extends Component {
   render() {
     return (
-      <div>
-        <h2>ABOUT PAGE</h2>
-        <h3>Creators</h3>
-        <h4>Bethsheba Zebata</h4>
-        <h4>Sondos Issa</h4>
-        <h4>Stephanie Guirand</h4>
-        <h4>Morgan Farrell</h4>
-        <h4>Ralph Hernandez</h4>
+      <div class="sport">
+        <Jumbotron>
+          <h1>ABOUT PAGE</h1>
+          <h3>Creators:</h3>
+          <ul>
+            <li>
+              <h5>Bethsheba Zebata</h5>
+            </li>
+            <li>
+              <h5>Sondos Issa</h5>
+            </li>
+            <li>
+              <h5>Stephanie Guirand</h5>
+            </li>
+            <li>
+              <h5>Morgan Farrell</h5>
+            </li>
+            <li>
+              <h5>Ralph Hernandez</h5>
+            </li>
+          </ul>
+        </Jumbotron>
       </div>
     );
   }
