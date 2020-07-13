@@ -1,29 +1,20 @@
 import mongoose from "mongoose";
-const UserChatSchema = mongoose.Schema({
-  _id: String,
-  name: String,
-  avatar: String,
-});
-export const UserChatModel = mongoose.model("UserChat", UserChatSchema);
-export const createUserChatModel = (user) => ({
-  _id: user._id,
-  name: user.displayName || "",
-  avatar: user.picLocation || "",
-});
-const ChatSchema = mongoose.Schema(
+
+const ChatMessageSchema = mongoose.Schema(
   {
     thread: {
-      type: String,
+      type: mongoose.Types.ObjectId,
+      ref: "Thread",
       required: true,
-      trim: true,
     },
     text: {
       type: String,
       required: true,
       trim: true,
     },
-    user: {
-      type: UserChatSchema,
+    sender: {
+      type: mongoose.Types.ObjectId,
+      ref: "User",
       required: true,
     },
   },
@@ -31,9 +22,14 @@ const ChatSchema = mongoose.Schema(
     timestamps: true,
   },
 );
-export const ChatModel = mongoose.model("Chat", ChatSchema);
-export const createNewMessage = (text, user) =>
-  new ChatModel({
+
+export const ChatMessageModel = mongoose.model("ChatMessage", ChatMessageSchema);
+
+export const createNewMessage = async ({ thread, text, sender }) => {
+  const chatMessage = ChatMessageModel.create({
+    thread: mongoose.Types.ObjectId(thread._id),
     text,
-    user: createUserChatModel(user),
+    sender: mongoose.Types.ObjectId(sender._id),
   });
+  return chatMessage;
+};

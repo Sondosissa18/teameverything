@@ -1,27 +1,25 @@
-import React from "react";
+import React, { Component, PropTypes } from "react";
 import FormInput from "./FormInput";
-import "./Register.css";
-
-import { Container, Button, Row, Col, Form } from "react-bootstrap";
-
-import { useLocalStore, useObserver } from "mobx-react";
+// import LoginStore from "../store/LoginStore";
+import { Container, Button, Row, Col } from "react-bootstrap";
+import "./Login.css";
+import { observer, useLocalStore, useObserver } from "mobx-react";
 import { useStore } from "../store/useStore";
-const Register = () => {
+
+
+
+const LoginForm = () => {
   const store = useStore();
 
   const state = useLocalStore(() => {
     return {
       email: "",
       password: "",
-      role: "other",
       updateEmail(email) {
         state.email = email;
       },
       updatePassword(pass) {
         state.password = pass;
-      },
-      updateRole(role) {
-        state.role = role;
       },
     };
   });
@@ -29,7 +27,7 @@ const Register = () => {
   const submitForm = async (e) => {
     try {
       e.preventDefault();
-      await store.registerUser({ email: state.email, password: state.password, role: state.role });
+      await store.login({ email: state.email, password: state.password });
     } catch (err) {
       console.error(err);
       //
@@ -39,8 +37,8 @@ const Register = () => {
 
   return useObserver(
     () => (
-      <form id="Register-form" onSubmit={submitForm}>
-        <h3>Register PAGE</h3>
+      <form id="login-form" onSubmit={submitForm}>
+        <h3>LOGIN PAGE</h3>
         <label htmlFor="email">Email</label>
         <input
           type="email"
@@ -57,23 +55,15 @@ const Register = () => {
           onChange={(e) => state.updatePassword(e.target.value)}
         />
         <br />
-        <Form.Group controlId="register.role">
-          <Form.Label>Are you a student or recruiter?</Form.Label>
-          <Form.Control as="select" value={state.role} onChange={(e) => state.updateRole(e.target.value)}>
-            <option value="other">Other</option>
-            <option value="student">Student</option>
-            <option value="recruiter">Recruiter</option>
-          </Form.Control>
-        </Form.Group>
-        {/* <button type="submit">Register</button> */}
+        {/* <button type="submit">Login</button> */}
         <Button
-        className="button2"
+          className="button1"
           type="submit"
           variant="primary"
           size="1g"
-          style={{ marginLeft: "1%", marginRight: "1%", backgroundColor: "#3248A8", size: "px" }}
+          style={{ marginLeft: "1%", marginRight: "1%", backgroundColor: " #3248A8", size: "px" }}
         >
-          Register
+          Login
         </Button>{" "}
         <br />
         {/* <input value="Continue" type="submit" /> */}
@@ -90,4 +80,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default LoginForm;
