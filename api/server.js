@@ -1,14 +1,17 @@
 import express from "express";
 import mongoose from "mongoose";
+import Bluebird from "bluebird";
 import cors from "cors";
 import { staticDirectory, SERVER_PORT, logger, uploadDirectory } from "./helpers.js";
 import { registerExpressRoutes } from "./routes/index.js";
 
 const startServer = async () => {
-  mongoose.Promise = global.Promise;
+  global.Promise = Bluebird;
+  mongoose.Promise = Bluebird;
   await mongoose.connect(`${process.env.MONGO_DB_URL}/test`, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
+    useFindAndModify: true,
   });
   const app = express();
   app.use(cors());

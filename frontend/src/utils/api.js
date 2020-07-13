@@ -72,6 +72,52 @@ class API {
       await this.axiosInstance.get("/user/get-User", user);
       //const result = await this.axiosInstance.get("/user/get-User", user);
       //return result.defaultUser;
+      return await this.axiosInstance.get("/user/getUser");
+    } catch (err) {
+      console.error(err);
+      throw err;
+    }
+  }
+
+  async getThread(thread) {
+    try {
+      return await this.axiosInstance.get(`/chat/threads/${thread}`);
+    } catch (err) {
+      console.error(err);
+      throw err;
+    }
+  }
+
+  async getThreads() {
+    try {
+      return await this.axiosInstance.get(`/chat/threads`);
+    } catch (err) {
+      console.error(err);
+      throw err;
+    }
+  }
+
+  async startThread(to) {
+    try {
+      return await this.axiosInstance.post(`/chat/threads`, { to });
+    } catch (err) {
+      console.error(err);
+      throw err;
+    }
+  }
+
+  async getUserList() {
+    try {
+      return await this.axiosInstance.get(`/user/list`);
+    } catch (err) {
+      console.error(err);
+      throw err;
+    }
+  }
+
+  async postMessage(data) {
+    try {
+      return await this.axiosInstance.post("/chat", data);
     } catch (err) {
       console.error(err);
       throw err;

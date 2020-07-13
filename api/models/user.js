@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import pick from "lodash/pick";
 
 const UserSchema = mongoose.Schema(
   {
@@ -45,8 +46,14 @@ const UserSchema = mongoose.Schema(
 );
 
 export const UserModel = mongoose.model("User", UserSchema);
+
+export const USER_FIELDS = "_id name email location school displayName about picLocation";
+export const findUserById = (id) => UserModel.findById(id, USER_FIELDS);
+export const findUsers = () => UserModel.find({}, USER_FIELDS);
+export const sanitizeUser = (user) => pick(user, USER_FIELDS.split(" "));
+
 export const exampleUser = {
-  id: 1,
+  _id: "82te8gb23bbu263gd232e3",
   name: "name",
   email: "email@me.com",
   token: "token",

@@ -18,7 +18,7 @@ export const storage = multer.diskStorage({
     callback(null, uploadDirectory);
   },
   filename: (req, file, callback) => {
-    const fileName = `${uuidv4()}${path.extname(file.originalname)}`;
+    const fileName = `${uuidv4()}${path.extname(file.originalname.toLowerCase())}`;
     callback(null, fileName);
   },
 });

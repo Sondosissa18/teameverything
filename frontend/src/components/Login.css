@@ -1,0 +1,20 @@
+#login-form {
+  display: flex;
+  flex-direction: column;
+  max-width: 20em;
+
+  margin-left: 1%;
+
+  border: 2px solid #00008b;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+h2 {
+  margin-bottom: 5%;
+  margin-left: 3%;
+}
+
+.button1 {
+  color: #fff133;
+}
