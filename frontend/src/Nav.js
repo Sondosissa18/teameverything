@@ -13,6 +13,7 @@ import RecView from "./components/RecView";
 import CollegeSearch from "./components/CollegeSearch";
 import Errorpage from "./components/Errorpage";
 import Chat from "./components/Chat";
+import Login from "./components/Login";
 
 class Nav extends Component {
   render() {
@@ -27,32 +28,32 @@ class Nav extends Component {
               </NavLink>{" "}
             </li>
             <li>
-              <NavLink exact to="/Home">
+              <NavLink exact to="/home">
                 Home
               </NavLink>{" "}
             </li>
             <li>
-              <NavLink exact to="/Profile">
+              <NavLink exact to="/profile">
                 Profile
               </NavLink>{" "}
             </li>
             <li>
-              <NavLink to="/Messages">Messages</NavLink>
+              <NavLink to="/message">Messages</NavLink>
             </li>
             <li>
-              <NavLink to="/RecView">Recruiter View</NavLink>
+              <NavLink to="/recview">Recruiter View</NavLink>
             </li>
             <li>
-              <NavLink to="/About">About</NavLink>
+              <NavLink to="/about">About</NavLink>
             </li>
             <li>
-              <NavLink to="/Blog">Blog</NavLink>
+              <NavLink to="/blog">Blog</NavLink>
             </li>
             <li>
-              <NavLink to="/Contact">Contact</NavLink>
+              <NavLink to="/contact">Contact</NavLink>
             </li>
             <li>
-              <NavLink to="/Collegesearch">College Search</NavLink>
+              <NavLink to="/collegesearch">College Search</NavLink>
             </li>
             <li>
               <NavLink to="/chat">Chat</NavLink>
@@ -64,11 +65,12 @@ class Nav extends Component {
 
           <div className="content">
             <Switch>
-              <ConnectedRoute exact redirectIfAuthenticated path="/" component={Home} />
+              <ConnectedRoute exact redirectIfAuthenticated path="/" component={Login} />
+              <ConnectedRoute exact path="/home" component={Home} />
               <ConnectedRoute exact path="/blog" component={Blog} />
               <ConnectedRoute exact path="/contact" component={Contact} />
               <ConnectedRoute exact isProtected path="/profile" component={Profile} />
-              <ConnectedRoute exact isProtected path="/messages" component={Message} />
+              <ConnectedRoute exact isProtected path="/message" component={Message} />
               <ConnectedRoute exact path="/about" component={About} />
               <ConnectedRoute exact path="/recview" component={RecView} />
               <ConnectedRoute exact isProtected path="/collegesearch" component={CollegeSearch} />
