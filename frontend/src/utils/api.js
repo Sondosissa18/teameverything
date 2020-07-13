@@ -69,33 +69,40 @@ class API {
 
   async getUser(user) {
     try {
-      const result = await this.axiosInstance.get("/user/getUser", user);
-      return result;
+      await this.axiosInstance.get("/user/get-User", user);
+      //const result = await this.axiosInstance.get("/user/get-User", user);
+      //return result.defaultUser;
     } catch (err) {
       console.error(err);
       throw err;
     }
   }
 
-  // async deleteUser(data) {
-  //   try {
-  //     const result = await this.axiosInstance.post("/user", data);
-  //     return result;
-  //   } catch (err) {
-  //     console.error(err);
-  //     throw err;
-  //   }
-  // }
+  async updateUser(file) {
+    try {
+      const data = new FormData();
+      //const data = { ...defaultUser };
+      data.append("school", file);
+      data.append("location", file);
+      data.append("displayName", file);
+      data.append("about", file);
+      const result = await this.axiosInstance.patch("/user/update-User", data);
+      return result.school;
+    } catch (err) {
+      console.error(err);
+      throw err;
+    }
+  }
 
-  // async updateUser(data) {
-  //   try {
-  //     const result = await this.axiosInstance.post("/user/", data);
-  //     return result;
-  //   } catch (err) {
-  //     console.error(err);
-  //     throw err;
-  //   }
-  // }
+  async deleteUser(user) {
+    try {
+      const result = await this.axiosInstance.delete("/", user);
+      return result;
+    } catch (err) {
+      console.error(err);
+      throw err;
+    }
+  }
 }
 
 const TOKEN_KEY = "auth:token";

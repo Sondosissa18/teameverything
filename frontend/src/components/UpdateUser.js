@@ -1,5 +1,5 @@
 //import React, { Component } from "react";
-import mongoose from "mongoose";
+//import mongoose from "mongoose";
 import React from "react";
 import { useStore } from "../store/useStore";
 import { useObserver, useLocalStore } from "mobx-react";
@@ -10,44 +10,50 @@ export default function UpdateUser() {
   const store = useStore();
   const state = useLocalStore(() => {
     return {
-      displayName: "",
-      about: "",
-      displayName: "",
-      about: "",
+      selectedUser: null,
+      updateSelectedUser(user) {
+        state.selectedUser = user;
+      },
     };
   });
 
+  // displayName: "",
+  // about: "",
+  // displayName: "",
+  // about: "",
   //  useEffect(() {
 
   // })
 
-  const handleChange = (e) => {
-    setState({
-      [e.target.name]: e.target.value,
-    });
-  };
-
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-  //   await store.updateUser(store.user.state);
+  // const handleChange = (e) => {
+  //   setTask(e.target.name, e.target.value);
   // };
 
-  const handleSubmit = (e) => {
-    event.preventDefault();
-    const data = {
-      displayName: store.user.displayName,
-      about: store.user.about,
-      school: store.user.school,
-      location: store.user.location,
-    };
-    state.updateUser(data);
-    setState({
-      displayName: "",
-      about: "",
-      school: "",
-      location: "",
-    });
+  const handleChange = (e) => {
+    state.updateSelectedUser([e.target.name], e.target.value);
   };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    await store.updateUser(state.selectedUser);
+  };
+
+  // const handleSubmit = (e) => {
+  //   event.preventDefault();
+  //   const data = {
+  //     displayName: store.user.displayName,
+  //     about: store.user.about,
+  //     school: store.user.school,
+  //     location: store.user.location,
+  //   };
+  //   state.updateUser(data);
+  //   setState({
+  //     displayName: "",
+  //     about: "",
+  //     school: "",
+  //     location: "",
+  //   });
+  // };
 
   return useObserver(() => (
     <form
@@ -69,7 +75,7 @@ export default function UpdateUser() {
         placeholder="text here"
         autoFocus
         required
-        value={store.user.school}
+        value={state.school}
         onChange={handleChange}
       />
       <Card.Title style={{ fontSize: "16px", paddingTop: "10px" }}>Your Location:</Card.Title>
@@ -79,7 +85,7 @@ export default function UpdateUser() {
         type="text"
         placeholder="text here"
         required
-        value={store.user.location}
+        value={state.location}
         onChange={handleChange}
       />
       <Card.Title style={{ paddingTop: "10px", fontSize: "16px" }}>Edit Display Name:</Card.Title>
@@ -91,7 +97,7 @@ export default function UpdateUser() {
           type="text"
           placeholder="text here"
           required
-          value={store.user.displayName}
+          value={state.displayName}
           onChange={handleChange}
         />
         <br />
@@ -108,7 +114,7 @@ export default function UpdateUser() {
           type="text"
           placeholder="text here"
           required
-          value={store.user.about}
+          value={state.about}
           onChange={handleChange}
         />
         <br />

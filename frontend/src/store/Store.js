@@ -91,37 +91,46 @@ class Store {
     try {
       const user = await this.api.getUser(data);
       runInAction(() => {
-        this.user = user;
+        this.user = { ...defaultUser };
+        // this.user.about = about;
+        // this.user.displayName = displayName;
+        // this.user.location = location;
+        // this.user.school = school;
       });
     } catch (err) {
       console.error("store.getUser failed", err);
     }
   }
 
+  @action
+  async updateUser(data) {
+    try {
+      const user = await this.api.updateUser(data);
+      runInAction(() => {
+        // this.user.school = school;
+        // this.user.location = location;
+        // this.user.displayName = displayName;
+        // this.user.about = about;
+        this.user = { ...defaultUser };
+      });
+    } catch (err) {
+      console.error("store.updateUser failed", err);
+    }
+  }
+
   // LogOut need to be added to deleteUser .....  I think here
   //   @action <-- prob don't need
-  //   async deleteUser(data) {
-  //     try {
-  //       const user = await this.api.deleteUser(data);
-  //       runInAction(() => {
-  //         this.user = user;
-  //       });
-  //     } catch (err) {
-  //       console.error("store.deleteUser failed", err);
-  //     }
-  //   }
-
-  //   @action
-  //   async updateUser(data) {
-  //     try {
-  //       const user = await this.api.updateUser(data);
-  //       runInAction(() => {
-  //         this.user = user;
-  //       });
-  //     } catch (err) {
-  //       console.error("store.updateUser failed", err);
-  //     }
-  //   }
+  async deleteUser(data) {
+    try {
+      const user = await this.api.deleteUser(data);
+      runInAction(() => {
+        this.user = { ...defaultUser };
+        this.user = { logout };
+      });
+    } catch (err) {
+      console.error("store.deleteUser failed", err);
+    }
+  }
 }
 const storeInstance = new Store({ api: apiInstance });
 window.storeInstance = storeInstance; //this is just for testing. Do not use in source code.

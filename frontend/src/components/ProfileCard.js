@@ -9,7 +9,17 @@ import Card from "react-bootstrap/Card";
 
 export default function ProfileCard() {
   const store = useStore();
+  // const state = useLocalStore(() => {
+  //   return {
+  //     getUser(props) {
+  //       if (state.props.user !== props.user) {
+  //         state.props.getUser();
+  //       }
+  //     },
+  //   };
+  // });
 
+  console.log(store);
   return useObserver(() => (
     <Card style={{ Width: "100", backgroundColor: "#B9DEDF", border: "1px solid" }}>
       <Card.Img
