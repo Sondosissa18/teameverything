@@ -124,16 +124,11 @@ class API {
     }
   }
 
-  async updateUser(file) {
+  async updateUser(data) {
     try {
-      const data = new FormData();
       //const data = { ...defaultUser };
-      data.append("school", file);
-      data.append("location", file);
-      data.append("displayName", file);
-      data.append("about", file);
       const result = await this.axiosInstance.patch("/user/update-User", data);
-      return result.school;
+      return result;
     } catch (err) {
       console.error(err);
       throw err;

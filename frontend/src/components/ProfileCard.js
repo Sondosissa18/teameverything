@@ -32,15 +32,21 @@ export default function ProfileCard() {
         }
       />
       <UploadImg />
-      <Card.Title className="title">{store.user.displayName}</Card.Title>
+      <Card.Title className="title">
+        <h1>{store.user.displayName}</h1>
+      </Card.Title>
       <div className="bio">
-        {store.user.about || "You Do Not Have A Bio Yet :)"}
+        <h4>Bio:</h4> {store.user.about || "You Do Not Have A Bio Yet :)"}
         <br />
         <br />
         <br />
-        <div className="school">{store.user.school}</div>
-        <div className="location">{store.user.location}</div>
+        <div className="school">
+          <h6>School:</h6> {store.user.school}
+        </div>
         <br />
+        <div className="location">
+          <h6>Location:</h6> {store.user.location}
+        </div>
         <br />
       </div>
     </Card>

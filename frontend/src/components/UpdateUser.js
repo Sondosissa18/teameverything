@@ -2,7 +2,7 @@
 //import mongoose from "mongoose";
 import React from "react";
 import { useStore } from "../store/useStore";
-import { useObserver, useLocalStore } from "mobx-react";
+import { useObserver, useLocalStore, observer } from "mobx-react";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 
@@ -10,50 +10,64 @@ export default function UpdateUser() {
   const store = useStore();
   const state = useLocalStore(() => {
     return {
-      selectedUser: null,
-      updateSelectedUser(user) {
-        state.selectedUser = user;
+      displayName: "",
+      school: "",
+      location: "",
+      about: "",
+
+      updateDisplayName(displayName) {
+        state.displayName = displayName;
+      },
+      updateSchool(school) {
+        state.school = school;
+      },
+      updateLocation(location) {
+        state.location = location;
+      },
+      updateAbout(about) {
+        state.about = about;
       },
     };
   });
 
-  // displayName: "",
-  // about: "",
-  // displayName: "",
-  // about: "",
-  //  useEffect(() {
-
-  // })
-
-  // const handleChange = (e) => {
-  //   setTask(e.target.name, e.target.value);
-  // };
-
+  const handleChangeDisplay = (e) => {
+    state.updateDisplayName(e.target.value);
+  };
   const handleChange = (e) => {
-    state.updateSelectedUser([e.target.name], e.target.value);
+    switch (e.target.name) {
+      case "displayName":
+        state.updateDisplayName(e.target.value);
+        break;
+      case "school":
+        state.updateSchool(e.target.value);
+        break;
+      case "location":
+        state.updateLocation(e.target.value);
+        break;
+      case "about":
+        state.updateAbout(e.target.value);
+        break;
+
+      default:
+        break;
+    }
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    await store.updateUser(state.selectedUser);
+    try {
+      e.preventDefault();
+      await store.updateUser({
+        displayName: state.displayName,
+        school: state.school,
+        location: state.location,
+        about: state.about,
+      });
+    } catch (err) {
+      console.error(err);
+      //
+      state.setError(err.message);
+    }
   };
-
-  // const handleSubmit = (e) => {
-  //   event.preventDefault();
-  //   const data = {
-  //     displayName: store.user.displayName,
-  //     about: store.user.about,
-  //     school: store.user.school,
-  //     location: store.user.location,
-  //   };
-  //   state.updateUser(data);
-  //   setState({
-  //     displayName: "",
-  //     about: "",
-  //     school: "",
-  //     location: "",
-  //   });
-  // };
 
   return useObserver(() => (
     <form

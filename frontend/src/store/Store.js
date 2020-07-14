@@ -94,32 +94,28 @@ class Store {
       const user = await this.api.getUser(data);
       runInAction(() => {
         this.user = { ...defaultUser };
-        // this.user.about = about;
-        // this.user.displayName = displayName;
-        // this.user.location = location;
-        // this.user.school = school;
       });
     } catch (err) {
       console.error("store.getUser failed", err);
     }
   }
 
+  // @observable _userList = [];
+  // @computed get userList() {
+  //   return toJS(this._userList);
+  // }
+
   @action
   async updateUser(data) {
     try {
+      console.log(data);
       const user = await this.api.updateUser(data);
       runInAction(() => {
-        // this.user.school = school;
-        // this.user.location = location;
-        // this.user.displayName = displayName;
-        // this.user.about = about;
-        this.user = { ...defaultUser };
+        this.user = { ...user };
       });
     } catch (err) {
       console.error("store.updateUser failed", err);
-  @observable _userList = [];
-  @computed get userList() {
-    return toJS(this._userList);
+    }
   }
 
   @action
