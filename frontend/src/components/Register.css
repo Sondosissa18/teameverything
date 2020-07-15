@@ -5,7 +5,7 @@
   background-color: white;
   margin-left: 1%;
 
-  border: 2px solid #00008b;
+  border: 2px solid #af9631;
   border-radius: 6px;
   overflow: hidden;
 }
@@ -16,5 +16,5 @@ h2 {
 }
 
 .button2 {
-  color: #fff133;
+  color: purple;
 }

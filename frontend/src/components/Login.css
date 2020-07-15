@@ -5,7 +5,7 @@
   background-color: white;
   margin-left: 1%;
 
-  border: 2px solid #00008b;
+  border: 2px solid #af9631;
   border-radius: 6px;
   overflow: hidden;
 }
@@ -17,11 +17,11 @@ h2 {
 
 .button1 {
   /* color: #fff133; */
-  color: pur
+  color: purple;
 }
 
 #login {
-  background: url(../images/sportsLogin.png) no-repeat center center fixed;
+  background: url(../images/all-sports-background.png) no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
