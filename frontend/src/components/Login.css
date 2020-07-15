@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   max-width: 20em;
-
+  background-color: white;
   margin-left: 1%;
 
   border: 2px solid #00008b;
@@ -16,5 +16,14 @@ h2 {
 }
 
 .button1 {
-  color: #fff133;
+  /* color: #fff133; */
+  color: pur
+}
+
+#login {
+  background: url(../images/sportsLogin.png) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
