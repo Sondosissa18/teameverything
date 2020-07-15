@@ -40,7 +40,11 @@ const Register = () => {
   return useObserver(
     () => (
       <form id="Register-form" onSubmit={submitForm}>
-        <h3>Register PAGE</h3>
+        <h3>
+          New User?
+          <br></br>
+          REGISTER HERE
+        </h3>
         <label htmlFor="email">Email</label>
         <input
           type="email"
@@ -67,7 +71,7 @@ const Register = () => {
         </Form.Group>
         {/* <button type="submit">Register</button> */}
         <Button
-        className="button2"
+          className="button2"
           type="submit"
           variant="primary"
           size="1g"

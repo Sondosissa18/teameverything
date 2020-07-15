@@ -17,7 +17,13 @@ class API {
           Authorization: `Bearer ${getToken()}`,
         },
       }),
-      (error) => Promise.reject(error),
+      (error) => {
+        if (401 === error.response.status) {
+          window.alert("Sorry, your session has expired. Please log back in.");
+          this.logout();
+        }
+        Promise.reject(error);
+      },
     );
 
     axiosInstance.interceptors.response.use(
@@ -67,12 +73,9 @@ class API {
     }
   }
 
-  async getUser(user) {
+  async getUser() {
     try {
-      await this.axiosInstance.get("/user/get-User", user);
-      //const result = await this.axiosInstance.get("/user/get-User", user);
-      //return result.defaultUser;
-      return await this.axiosInstance.get("/user/getUser");
+      return await this.axiosInstance.get("/user/get-user");
     } catch (err) {
       console.error(err);
       throw err;
@@ -126,7 +129,6 @@ class API {
 
   async updateUser(data) {
     try {
-      //const data = { ...defaultUser };
       const result = await this.axiosInstance.patch("/user/update-User", data);
       return result;
     } catch (err) {
@@ -135,10 +137,9 @@ class API {
     }
   }
 
-  async deleteUser(user) {
+  async deleteUser() {
     try {
-      const result = await this.axiosInstance.delete("/", user);
-      return result;
+      return await this.axiosInstance.delete("/user");
     } catch (err) {
       console.error(err);
       throw err;

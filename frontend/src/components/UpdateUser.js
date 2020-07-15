@@ -1,5 +1,3 @@
-//import React, { Component } from "react";
-//import mongoose from "mongoose";
 import React from "react";
 import { useStore } from "../store/useStore";
 import { useObserver, useLocalStore, observer } from "mobx-react";
@@ -10,47 +8,21 @@ export default function UpdateUser() {
   const store = useStore();
   const state = useLocalStore(() => {
     return {
-      displayName: "",
-      school: "",
-      location: "",
-      about: "",
-
-      updateDisplayName(displayName) {
-        state.displayName = displayName;
-      },
-      updateSchool(school) {
-        state.school = school;
-      },
-      updateLocation(location) {
-        state.location = location;
-      },
-      updateAbout(about) {
-        state.about = about;
+      displayName: store.user.displayName,
+      school: store.user.school,
+      location: store.user.location,
+      about: store.user.about,
+      update(key, value) {
+        state[key] = value;
       },
     };
   });
 
   const handleChangeDisplay = (e) => {
-    state.updateDisplayName(e.target.value);
+    state.update("displayName", e.target.value);
   };
   const handleChange = (e) => {
-    switch (e.target.name) {
-      case "displayName":
-        state.updateDisplayName(e.target.value);
-        break;
-      case "school":
-        state.updateSchool(e.target.value);
-        break;
-      case "location":
-        state.updateLocation(e.target.value);
-        break;
-      case "about":
-        state.updateAbout(e.target.value);
-        break;
-
-      default:
-        break;
-    }
+    state.update(e.target.name, e.target.value);
   };
 
   const handleSubmit = async (e) => {
@@ -64,7 +36,6 @@ export default function UpdateUser() {
       });
     } catch (err) {
       console.error(err);
-      //
       state.setError(err.message);
     }
   };
@@ -81,9 +52,9 @@ export default function UpdateUser() {
         border: "1px",
       }}
     >
-      <Card.Title style={{ fontSize: "16px", paddingTop: "10px" }}>Your School:</Card.Title>
+      <Card.Title style={{ fontSize: "16px", paddingTop: "10px" }}>Edit School:</Card.Title>
       <input
-        style={{ display: "block" }}
+        style={{ display: "block", width: "400px", height: "70px" }}
         name="school"
         type="text"
         placeholder="text here"
@@ -92,9 +63,9 @@ export default function UpdateUser() {
         value={state.school}
         onChange={handleChange}
       />
-      <Card.Title style={{ fontSize: "16px", paddingTop: "10px" }}>Your Location:</Card.Title>
+      <Card.Title style={{ fontSize: "16px", paddingTop: "10px" }}>Edit Location:</Card.Title>
       <input
-        style={{ display: "block" }}
+        style={{ display: "block", width: "400px", height: "70px" }}
         name="location"
         type="text"
         placeholder="text here"
@@ -105,7 +76,7 @@ export default function UpdateUser() {
       <Card.Title style={{ paddingTop: "10px", fontSize: "16px" }}>Edit Display Name:</Card.Title>
       <Card.Text>
         <input
-          style={{ display: "block" }}
+          style={{ display: "block", width: "400px", height: "70px" }}
           size="lg"
           name="displayName"
           type="text"
@@ -121,12 +92,14 @@ export default function UpdateUser() {
             borderRadius: "0",
             paddingBottom: "10px",
             display: "block",
+            width: "400px",
+            height: "70px",
           }}
           size="sm"
           squared="true"
           name="about"
           type="text"
-          placeholder="text here"
+          placeholder="TEXT HERE"
           required
           value={state.about}
           onChange={handleChange}
@@ -140,7 +113,7 @@ export default function UpdateUser() {
           value="submit"
           onSubmit={handleSubmit}
         >
-          Save Edit
+          Save
         </Button>
       </Card.Text>
     </form>
