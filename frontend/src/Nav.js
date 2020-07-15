@@ -14,9 +14,16 @@ import CollegeSearch from "./components/CollegeSearch";
 import Errorpage from "./components/Errorpage";
 import Chat from "./components/Chat";
 import Login from "./components/Login";
+import { useStore } from "./store/useStore";
+import { useObserver } from "mobx-react";
 
-class Nav extends Component {
-  render() {
+const Nav = () => {
+  const store = useStore();
+
+  return useObserver(() => {
+    if (store.isLoading) {
+      return null;
+    }
     return (
       <BrowserRouter>
         <div>
@@ -81,7 +88,7 @@ class Nav extends Component {
         </div>
       </BrowserRouter>
     );
-  }
-}
+  });
+};
 
 export default Nav;
