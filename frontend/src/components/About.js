@@ -29,6 +29,9 @@ class About extends Component {
             <li>
               <h5>Ralph Hernandez</h5>
             </li>
+            <li>
+              <h5>Jasmyne Ford</h5>
+            </li>
           </ul>
         </Jumbotron>
       </div>

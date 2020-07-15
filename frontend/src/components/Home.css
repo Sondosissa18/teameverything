@@ -1,7 +1,6 @@
-/* #home { */
-/* display: flex; */
-
-/* margin-left: 1%;
+/* #home {
+  display: flex;
+  margin-left: 1%;
   margin-bottom: 5%;
   margin-left: 3%;
 }
@@ -10,3 +9,32 @@ h2 {
   margin-bottom: 5%;
   margin-left: 79%;
 } */
+/* body {
+  background-image: url("https://techcrunch.com/wp-content/uploads/2017/08/football.png?w=1024");
+} */
+
+#home {
+  background-image: url("https://files.slack.com/files-pri/TCNHBFEG3-F0173H7R0HY/all-sports-backgrounds-png-transparent-images.png");
+}
+.columns {
+  display: flex;
+  /* margin-left: 5%; */
+  /* margin-bottom: 5%; */
+  /* margin-left: 3%; */
+}
+.profile {
+  color: white;
+  border-radius: 5px;
+  border: 2px solid black;
+}
+
+.message {
+  color: white;
+  border-radius: 5px;
+  border: 2px solid black;
+}
+h3 {
+  text-align: center;
+  border-radius: 25px;
+  background-color: #3248a8;
+}
