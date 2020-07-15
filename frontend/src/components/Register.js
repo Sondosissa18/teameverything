@@ -75,7 +75,7 @@ const Register = () => {
           type="submit"
           variant="primary"
           size="1g"
-          style={{ marginLeft: "1%", marginRight: "1%", backgroundColor: "#3248A8", size: "px" }}
+          style={{ marginLeft: "1%", marginRight: "1%", backgroundColor: "#FCCA03", size: "px" }}
         >
           Register
         </Button>{" "}

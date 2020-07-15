@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import LoginForm from "./LoginForm";
 import { Container } from "react-bootstrap";
 import Register from "./Register";
+import "./Login.css";
 
 class Login extends Component {
   render() {
@@ -11,7 +12,7 @@ class Login extends Component {
         <p>The Facebook of Sports.</p>
 
         <LoginForm />
-        <Register />   
+        <Register />
       </div>
     );
   }
