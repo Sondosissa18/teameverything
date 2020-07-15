@@ -3,7 +3,7 @@ import { useObserver } from "mobx-react";
 import { Button } from "react-bootstrap";
 import Select from "react-select";
 import { useStore } from "../../store/useStore";
-const filterColors = (inputValue: string) => {
+const filterColors = (inputValue) => {
   return colourOptions.filter((i) => i.label.toLowerCase().includes(inputValue.toLowerCase()));
 };
 
@@ -20,7 +20,7 @@ const UserSelect = () => {
   };
   return useObserver(() => (
     <>
-      <Select ref={selectRef} onInputChange={handleInputChange} options={store.userList} />
+      <Select ref={selectRef} onInputChange={handleInputChange} options={store.userListLabels} />
       <Button onClick={() => store.chatStore.startThread(selectRef.current)} variant="primary" size="sm">
         Start Thread
       </Button>

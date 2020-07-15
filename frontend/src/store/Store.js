@@ -104,19 +104,22 @@ class Store {
   @computed get userList() {
     return toJS(this._userList);
   }
+  @computed get userListLabels() {
+    return toJS(this._userList.map((item) => ({
+      label: item.displayName,
+      value: item._id,
+    })));
+  }
 
   @action
   async fetchUserList() {
     try {
       const { users: userList } = await this.api.getUserList();
       runInAction(() => {
-        this._userList = userList.map((item) => ({
-          label: item.displayName,
-          value: item._id,
-        }));
+        this._userList = userList;
       });
     } catch (err) {
-      console.error("store.getUser failed", err);
+      console.error("store.fetchUserList failed", err);
     }
   }
 
