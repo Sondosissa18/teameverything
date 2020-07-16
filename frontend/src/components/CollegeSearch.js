@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { First } from "react-bootstrap/esm/PageItem";
 import axios from 'axios';
-import {useDebounce} from "use-debounce"
+import {useDebounce} from 'use-debounce';
 
 
 function getColleges(text, token) {
