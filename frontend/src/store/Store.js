@@ -24,21 +24,37 @@ class Store {
     this.fetchUserIfLoggedIn();
   }
 
-  @observable user = defaultUser;
+  @observable user = { ...defaultUser };
+  @observable isLoading = false;
   @action updateCount() {
     this.likesCount++;
   }
   @computed get isLoggedIn() {
     return !!this.user.accessToken;
   }
-  fetchUserIfLoggedIn() {
-    this.handleAccessToken(getToken());
+
+  @action
+  async fetchUserIfLoggedIn() {
+    try {
+      runInAction(() => {
+        this.isLoading = true;
+      });
+      await this.getUser();
+    } finally {
+      runInAction(() => {
+        this.isLoading = false;
+      });
+    }
   }
   @action
   async login(data) {
     try {
       const { accessToken } = await this.api.login(data);
+      if (!accessToken) {
+        return;
+      }
       this.handleAccessToken(accessToken);
+      this.getUser();
     } catch (err) {
       console.error("store.login failed", err);
     }
@@ -46,7 +62,7 @@ class Store {
   @action
   async logout() {
     try {
-      this.api.logout().catch((err) => {});
+      await this.api.logout().catch((err) => {});
       runInAction(() => {
         this.user = { ...defaultUser };
       });
@@ -58,7 +74,11 @@ class Store {
   async registerUser(data) {
     try {
       const { accessToken } = await this.api.registerUser(data);
+      if (!accessToken) {
+        return;
+      }
       this.handleAccessToken(accessToken);
+      this.getUser();
     } catch (err) {
       console.error("store.registerUser failed", err);
     }
@@ -70,10 +90,9 @@ class Store {
     }
     setToken(accessToken);
     const { iat, exp, ...data } = jwtDecode(accessToken);
-    // TODO check expiration here
-    runInAction(() => {
-      this.user = { ...defaultUser, ...data, accessToken };
-    });
+    if (exp < (new Date().getTime() + 1) / 1000) {
+      this.logout();
+    }
   }
 
   @action
@@ -89,14 +108,30 @@ class Store {
   }
 
   @action
-  async getUser(data) {
+  async getUser() {
     try {
-      const user = await this.api.getUser(data);
+      const user = await this.api.getUser();
+      if (!user) {
+        return;
+      }
       runInAction(() => {
-        this.user = user;
+        this.user = { ...defaultUser, ...user };
       });
     } catch (err) {
       console.error("store.getUser failed", err);
+    }
+  }
+
+  @action
+  async updateUser(data) {
+    try {
+      console.log(data);
+      const user = await this.api.updateUser(data);
+      runInAction(() => {
+        this.user = { ...this.user, ...user };
+      });
+    } catch (err) {
+      console.error("store.updateUser failed", err);
     }
   }
 
@@ -123,30 +158,14 @@ class Store {
     }
   }
 
-  // LogOut need to be added to deleteUser .....  I think here
-  //   @action <-- prob don't need
-  //   async deleteUser(data) {
-  //     try {
-  //       const user = await this.api.deleteUser(data);
-  //       runInAction(() => {
-  //         this.user = user;
-  //       });
-  //     } catch (err) {
-  //       console.error("store.deleteUser failed", err);
-  //     }
-  //   }
-
-  //   @action
-  //   async updateUser(data) {
-  //     try {
-  //       const user = await this.api.updateUser(data);
-  //       runInAction(() => {
-  //         this.user = user;
-  //       });
-  //     } catch (err) {
-  //       console.error("store.updateUser failed", err);
-  //     }
-  //   }
+  async deleteUser() {
+    try {
+      await this.api.deleteUser();
+      await this.logout();
+    } catch (err) {
+      console.error("store.deleteUser failed", err);
+    }
+  }
 }
 const storeInstance = new Store({ api: apiInstance });
 window.storeInstance = storeInstance; //this is just for testing. Do not use in source code.

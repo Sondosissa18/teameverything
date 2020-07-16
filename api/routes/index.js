@@ -14,8 +14,8 @@ export const registerExpressRoutes = (app) => {
       req.loggedInUser = user;
       await next();
     } catch (err) {
-      await next(err);
-      return;
+      res.status(401).send("invalid token!");
+      next(err);
     }
   });
   authController(app);
