@@ -9,12 +9,12 @@ h2 {
   margin-bottom: 5%;
   margin-left: 79%;
 } */
-/* body {
-  background-image: url("https://techcrunch.com/wp-content/uploads/2017/08/football.png?w=1024");
-} */
-
 #home {
-  background-image: url("https://files.slack.com/files-pri/TCNHBFEG3-F0173H7R0HY/all-sports-backgrounds-png-transparent-images.png");
+  background-image: url("https://images-na.ssl-images-amazon.com/images/I/71ny79-zrQL._AC_SY679_.jpg");
+  color: white;
+}
+h2 {
+  font-family: "Anton", sans-serif;
 }
 .columns {
   display: flex;
