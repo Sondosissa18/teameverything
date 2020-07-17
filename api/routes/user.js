@@ -25,7 +25,7 @@ export default (app) => {
       const user = await UserModel.findOne({ _id: req.loggedInUser._id });
       res.json(user);
     } catch (err) {
-      req.log.error(err.message);
+      console.error(err.message);
       res.status(500).send("Internal Server Error");
     }
   });
@@ -43,7 +43,7 @@ export default (app) => {
         );
         res.json({ school, location, displayName, about });
       } catch (err) {
-        req.log.error(err.message);
+        console.error(err.message);
         res.status(500).send(err.message);
       }
     },
