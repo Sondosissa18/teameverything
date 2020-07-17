@@ -10,7 +10,6 @@ class Home extends Component {
         <h2>EverythingSports </h2>
         <p>The Facebook of Sports.</p>
         <p>This is the Home Landing Page</p>
-   
       </div>
     );
   }
