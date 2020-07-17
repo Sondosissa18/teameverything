@@ -6,18 +6,6 @@ import storeInstance from "../store/Store";
 import { useStore } from "../store/useStore";
 import { useObserver, useLocalStore } from "mobx-react";
 
-<<<<<<< HEAD
-class Home extends Component {
-  render() {
-    return (
-      <div id="home">
-        <h2>EverythingSports </h2>
-        <p>The Facebook of Sports.</p>
-        <p>This is the Home Landing Page</p>
-      </div>
-    );
-  }
-=======
 export default function Home() {
   const store = useStore();
   return useObserver(() => (
@@ -45,7 +33,6 @@ export default function Home() {
       <h6> Location: {store.user.location}</h6>
     </div>
   ));
->>>>>>> 2b342f88874297dbe525f5c8c14373701942a333
 }
 
 // class Home extends Component {
