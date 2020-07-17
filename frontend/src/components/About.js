@@ -2,18 +2,19 @@ import React, { Component } from "react";
 //import { observable } from "mobx";
 //import { observer } from "mobx";
 
-
 class About extends Component {
   render() {
     return (
       <div>
-        <h2>ABOUT PAGE</h2>
-        <h3>Creators</h3>
-        <h4>Bethsheba Zebata</h4>
-        <h4>Sondos Issa</h4>
-        <h4>Stephanie Guirand</h4>
-        <h4>Morgan Farrell</h4>
-        <h4>Ralph Hernandez</h4>
+        <h2>EverythingSports </h2>
+        <p>The Facebook of Sports.</p>
+        <h3>ABOUT PAGE</h3>
+        <h4>Creators</h4>
+        <h5>Bethsheba Zebata</h5>
+        <h5>Sondos Issa</h5>
+        <h5>Stephanie Guirand</h5>
+        <h5>Morgan Farrell</h5>
+        <h5>Ralph Hernandez</h5>
       </div>
     );
   }
