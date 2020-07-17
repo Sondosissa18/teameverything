@@ -26,7 +26,7 @@ const ChatMessageSchema = mongoose.Schema(
 export const ChatMessageModel = mongoose.model("ChatMessage", ChatMessageSchema);
 
 export const createNewMessage = async ({ thread, text, sender }) => {
-  const chatMessage = ChatMessageModel.create({
+  const chatMessage = await ChatMessageModel.create({
     thread: mongoose.Types.ObjectId(thread._id),
     text,
     sender: mongoose.Types.ObjectId(sender._id),

@@ -1,8 +1,6 @@
-//import React, { Component } from "react";
-//import mongoose from "mongoose";
 import React from "react";
 import { useStore } from "../store/useStore";
-import { useObserver, useLocalStore } from "mobx-react";
+import { useObserver, useLocalStore, observer } from "mobx-react";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 
@@ -10,43 +8,36 @@ export default function UpdateUser() {
   const store = useStore();
   const state = useLocalStore(() => {
     return {
-      displayName: "",
-      about: "",
-      displayName: "",
-      about: "",
+      displayName: store.user.displayName,
+      school: store.user.school,
+      location: store.user.location,
+      about: store.user.about,
+      update(key, value) {
+        state[key] = value;
+      },
     };
   });
 
-  //  useEffect(() {
-
-  // })
-
+  const handleChangeDisplay = (e) => {
+    state.update("displayName", e.target.value);
+  };
   const handleChange = (e) => {
-    setState({
-      [e.target.name]: e.target.value,
-    });
+    state.update(e.target.name, e.target.value);
   };
 
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-  //   await store.updateUser(store.user.state);
-  // };
-
-  const handleSubmit = (e) => {
-    event.preventDefault();
-    const data = {
-      displayName: store.user.displayName,
-      about: store.user.about,
-      school: store.user.school,
-      location: store.user.location,
-    };
-    state.updateUser(data);
-    setState({
-      displayName: "",
-      about: "",
-      school: "",
-      location: "",
-    });
+  const handleSubmit = async (e) => {
+    try {
+      e.preventDefault();
+      await store.updateUser({
+        displayName: state.displayName,
+        school: state.school,
+        location: state.location,
+        about: state.about,
+      });
+    } catch (err) {
+      console.error(err);
+      state.setError(err.message);
+    }
   };
 
   return useObserver(() => (
@@ -61,37 +52,37 @@ export default function UpdateUser() {
         border: "1px",
       }}
     >
-      <Card.Title style={{ fontSize: "16px", paddingTop: "10px" }}>Your School:</Card.Title>
+      <Card.Title style={{ fontSize: "16px", paddingTop: "10px" }}>Edit School:</Card.Title>
       <input
-        style={{ display: "block" }}
+        style={{ display: "block", width: "400px", height: "70px" }}
         name="school"
         type="text"
         placeholder="text here"
         autoFocus
         required
-        value={store.user.school}
+        value={state.school}
         onChange={handleChange}
       />
-      <Card.Title style={{ fontSize: "16px", paddingTop: "10px" }}>Your Location:</Card.Title>
+      <Card.Title style={{ fontSize: "16px", paddingTop: "10px" }}>Edit Location:</Card.Title>
       <input
-        style={{ display: "block" }}
+        style={{ display: "block", width: "400px", height: "70px" }}
         name="location"
         type="text"
         placeholder="text here"
         required
-        value={store.user.location}
+        value={state.location}
         onChange={handleChange}
       />
       <Card.Title style={{ paddingTop: "10px", fontSize: "16px" }}>Edit Display Name:</Card.Title>
       <Card.Text>
         <input
-          style={{ display: "block" }}
+          style={{ display: "block", width: "400px", height: "70px" }}
           size="lg"
           name="displayName"
           type="text"
           placeholder="text here"
           required
-          value={store.user.displayName}
+          value={state.displayName}
           onChange={handleChange}
         />
         <br />
@@ -101,14 +92,16 @@ export default function UpdateUser() {
             borderRadius: "0",
             paddingBottom: "10px",
             display: "block",
+            width: "400px",
+            height: "70px",
           }}
           size="sm"
           squared="true"
           name="about"
           type="text"
-          placeholder="text here"
+          placeholder="TEXT HERE"
           required
-          value={store.user.about}
+          value={state.about}
           onChange={handleChange}
         />
         <br />
@@ -120,7 +113,7 @@ export default function UpdateUser() {
           value="submit"
           onSubmit={handleSubmit}
         >
-          Save Edit
+          Save
         </Button>
       </Card.Text>
     </form>

@@ -17,7 +17,13 @@ class API {
           Authorization: `Bearer ${getToken()}`,
         },
       }),
-      (error) => Promise.reject(error),
+      (error) => {
+        if (401 === error.response.status) {
+          window.alert("Sorry, your session has expired. Please log back in.");
+          this.logout();
+        }
+        Promise.reject(error);
+      },
     );
 
     axiosInstance.interceptors.response.use(
@@ -67,9 +73,9 @@ class API {
     }
   }
 
-  async getUser(user) {
+  async getUser() {
     try {
-      return await this.axiosInstance.get("/user/getUser");
+      return await this.axiosInstance.get("/user/get-user");
     } catch (err) {
       console.error(err);
       throw err;
@@ -121,25 +127,24 @@ class API {
     }
   }
 
-  // async deleteUser(data) {
-  //   try {
-  //     const result = await this.axiosInstance.post("/user", data);
-  //     return result;
-  //   } catch (err) {
-  //     console.error(err);
-  //     throw err;
-  //   }
-  // }
+  async updateUser(data) {
+    try {
+      const result = await this.axiosInstance.patch("/user/update-User", data);
+      return result;
+    } catch (err) {
+      console.error(err);
+      throw err;
+    }
+  }
 
-  // async updateUser(data) {
-  //   try {
-  //     const result = await this.axiosInstance.post("/user/", data);
-  //     return result;
-  //   } catch (err) {
-  //     console.error(err);
-  //     throw err;
-  //   }
-  // }
+  async deleteUser() {
+    try {
+      return await this.axiosInstance.delete("/user");
+    } catch (err) {
+      console.error(err);
+      throw err;
+    }
+  }
 }
 
 const TOKEN_KEY = "auth:token";
