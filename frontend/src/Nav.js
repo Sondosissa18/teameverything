@@ -27,7 +27,7 @@ const Nav = () => {
     return (
       <BrowserRouter>
         <div>
-          <h1>Everything Sports</h1>
+          <h1>EverythingSports</h1>
           <ul className="header">
             <li>
               <NavLink exact to="/">
@@ -73,13 +73,13 @@ const Nav = () => {
           <div className="content">
             <Switch>
               <ConnectedRoute exact redirectIfAuthenticated path="/" component={Login} />
-              <ConnectedRoute exact path="/home" component={Home} />
+              <ConnectedRoute exact isProtected path="/home" component={Home} />
               <ConnectedRoute exact path="/blog" component={Blog} />
               <ConnectedRoute exact path="/contact" component={Contact} />
               <ConnectedRoute exact isProtected path="/profile" component={Profile} />
               <ConnectedRoute exact isProtected path="/message" component={Message} />
               <ConnectedRoute exact path="/about" component={About} />
-              <ConnectedRoute exact path="/recview" component={RecView} />
+              <ConnectedRoute exact isProtected path="/recview" component={RecView} />
               <ConnectedRoute exact isProtected path="/collegesearch" component={CollegeSearch} />
               <ConnectedRoute exact isProtected path="/chat" component={Chat} />
               <ConnectedRoute component={Errorpage} />
