@@ -27,16 +27,16 @@ export default function ProfileCard() {
       <Card.Title className="title" style={{ marginLeft: "5px" }}>
         <h1>{store.user.displayName}</h1>
       </Card.Title>
-      <div className="bio" style={{ marginLeft: "5px" }}>
+      <div className="bio" style={{ marginLeft: "6px" }}>
         <h4>Bio:</h4> {store.user.about || "Please...Tell Us About You! :)"}
         <br />
         <br />
-        <br />
-        <div className="school" style={{ marginLeft: "5px" }}>
+        {/* <br /> */}
+        <div className="school" style={{ marginLeft: "4px" }}>
           <h4>School:</h4> {store.user.school}
         </div>
         <br />
-        <div className="location" style={{ marginLeft: "5px" }}>
+        <div className="location" style={{ marginLeft: "4px" }}>
           <h4>Location:</h4> {store.user.location}
         </div>
         <br />

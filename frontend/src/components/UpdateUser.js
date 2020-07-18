@@ -54,7 +54,7 @@ export default function UpdateUser() {
     >
       <Card.Title style={{ fontSize: "16px", paddingTop: "10px" }}>Edit School:</Card.Title>
       <input
-        style={{ display: "block", width: "400px", height: "70px" }}
+        style={{ borderColor: "purple", display: "block", width: "400px", height: "50px" }}
         name="school"
         type="text"
         placeholder="text here"
@@ -65,7 +65,7 @@ export default function UpdateUser() {
       />
       <Card.Title style={{ fontSize: "16px", paddingTop: "10px" }}>Edit Location:</Card.Title>
       <input
-        style={{ display: "block", width: "400px", height: "70px" }}
+        style={{ display: "block", width: "400px", height: "50px", borderColor: "purple" }}
         name="location"
         type="text"
         placeholder="text here"
@@ -76,30 +76,42 @@ export default function UpdateUser() {
       <Card.Title style={{ paddingTop: "10px", fontSize: "16px" }}>Edit Display Name:</Card.Title>
       <Card.Text>
         <input
-          style={{ display: "block", width: "400px", height: "70px" }}
+          style={{
+            borderColor: "purple",
+            display: "block",
+            width: "400px",
+            height: "50px",
+            wrap: "soft",
+            overflow: "hidden",
+          }}
           size="lg"
           name="displayName"
           type="text"
           placeholder="text here"
           required
+          // wrap="soft"
+          // maxlength="40"
+          //style="overflow:hidden"
           value={state.displayName}
           onChange={handleChange}
         />
         <br />
         <Card.Title style={{ fontSize: "16px" }}>Edit Bio:</Card.Title>
-        <input
+        <textarea
+          // <input
           style={{
             borderRadius: "0",
+            borderColor: "purple",
             paddingBottom: "10px",
             display: "block",
             width: "400px",
-            height: "70px",
+            height: "100px",
           }}
           size="sm"
           squared="true"
           name="about"
           type="text"
-          placeholder="TEXT HERE"
+          placeholder="text here"
           required
           value={state.about}
           onChange={handleChange}
