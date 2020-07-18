@@ -6,8 +6,6 @@ import "./Login.css";
 import { observer, useLocalStore, useObserver } from "mobx-react";
 import { useStore } from "../store/useStore";
 
-
-
 const LoginForm = () => {
   const store = useStore();
 
@@ -38,7 +36,11 @@ const LoginForm = () => {
   return useObserver(
     () => (
       <form id="login-form" onSubmit={submitForm}>
-        <h3>LOGIN PAGE</h3>
+        <h3>
+          Welcome Back!
+          <br></br>
+          LOGIN
+        </h3>
         <label htmlFor="email">Email</label>
         <input
           type="email"
@@ -61,7 +63,7 @@ const LoginForm = () => {
           type="submit"
           variant="primary"
           size="1g"
-          style={{ marginLeft: "1%", marginRight: "1%", backgroundColor: " #3248A8", size: "px" }}
+          style={{ marginLeft: "1%", marginRight: "1%", backgroundColor: "#FCCA03", size: "px" }}
         >
           Login
         </Button>{" "}

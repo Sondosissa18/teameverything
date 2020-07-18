@@ -14,13 +14,21 @@ import CollegeSearch from "./components/CollegeSearch";
 import Errorpage from "./components/Errorpage";
 import Chat from "./components/Chat";
 import Login from "./components/Login";
+import { useStore } from "./store/useStore";
+import { useObserver } from "mobx-react";
+import logo from "./images/eslogo.png";
 
-class Nav extends Component {
-  render() {
+const Nav = () => {
+  const store = useStore();
+
+  return useObserver(() => {
+    if (store.isLoading) {
+      return null;
+    }
     return (
       <BrowserRouter>
         <div>
-          <h1>Everything Sports</h1>
+          <img src={logo} alt="EverythingSports Logo" width="200" height="150" />
           <ul className="header">
             <li>
               <NavLink exact to="/">
@@ -62,17 +70,16 @@ class Nav extends Component {
               <Logout />
             </li>
           </ul>
-
           <div className="content">
             <Switch>
               <ConnectedRoute exact redirectIfAuthenticated path="/" component={Login} />
-              <ConnectedRoute exact path="/home" component={Home} />
+              <ConnectedRoute exact isProtected path="/home" component={Home} />
               <ConnectedRoute exact path="/blog" component={Blog} />
               <ConnectedRoute exact path="/contact" component={Contact} />
               <ConnectedRoute exact isProtected path="/profile" component={Profile} />
               <ConnectedRoute exact isProtected path="/message" component={Message} />
               <ConnectedRoute exact path="/about" component={About} />
-              <ConnectedRoute exact path="/recview" component={RecView} />
+              <ConnectedRoute exact isProtected path="/recview" component={RecView} />
               <ConnectedRoute exact isProtected path="/collegesearch" component={CollegeSearch} />
               <ConnectedRoute exact isProtected path="/chat" component={Chat} />
               <ConnectedRoute component={Errorpage} />
@@ -81,7 +88,7 @@ class Nav extends Component {
         </div>
       </BrowserRouter>
     );
-  }
-}
+  });
+};
 
 export default Nav;

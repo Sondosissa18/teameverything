@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 import Bluebird from "bluebird";
 import cors from "cors";
 import { staticDirectory, SERVER_PORT, logger, uploadDirectory } from "./helpers.js";
+
 import { registerExpressRoutes } from "./routes/index.js";
 
 const startServer = async () => {
