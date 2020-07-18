@@ -12,9 +12,9 @@ export default function ProfileCard() {
 
   console.log(store);
   return useObserver(() => (
-    <Card style={{ Width: "100px", backgroundColor: "#B9DEDF", border: "1px solid" }}>
+    <Card style={{ Width: "100px", backgroundColor: " #1f9bea", border: "1px solid" }}>
       <Card.Img
-        style={{ Width: "100", padding: "47px", border: "1px solid", color: "#5EA1A6", backgroundColor: "#B9DEDF" }}
+        style={{ Width: "100", padding: "47px", border: "1px solid", color: "#5EA1A6", backgroundColor: " #1f9bea" }}
         className="cardImg"
         variant="top"
         src={
