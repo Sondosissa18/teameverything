@@ -1,5 +1,5 @@
 body {
-  background-color: white;
+  background-color: #1f9bea;
   padding: 20px;
   margin: 0;
 }
@@ -48,7 +48,7 @@ h1 {
 }
 
 .active {
-  background-color: grey;
+  background-color: #1f9bea;
 }
 
 .card {
