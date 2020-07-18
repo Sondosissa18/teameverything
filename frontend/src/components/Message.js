@@ -19,7 +19,7 @@ export default function Message() {
       <p>The Facebook of Sports.</p>
       <Container style={{ margin: "0px", padding: "2px" }}>
         <Row>
-          <Col xs={6} md={3}>
+          <Col xs={6} md={8}>
             <Image
               src={
                 store.user.picLocation
