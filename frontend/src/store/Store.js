@@ -1,4 +1,4 @@
-import { observable, action, computed, runInAction, toJS } from "mobx";
+import { observable, action, computed, runInAction, toJS, get } from "mobx";
 import jwtDecode from "jwt-decode";
 import apiInstance, { setToken, getToken } from "../utils/api";
 import MessageStore from "./MessageStore";
@@ -39,7 +39,9 @@ class Store {
       runInAction(() => {
         this.isLoading = true;
       });
-      await this.getUser();
+      if (getToken()) {
+        await this.getUser();
+      }
     } finally {
       runInAction(() => {
         this.isLoading = false;
@@ -90,7 +92,7 @@ class Store {
     }
     setToken(accessToken);
     const { iat, exp, ...data } = jwtDecode(accessToken);
-    if (exp < (new Date().getTime() + 1) / 1000) {
+    if (exp < Date.now().valueOf() / 1000) {
       this.logout();
     }
   }
@@ -139,18 +141,22 @@ class Store {
   @computed get userList() {
     return toJS(this._userList);
   }
+  @computed get userListLabels() {
+    return toJS(this._userList.map((item) => ({
+      label: item.displayName,
+      value: item._id,
+    })));
+  }
+
   @action
   async fetchUserList() {
     try {
       const { users: userList } = await this.api.getUserList();
       runInAction(() => {
-        this._userList = userList.map((item) => ({
-          label: item.displayName,
-          value: item._id,
-        }));
+        this._userList = userList;
       });
     } catch (err) {
-      console.error("store.getUser failed", err);
+      console.error("store.fetchUserList failed", err);
     }
   }
 

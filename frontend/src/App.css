@@ -1,9 +1,13 @@
 body {
-  background-color: #B9DEDF;
+  background-color: white;
   padding: 20px;
   margin: 0;
 }
-h1, h2, p, ul, li {
+h1,
+h2,
+p,
+ul,
+li {
   font-family: sans-serif;
 }
 ul.header li {
@@ -12,28 +16,28 @@ ul.header li {
   margin: 0;
 }
 ul.header {
-  background-color:#f7f7f7;
+  background-color: #f7f7f7;
   padding: 0;
   -webkit-box-shadow: 3px 7px 10px 0px rgba(45, 46, 67, 0.85);
-  -moz-box-shadow:    3px 7px 10px 0px rgba(45, 46, 67, 0.85);
-  box-shadow:         3px 7px 10px 0px rgba(45, 46, 67, 0.85);
+  -moz-box-shadow: 3px 7px 10px 0px rgba(45, 46, 67, 0.85);
+  box-shadow: 3px 7px 10px 0px rgba(45, 46, 67, 0.85);
 }
 ul.header li a {
-  color: #FFF;
+  color: #fff;
   font-weight: bold;
   text-decoration: none;
   padding: 20px;
   display: inline-block;
 }
 .content {
-  background-color: #FFF;
+  background-color: #fff;
   padding: 20px;
   -webkit-box-shadow: 2px 4px 8px 0px rgba(45, 46, 67, 0.85);
-  -moz-box-shadow:    2px 4px 8px 0px rgba(45, 46, 67, 0.85);
-  box-shadow:         2px 4px 8px 0px rgba(45, 46, 67, 0.85);
+  -moz-box-shadow: 2px 4px 8px 0px rgba(45, 46, 67, 0.85);
+  box-shadow: 2px 4px 8px 0px rgba(45, 46, 67, 0.85);
 }
 h1 {
-  color: #29303D;
+  color: #29303d;
 }
 .content h2 {
   padding: 0;
@@ -44,13 +48,18 @@ h1 {
 }
 
 .active {
-  background-color: #5EA1A6;
-}body {
-  background-color: #B9DEDF;
+  background-color: white;
+}
+body {
+  background-color: white;
   padding: 20px;
   margin: 0;
 }
-h1, h2, p, ul, li {
+h1,
+h2,
+p,
+ul,
+li {
   font-family: sans-serif;
 }
 ul.header li {
@@ -59,28 +68,28 @@ ul.header li {
   margin: 0;
 }
 ul.header {
-  background-color:#2B2F3F;
+  background-color: #2b2f3f;
   padding: 0;
   -webkit-box-shadow: 3px 7px 10px 0px rgba(45, 46, 67, 0.85);
-  -moz-box-shadow:    3px 7px 10px 0px rgba(45, 46, 67, 0.85);
-  box-shadow:         3px 7px 10px 0px rgba(45, 46, 67, 0.85);
+  -moz-box-shadow: 3px 7px 10px 0px rgba(45, 46, 67, 0.85);
+  box-shadow: 3px 7px 10px 0px rgba(45, 46, 67, 0.85);
 }
 ul.header li a {
-  color: #FFF;
+  color: #fff;
   font-weight: bold;
   text-decoration: none;
   padding: 20px;
   display: inline-block;
 }
 .content {
-  background-color: #FFF;
+  background-color: #fff;
   padding: 20px;
   -webkit-box-shadow: 2px 4px 8px 0px rgba(45, 46, 67, 0.85);
-  -moz-box-shadow:    2px 4px 8px 0px rgba(45, 46, 67, 0.85);
-  box-shadow:         2px 4px 8px 0px rgba(45, 46, 67, 0.85);
+  -moz-box-shadow: 2px 4px 8px 0px rgba(45, 46, 67, 0.85);
+  box-shadow: 2px 4px 8px 0px rgba(45, 46, 67, 0.85);
 }
 h1 {
-  color: #29303D;
+  color: #29303d;
 }
 .content h2 {
   padding: 0;
@@ -91,5 +100,5 @@ h1 {
 }
 
 .active {
-  background-color: #5EA1A6;
+  background-color: white;
 }
