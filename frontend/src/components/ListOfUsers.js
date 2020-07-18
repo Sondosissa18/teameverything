@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useStore } from "../store/useStore";
 import { useObserver } from "mobx-react";
 import { Card } from "react-bootstrap";
+import "./ListOfUsers.css";
 
 export const ListOfUsers = () => {
   const store = useStore();
@@ -14,7 +15,9 @@ export const ListOfUsers = () => {
     return store.userList.map((user) => {
       console.log(user);
       return (
-        <Card key={user._id} style={{ width: 18 + "rem", textAlign: "center" }}>
+        <div className='listOfUsers' >
+          
+        <Card className = 'newCard' key={user._id} style={{ width: 18 + "rem"}}>
           <img
             className="card-img-top rounded zoom img-fluid"
             alt={"User"}
@@ -31,9 +34,12 @@ export const ListOfUsers = () => {
             }}
           />
           <Card.Title className="title" style={{ marginLeft: "5px" }}>
-            <h1>{store.user.displayName}</h1>
+            <h6>{user.displayName}</h6>
+            <h6> School: {user.school}</h6>
+            <h6> Location: {user.location}</h6>
           </Card.Title>
         </Card>
+        </div>
       );
     });
   });
