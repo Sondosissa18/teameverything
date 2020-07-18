@@ -21,7 +21,14 @@ export default function MessageForm() {
     return useObserver(() => (
         <form onSubmit={handleSubmit} > 
         <div>
-            <input type="text" id={'comment'} className="form-control" placeholder={"Write a message ..."} value={state.message} onChange={(e) =>state.updateMessage(e.target.value)} />
+            <input 
+              type="text" 
+              id={'comment'} 
+              className="form-control" 
+              placeholder={"Write a message ..."}
+              value={state.message} 
+              onChange={(e) =>state.updateMessage(e.target.value)} 
+            />
         </div>
     </form>
     )

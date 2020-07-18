@@ -1,0 +1,10 @@
+.container-md {
+    
+}
+
+.listOfUsers {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap-reverse;
+    justify-content: space-around;
+}
