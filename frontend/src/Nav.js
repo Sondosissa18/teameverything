@@ -16,6 +16,7 @@ import Chat from "./components/Chat";
 import Login from "./components/Login";
 import { useStore } from "./store/useStore";
 import { useObserver } from "mobx-react";
+import logo from "./images/eslogo.png";
 
 const Nav = () => {
   const store = useStore();
@@ -27,7 +28,7 @@ const Nav = () => {
     return (
       <BrowserRouter>
         <div>
-          <h1>EverythingSports</h1>
+          <img src={logo} alt="EverythingSports Logo" width="200" height="150" />
           <ul className="header">
             <li>
               <NavLink exact to="/">
@@ -69,7 +70,6 @@ const Nav = () => {
               <Logout />
             </li>
           </ul>
-
           <div className="content">
             <Switch>
               <ConnectedRoute exact redirectIfAuthenticated path="/" component={Login} />
