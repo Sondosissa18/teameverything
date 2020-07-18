@@ -3,38 +3,49 @@
   margin-left: 1%;
   margin-bottom: 5%;
   margin-left: 3%;
-}
+}  */
 
 h2 {
   margin-bottom: 5%;
   margin-left: 79%;
-} */
-#home {
+}
+*/ #home {
   background-image: url("https://images-na.ssl-images-amazon.com/images/I/71ny79-zrQL._AC_SY679_.jpg");
   color: white;
+  /* background-repeat: no-repeat; */
 }
-h2 {
+/* h2 {
   font-family: "Anton", sans-serif;
-}
-.columns {
-  display: flex;
-  /* margin-left: 5%; */
-  /* margin-bottom: 5%; */
-  /* margin-left: 3%; */
-}
+} */
+/* .columns {
+  display: flex; */
+/* margin-left: 5%; */
+/* margin-bottom: 5%; */
+/* margin-left: 3%; */
+/* } */
+/* .profile {
+  color: white;
+  border-radius: 5px;
+  border: 2px solid black;
+} */
 .profile {
-  color: white;
-  border-radius: 5px;
-  border: 2px solid black;
+  float: left;
+    width: 318px;  
+    height: 500px;
+    margin-right: 10px;
+    border: solid thin black;
+    padding: 10px;
 }
-
 .message {
+  float: right;
+  width: 512px;
+  height: 500px;
+  padding: 10px;
   color: white;
   border-radius: 5px;
-  border: 2px solid black;
 }
-h3 {
+/* h3 {
   text-align: center;
   border-radius: 25px;
   background-color: #3248a8;
-}
+} */

@@ -36,7 +36,11 @@ const LoginForm = () => {
   return useObserver(
     () => (
       <form id="login-form" onSubmit={submitForm}>
-        <h3>LOGIN PAGE</h3>
+        <h3>
+          Welcome Back!
+          <br></br>
+          LOGIN
+        </h3>
         <label htmlFor="email">Email</label>
         <input
           type="email"
