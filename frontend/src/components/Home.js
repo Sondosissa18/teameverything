@@ -26,7 +26,6 @@ export default function Home() {
           </Col>
         </Row>
       </Container>
-
       <h3>{store.user.displayName || "Welcome!!! Click On Profile & Add Your Info!"}</h3>
       <h6>Bio: {store.user.about} </h6>
       <h6> School: {store.user.school}</h6>
@@ -34,18 +33,3 @@ export default function Home() {
     </div>
   ));
 }
-
-// class Home extends Component {
-//   render() {
-//     return (
-//       <div id="home">
-//         <h2>EverythingSports </h2>
-//         <p>The Facebook of Sports.</p>
-//         <p>This is the Home Landing Page</p>
-//         <p>Hi store.user.displayName</p>
-//       </div>
-//     );
-//   }
-// }
-
-// export default Home;

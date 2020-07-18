@@ -14,7 +14,7 @@ class API {
         ...config,
         headers: {
           ...config.headers,
-          Authorization: `Bearer ${getToken()}`,
+          Authorization: `Bearer ${getToken() || ""}`,
         },
       }),
       (error) => {

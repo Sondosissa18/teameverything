@@ -11,7 +11,9 @@ import Card from "react-bootstrap/Card";
 export default function Profile() {
   return useObserver(() => (
     <div>
-      <h2>Profile Page</h2>
+      <h2>EverythingSports </h2>
+      <p>The Facebook of Sports.</p>
+      <h4>Profile Page</h4>
       <Card>
         <ProfileCard />
         <UpdateUser />
