@@ -46,9 +46,9 @@ export default (app) => {
 
   router.get("/logout", async (req, res) => {
     try {
-      await UserModel.findOneAndUpdate(req.loggedInUser._id, {
-        accessToken: "",
-      });
+     const user = await UserModel.findOne(req.loggedInUser._id);
+     user.accessToken=""
+     await user.save()
     } finally {
       res.json("ok!");
     }

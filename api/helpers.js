@@ -43,7 +43,7 @@ export const validatePassword = async (plainPassword, hashedPassword) => {
 
 export const signToken = (data) => {
   return jwt.sign(data, process.env.AUTH_SECRET, {
-    expiresIn: "1d",
+    expiresIn: "30d",
   });
 };
 
