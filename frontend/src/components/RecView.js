@@ -25,6 +25,8 @@ export default function RecView() {
           </Col>
         </Row>
       </Container>
+
+      <Container style={{ margin: "0px", padding: "2px" }}></Container>
     </div>
   ));
 }
