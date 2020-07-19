@@ -16,9 +16,15 @@ h2 {
   clear: both;
 } */
 
- #home {
-  background-image: url("https://images-na.ssl-images-amazon.com/images/I/71ny79-zrQL._AC_SY679_.jpg");
+.home {
+  background-image: url("https://img.pngio.com/football-field-png-free-download-fourjayorg-hd-football-field-png-986_555.png");
   color: white;
+  /* background-repeat: no-repeat center center fixed; */
+  /* -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+   */
 
   /* background-repeat: no-repeat; */
 }
@@ -50,3 +56,5 @@ h2 {
   border-radius: 25px;
   background-color: #3248a8;
 } */
+
+/* #1F9BEA */

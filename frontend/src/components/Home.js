@@ -10,14 +10,16 @@ export default function Home() {
   const store = useStore();
   return useObserver(() => (
     <div
+      className="home"
       style={{
         display: "flex",
         flexDirection: "row",
-        justifyContent: "space-around"
+        justifyContent: "space-around",
       }}
     >
-      <Row>
-         xs={6} md={3}>
+      <div>
+        {/* <Row>
+          xs={6} md={3}>
           <Image
             src={
               store.user.picLocation
@@ -26,18 +28,17 @@ export default function Home() {
             }
             thumbnail
           />
-       
-      </Row>
+        </Row> */}
 
-      <h3>
-        {store.user.displayName ||
-          "Welcome!!! Click On Profile & Add Your Info!"}
-      </h3>
-      <h6>Bio: {store.user.about} </h6>
-      <h6> School: {store.user.school}</h6>
-      <h6> Location: {store.user.location}</h6>
-      <div>
-        <h3>Messages</h3>
+        {/* <h3>
+          {store.user.displayName ||
+            "Welcome!!! Click On Profile & Add Your Info!"}
+        </h3>
+        <h6>Bio: {store.user.about} </h6>
+        <h6> School: {store.user.school}</h6>
+        <h6> Location: {store.user.location}</h6>
+        <div></div> */}
+
         <Message />
       </div>
     </div>
