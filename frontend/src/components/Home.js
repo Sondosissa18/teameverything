@@ -11,33 +11,35 @@ export default function Home() {
   const store = useStore();
   return useObserver(() => (
     <>
-      <Container style={{ width: "100%", padding: "2px" }}>
-        <Row>
-          <Col>
-            <Image
-              src={
-                store.user.picLocation
-                  ? process.env.REACT_APP_API_URL + store.user.picLocation
-                  : "https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png"
-              }
-              thumbnail
-            />
-            <>
-              <h3>
-                {store.user.displayName ||
-                  "Welcome!!! Click On Profile & Add Your Info!"}
-              </h3>
-              <h6>Bio: {store.user.about} </h6>
-              <h6> School: {store.user.school}</h6>
-              <h6> Location: {store.user.location}</h6>
-            </>
-          </Col>
-          <Col>
-            <ListOfUsers />
-          </Col>
-          <Col>hi im to the right</Col>
-        </Row>
-      </Container>
+      <div className="image">
+        <Container style={{ width: "100%", padding: "2px" }}>
+          <Row>
+            <Col>
+              <Image
+                src={
+                  store.user.picLocation
+                    ? process.env.REACT_APP_API_URL + store.user.picLocation
+                    : "https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png"
+                }
+                thumbnail
+              />
+              <>
+                <h3>
+                  {store.user.displayName ||
+                    "Welcome!!! Click On Profile & Add Your Info!"}
+                </h3>
+                <h6>Bio: {store.user.about} </h6>
+                <h6> School: {store.user.school}</h6>
+                <h6> Location: {store.user.location}</h6>
+              </>
+            </Col>
+            <Col>
+              <ListOfUsers />
+            </Col>
+            <Col>hi im to the right</Col>
+          </Row>
+        </Container>
+      </div>
     </>
   ));
 }
