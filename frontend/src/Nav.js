@@ -1,9 +1,7 @@
 import React, { Component } from "react";
 import { NavLink, BrowserRouter } from "react-router-dom";
 import { Switch } from "react-router";
-import { Container } from "react-bootstrap";
 import { useObserver } from "mobx-react";
-
 import ConnectedRoute from "./components/ConnectedRoute";
 import Home from "./components/Home";
 import Blog from "./components/Blog";
@@ -17,13 +15,13 @@ import CollegeSearch from "./components/CollegeSearch";
 import Errorpage from "./components/Errorpage";
 import Chat from "./components/Chat";
 import Login from "./components/Login";
-import { useStore } from "./store/useStore";
-import "./Nav.css";
 import logo from "./images/eslogo.png";
+import { useStore } from "./store/useStore";
+import Restrictor from "./components/Restrictor";
+import Container from "react-bootstrap/Container";
 
 const Nav = () => {
   const store = useStore();
-
   return useObserver(() => {
     if (store.isLoading) {
       return null;
@@ -38,42 +36,58 @@ const Nav = () => {
             height="150"
           />
           <ul className="header">
-            <li>
-              <NavLink exact to="/">
-                Login
-              </NavLink>{" "}
-            </li>
-            <li>
-              <NavLink exact to="/home">
-                Home
-              </NavLink>{" "}
-            </li>
-            <li>
-              <NavLink exact to="/profile">
-                Profile
-              </NavLink>{" "}
-            </li>
-            <li>
-              <NavLink to="/message">Messages</NavLink>
-            </li>
-            <li>
-              <NavLink to="/recview">Recruiter View</NavLink>
-            </li>
+            {!store.isLoggedIn && (
+              <li>
+                <NavLink exact to="/">
+                  Login
+                </NavLink>{" "}
+              </li>
+            )}
+            <Restrictor role="other">
+              <li>
+                <NavLink exact to="/home">
+                  Home
+                </NavLink>{" "}
+              </li>
+            </Restrictor>
+            <Restrictor role="other">
+              <li>
+                <NavLink exact to="/profile">
+                  Profile
+                </NavLink>{" "}
+              </li>
+            </Restrictor>
+            <Restrictor role="other">
+              <li>
+                <NavLink to="/message">Messages</NavLink>
+              </li>
+            </Restrictor>
+            <Restrictor role="recruiter">
+              <li>
+                <NavLink to="/recview">Recruiter View</NavLink>
+              </li>
+            </Restrictor>
             <li>
               <NavLink to="/about">About</NavLink>
             </li>
-            <li>
-              <NavLink to="/blog">Blog</NavLink>
-            </li>
+            <Restrictor role="other">
+              <li>
+                <NavLink to="/blog">Blog</NavLink>
+              </li>
+            </Restrictor>
             <li>
               <NavLink to="/contact">Contact</NavLink>
             </li>
-            <li>
-              <NavLink to="/collegesearch">College Search</NavLink>
-            </li>
-            <li>
-              <NavLink to="/chat">Chat</NavLink>
-            </li>
+            <Restrictor role="other">
+              <li>
+                <NavLink to="/collegesearch">College Search</NavLink>
+              </li>
+            </Restrictor>
+            <Restrictor role="sturdent">
+              <li>
+                <NavLink to="/chat">Chat</NavLink>
+              </li>
+            </Restrictor>
             <li>
               <Logout />
             </li>
@@ -104,6 +118,7 @@ const Nav = () => {
               <ConnectedRoute exact path="/about" component={About} />
               <ConnectedRoute
                 exact
+                allowIf={"recruiter"}
                 isProtected
                 path="/recview"
                 component={RecView}
@@ -123,5 +138,4 @@ const Nav = () => {
     );
   });
 };
-
 export default Nav;

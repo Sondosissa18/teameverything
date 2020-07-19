@@ -4,7 +4,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./Home.css";
 import { useStore } from "../store/useStore";
 import { useObserver } from "mobx-react";
-import Jumbotron from "react-bootstrap/Jumbotron";
 import Message from "./Message.js";
 
 export default function Home() {
