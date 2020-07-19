@@ -9,9 +9,17 @@ h2 {
   margin-bottom: 5%;
   margin-left: 79%;
 }
+
+.home:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
 */ #home {
   background-image: url("https://images-na.ssl-images-amazon.com/images/I/71ny79-zrQL._AC_SY679_.jpg");
   color: white;
+
   /* background-repeat: no-repeat; */
 }
 /* h2 {
@@ -28,21 +36,19 @@ h2 {
   border-radius: 5px;
   border: 2px solid black;
 } */
-.profile {
-  float: left;
-    width: 318px;  
-    height: 500px;
-    margin-right: 10px;
-    border: solid thin black;
-    padding: 10px;
-}
-.message {
-  float: right;
-  width: 512px;
+/* .profile {
+  /* float: left; */
+/* width: 318px;
   height: 500px;
+  margin-right: 10px;
+  border: solid thin black;
+  padding: 10px; */
+/* } */
+.row {
+  float: left;
+  width: 33.33%;
   padding: 10px;
-  color: white;
-  border-radius: 5px;
+  height: 300px;
 }
 /* h3 {
   text-align: center;
