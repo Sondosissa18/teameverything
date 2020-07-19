@@ -36,10 +36,10 @@ export default function Home() {
             <Col>
               <ListOfUsers />
             </Col>
-            <Col>hi im to the right</Col>
+            <Col>hi hi im to the right</Col>
           </Row>
         </Container>
-      </div>
+      </div>{" "}
     </>
   ));
 }
