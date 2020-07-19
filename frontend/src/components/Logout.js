@@ -3,20 +3,27 @@ import { useStore } from "../store/useStore";
 import { Container, Button, Row, Col } from "react-bootstrap";
 
 import { useObserver } from "mobx-react";
+import { useHistory } from "react-router-dom";
 const Logout = () => {
   const store = useStore();
+  const history = useHistory();
+
+  const handleLogout = async () => {
+    await store.logout();
+    history.push("/");
+  };
   return useObserver(
     () =>
       store.isLoggedIn && (
         <Button
-          onClick={() => store.logout()}
+          onClick={handleLogout}
           variant="primary"
           size="1g"
           style={{ marginLeft: "0%", backgroundColor: "#29303D", size: "px" }}
         >
           Logout
         </Button>
-      ),
+      )
   );
 };
 export default Logout;
