@@ -15,6 +15,13 @@ export default function Profile() {
         <UpdateUser />
         <DeleteUser />
       </Col>
+      <Col>
+        <img
+          //style={{ padding: "5px" }}
+          alt="basketball picture"
+          src="https://www.ncronline.org/sites/default/files/styles/article_full_width/public/web%20markus-spiske-1269203-unsplash.jpg?itok=lWd1zVUF"
+        />
+      </Col>
     </Row>
   ));
 }
