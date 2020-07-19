@@ -1,10 +1,14 @@
 import React, { useEffect, useState, useRef } from "react";
 import { useObserver } from "mobx-react";
-import { Button } from "react-bootstrap";
+import { Button, Card } from "react-bootstrap";
 import Select from "react-select";
 import { useStore } from "../../store/useStore";
+import onlinechat from "../../images/onlinechat.JPG";
+
 const filterColors = (inputValue) => {
-  return colourOptions.filter((i) => i.label.toLowerCase().includes(inputValue.toLowerCase()));
+  return colourOptions.filter((i) =>
+    i.label.toLowerCase().includes(inputValue.toLowerCase())
+  );
 };
 
 const UserSelect = () => {
@@ -20,10 +24,34 @@ const UserSelect = () => {
   };
   return useObserver(() => (
     <>
-      <Select ref={selectRef} onInputChange={handleInputChange} options={store.userListLabels} />
-      <Button onClick={() => store.chatStore.startThread(selectRef.current)} variant="primary" size="sm">
-        Start Thread
-      </Button>
+      <Card>
+        <img
+          width={415}
+          height={200}
+          className="mr-3"
+          src={onlinechat}
+          alt="Generic placeholder"
+        />
+
+        <Card.Header>
+          Choose a User from the Dropdown, then Click Start Thread
+        </Card.Header>
+        <Card.Body>
+          <Select
+            ref={selectRef}
+            onInputChange={handleInputChange}
+            options={store.userListLabels}
+          />
+          <br />
+          <Button
+            type="button"
+            class="btn btn-outline-danger btn-sm"
+            onClick={() => store.chatStore.startThread(selectRef.current)}
+          >
+            Start Thread
+          </Button>
+        </Card.Body>
+      </Card>
     </>
   ));
 };

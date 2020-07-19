@@ -19,46 +19,28 @@ const Chat = () => {
   }, []);
   return useObserver(() => (
     <div>
-      <h2>EverythingSports </h2>
-      <p>The Facebook of Sports.</p>
+      <h2>Chat with a Player or Recruiter! </h2>
 
-      <Container>
+      <Container fluid>
         <Row>
           <Col>
             <UserSelect />
             <ThreadList />
           </Col>
           <Col>
-            <Row>
-              <ChatMessages />
-            </Row>
-            <Row>
-              <ChatInput />
-            </Row>
-          </Col>
-        </Row>
-        <Card>
-          <Card.Header>Chat with a Player or Recruiter</Card.Header>
-          <Card.Body>
-            <Card.Title>Select a User Below:</Card.Title>
-            <Row>
-              <Col>
-                <UserSelect />
-                <ThreadList />
-              </Col>
-              <Col>
+            <Card>
+              <Card.Header>Chat Window</Card.Header>
+              <Card.Body>
                 <Row>
                   <ChatMessages />
                 </Row>
                 <Row>
                   <ChatInput />
                 </Row>
-              </Col>
-            </Row>
-            <Button variant="primary">Start Thread</Button>
-          </Card.Body>
-        </Card>
-        ;
+              </Card.Body>
+            </Card>
+          </Col>
+        </Row>
       </Container>
     </div>
   ));
