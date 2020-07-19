@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useObserver } from "mobx-react";
-import { Row, Col, Container } from "react-bootstrap";
+import { Row, Col, Container, Card, Button } from "react-bootstrap";
 import ChatMessages from "./ChatMessages";
 import ThreadList from "./ThreadList";
 import UserSelect from "./UserSelect";
@@ -37,6 +37,28 @@ const Chat = () => {
             </Row>
           </Col>
         </Row>
+        <Card>
+          <Card.Header>Chat with a Player or Recruiter</Card.Header>
+          <Card.Body>
+            <Card.Title>Select a User Below:</Card.Title>
+            <Row>
+              <Col>
+                <UserSelect />
+                <ThreadList />
+              </Col>
+              <Col>
+                <Row>
+                  <ChatMessages />
+                </Row>
+                <Row>
+                  <ChatInput />
+                </Row>
+              </Col>
+            </Row>
+            <Button variant="primary">Start Thread</Button>
+          </Card.Body>
+        </Card>
+        ;
       </Container>
     </div>
   ));
