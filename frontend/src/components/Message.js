@@ -18,7 +18,7 @@ export default function Message() {
         <p>The Facebook of Sports.</p>
         <Container style={{ margin: "0px", padding: "2px" }}>
           <Row>
-            <Col xs={6} md={8}>
+            <Col xs={6} md={3}>
               <Image
                 src={
                   store.user.picLocation
@@ -43,7 +43,11 @@ export default function Message() {
         <Messages />
       </div>
       <div>
+<<<<<<< HEAD
         <h3>People you may know...</h3>
+=======
+        <h3>Other Sports Fanatics...</h3>
+>>>>>>> 4b72662b6004713f9ff46a0007d9923acbc7af4f
         <ListOfUsers />
       </div>
     </div>

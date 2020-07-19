@@ -12,9 +12,21 @@ export default function ProfileCard() {
 
   console.log(store);
   return useObserver(() => (
-    <Card style={{ Width: "100px", backgroundColor: "#143ebc", border: "1px solid", borderColor: "#af9631" }}>
+    <Card
+      style={{
+        Width: "100px",
+        backgroundColor: " #1f9bea",
+        border: "1px solid",
+      }}
+    >
       <Card.Img
-        style={{ Width: "100", padding: "47px", border: "1px solid", color: "#5EA1A6", backgroundColor: "#143ebc" }}
+        style={{
+          Width: "100",
+          padding: "47px",
+          border: "1px solid",
+          color: "#5EA1A6",
+          backgroundColor: " #1f9bea",
+        }}
         className="cardImg"
         variant="top"
         src={
@@ -29,16 +41,20 @@ export default function ProfileCard() {
       </Card.Title>
       <div className="bio" style={{ marginLeft: "6px" }}>
         <h4 style={{ color: "white" }}>Bio:</h4>{" "}
-        <h6 style={{ color: "white" }}>{store.user.about || "Please...Tell Us About You! :)"}</h6>
+        <h6 style={{ color: "white" }}>
+          {store.user.about || "Please...Tell Us About You! :)"}
+        </h6>
         <br />
         <br />
         {/* <br /> */}
         <div className="school" style={{ marginLeft: "4px" }}>
-          <h4 style={{ color: "white" }}>School:</h4> <h6 style={{ color: "white" }}>{store.user.school}</h6>
+          <h4 style={{ color: "white" }}>School:</h4>{" "}
+          <h6 style={{ color: "white" }}>{store.user.school}</h6>
         </div>
         <br />
         <div className="location" style={{ marginLeft: "4px" }}>
-          <h4 style={{ color: "white" }}>Location:</h4> <h6 style={{ color: "white" }}>{store.user.location}</h6>
+          <h4 style={{ color: "white" }}>Location:</h4>{" "}
+          <h6 style={{ color: "white" }}>{store.user.location}</h6>
         </div>
         <br />
       </div>

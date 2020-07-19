@@ -15,7 +15,11 @@ const defaultUser = {
   displayName: "",
   about: "",
 };
-
+const ACCESS_ROLES = {
+  recruiter: ["recruiter"],
+  student: ["recruiter", "student"],
+  other: ["recruiter", "student", "other"],
+};
 class Store {
   constructor({ api }) {
     this.api = api;
@@ -23,7 +27,6 @@ class Store {
     this.chatStore = new ChatStore(this);
     this.fetchUserIfLoggedIn();
   }
-
   @observable user = { ...defaultUser };
   @observable isLoading = false;
   @action updateCount() {
@@ -32,7 +35,6 @@ class Store {
   @computed get isLoggedIn() {
     return !!this.user.accessToken;
   }
-
   @action
   async fetchUserIfLoggedIn() {
     try {
@@ -96,7 +98,6 @@ class Store {
       this.logout();
     }
   }
-
   @action
   async uploadPic(data) {
     try {
@@ -108,7 +109,6 @@ class Store {
       console.error("store.uploadPic failed", err);
     }
   }
-
   @action
   async getUser() {
     try {
@@ -123,7 +123,6 @@ class Store {
       console.error("store.getUser failed", err);
     }
   }
-
   @action
   async updateUser(data) {
     try {
@@ -136,18 +135,18 @@ class Store {
       console.error("store.updateUser failed", err);
     }
   }
-
   @observable _userList = [];
   @computed get userList() {
     return toJS(this._userList);
   }
   @computed get userListLabels() {
-    return toJS(this._userList.map((item) => ({
-      label: item.displayName,
-      value: item._id,
-    })));
+    return toJS(
+      this._userList.map((item) => ({
+        label: item.displayName,
+        value: item._id,
+      }))
+    );
   }
-
   @action
   async fetchUserList() {
     try {
@@ -159,7 +158,6 @@ class Store {
       console.error("store.fetchUserList failed", err);
     }
   }
-
   async deleteUser() {
     try {
       await this.api.deleteUser();
@@ -167,6 +165,11 @@ class Store {
     } catch (err) {
       console.error("store.deleteUser failed", err);
     }
+  }
+
+  isAtLeast(roleToCheck = "other") {
+    const checking = ACCESS_ROLES[roleToCheck] || ACCESS_ROLES.other;
+    return checking.includes(this.user.role);
   }
 }
 const storeInstance = new Store({ api: apiInstance });
