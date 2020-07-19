@@ -15,6 +15,7 @@ class About extends Component {
         <h5>Stephanie Guirand</h5>
         <h5>Morgan Farrell</h5>
         <h5>Ralph Hernandez</h5>
+        <h5>Jasmyne Ford</h5>
       </div>
     );
   }
