@@ -5,9 +5,9 @@ import { useObserver } from "mobx-react";
 
 import ConnectedRoute from "./components/ConnectedRoute";
 import Home from "./components/Home";
-import Blog from "./components/Blog";
+//import Blog from "./components/Blog";
 import About from "./components/About";
-import Message from "./components/Message";
+//import Message from "./components/Message";
 import Contact from "./components/Contact";
 import Profile from "./components/Profile";
 import Logout from "./components/Logout";
@@ -57,11 +57,11 @@ const Nav = () => {
                 </NavLink>{" "}
               </li>
             </Restrictor>
-            <Restrictor role="other">
+            {/* <Restrictor role="other">
               <li>
                 <NavLink to="/message">Messages</NavLink>
               </li>
-            </Restrictor>
+            </Restrictor> */}
             <Restrictor role="recruiter">
               <li>
                 <NavLink to="/recview">Recruiter View</NavLink>
@@ -70,11 +70,11 @@ const Nav = () => {
             <li>
               <NavLink to="/about">About</NavLink>
             </li>
-            <Restrictor role="other">
+            {/* <Restrictor role="other">
               <li>
                 <NavLink to="/blog">Blog</NavLink>
               </li>
-            </Restrictor>
+            </Restrictor> */}
             <li>
               <NavLink to="/contact">Contact</NavLink>
             </li>
@@ -101,7 +101,7 @@ const Nav = () => {
                 component={Login}
               />
               <ConnectedRoute exact isProtected path="/home" component={Home} />
-              <ConnectedRoute exact path="/blog" component={Blog} />
+
               <ConnectedRoute exact path="/contact" component={Contact} />
               <ConnectedRoute
                 exact
@@ -109,12 +109,12 @@ const Nav = () => {
                 path="/profile"
                 component={Profile}
               />
-              <ConnectedRoute
+              {/* <ConnectedRoute
                 exact
                 isProtected
                 path="/message"
                 component={Message}
-              />
+              /> */}
               <ConnectedRoute exact path="/about" component={About} />
               <ConnectedRoute
                 exact

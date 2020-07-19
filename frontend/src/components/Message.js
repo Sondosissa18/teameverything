@@ -45,7 +45,6 @@ export default function Message() {
       <div>
         {/* <Card /> */}
         <MessageForm />
-        <Button />
         <Messages />
       </div>
       <div>
