@@ -29,7 +29,11 @@ const Register = () => {
   const submitForm = async (e) => {
     try {
       e.preventDefault();
-      await store.registerUser({ email: state.email, password: state.password, role: state.role });
+      await store.registerUser({
+        email: state.email,
+        password: state.password,
+        role: state.role,
+      });
     } catch (err) {
       console.error(err);
       //
@@ -63,7 +67,11 @@ const Register = () => {
         <br />
         <Form.Group controlId="register.role">
           <Form.Label>Are you a student or recruiter?</Form.Label>
-          <Form.Control as="select" value={state.role} onChange={(e) => state.updateRole(e.target.value)}>
+          <Form.Control
+            as="select"
+            value={state.role}
+            onChange={(e) => state.updateRole(e.target.value)}
+          >
             <option value="other">Other</option>
             <option value="student">Student</option>
             <option value="recruiter">Recruiter</option>
@@ -75,7 +83,12 @@ const Register = () => {
           type="submit"
           variant="primary"
           size="1g"
-          style={{ marginLeft: "1%", marginRight: "1%", backgroundColor: "#FCCA03", size: "px" }}
+          style={{
+            marginLeft: "1%",
+            marginRight: "1%",
+            backgroundColor: "#FCCA03",
+            size: "px",
+          }}
         >
           Register
         </Button>{" "}
@@ -90,7 +103,7 @@ const Register = () => {
       // </>
       // </Link>
     ),
-    [],
+    []
   );
 };
 
