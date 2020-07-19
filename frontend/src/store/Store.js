@@ -144,7 +144,7 @@ class Store {
       this._userList.map((item) => ({
         label: item.displayName,
         value: item._id,
-      })),
+      }))
     );
   }
   @action
@@ -166,6 +166,7 @@ class Store {
       console.error("store.deleteUser failed", err);
     }
   }
+
   isAtLeast(roleToCheck = "other") {
     const checking = ACCESS_ROLES[roleToCheck] || ACCESS_ROLES.other;
     return checking.includes(this.user.role);
