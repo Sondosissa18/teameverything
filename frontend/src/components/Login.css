@@ -21,7 +21,8 @@ h2 {
 }
 
 #login {
-  background: url(../images/all-sports-background.png) no-repeat center center fixed;
+  background: url(../images/all-sports-background.png) no-repeat center center
+    fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
