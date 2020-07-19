@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { NavLink, BrowserRouter } from "react-router-dom";
 import { Switch } from "react-router";
 import { useObserver } from "mobx-react";
-
 import ConnectedRoute from "./components/ConnectedRoute";
 import Home from "./components/Home";
 //import Blog from "./components/Blog";
@@ -19,6 +18,7 @@ import Login from "./components/Login";
 import logo from "./images/eslogo.png";
 import { useStore } from "./store/useStore";
 import Restrictor from "./components/Restrictor";
+import Container from "react-bootstrap/Container";
 
 const Nav = () => {
   const store = useStore();
@@ -92,7 +92,7 @@ const Nav = () => {
               <Logout />
             </li>
           </ul>
-          <div className="content">
+          <Container style={{ padding: "2px" }}>
             <Switch>
               <ConnectedRoute
                 exact
@@ -132,7 +132,7 @@ const Nav = () => {
               <ConnectedRoute exact isProtected path="/chat" component={Chat} />
               <ConnectedRoute component={Errorpage} />
             </Switch>
-          </div>
+          </Container>
         </div>
       </BrowserRouter>
     );
