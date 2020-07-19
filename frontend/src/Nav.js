@@ -17,10 +17,8 @@ import Login from "./components/Login";
 import { useStore } from "./store/useStore";
 import { useObserver } from "mobx-react";
 import logo from "./images/eslogo.png";
-
 const Nav = () => {
   const store = useStore();
-
   return useObserver(() => {
     if (store.isLoading) {
       return null;
@@ -79,7 +77,7 @@ const Nav = () => {
               <ConnectedRoute exact isProtected path="/profile" component={Profile} />
               <ConnectedRoute exact isProtected path="/message" component={Message} />
               <ConnectedRoute exact path="/about" component={About} />
-              <ConnectedRoute exact isProtected path="/recview" component={RecView} />
+              <ConnectedRoute exact allowIf={"recruiter"} isProtected path="/recview" component={RecView} />
               <ConnectedRoute exact isProtected path="/collegesearch" component={CollegeSearch} />
               <ConnectedRoute exact isProtected path="/chat" component={Chat} />
               <ConnectedRoute component={Errorpage} />
@@ -90,5 +88,4 @@ const Nav = () => {
     );
   });
 };
-
 export default Nav;
