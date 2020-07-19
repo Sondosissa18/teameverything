@@ -2,6 +2,7 @@ import React from "react";
 import ProptTypes from "prop-types";
 import { observer } from "mobx-react";
 import { Route, Redirect } from "react-router-dom";
+import isEmpty from "lodash/isEmpty";
 import { useStore } from "../store/useStore";
 import ErrorPage from "./Errorpage";
 const REDIRECT_TO = {
@@ -14,13 +15,22 @@ const REDIRECT_TO = {
  * It uses the auth store in redux to determine if a route should be rendered
  * or redirected else where based on the auth status
  */
-function ConnectedRoute({ isProtected, redirectIfAuthenticated, component: ComponentToRender, allowIf, ...rest }) {
+function ConnectedRoute({
+  isProtected,
+  redirectIfAuthenticated,
+  component: ComponentToRender,
+  allowIf,
+  ...rest
+}) {
   if (!ComponentToRender) {
     throw new Error("ConnectedRoute MUST have a prop named 'component'");
   }
-  // https://react-redux.js.org/api/hooks#useselector
+
   const store = useStore();
+  const routeIsProtectedForSure = isProtected || !isEmpty(allowIf);
   const redirectTo = REDIRECT_TO[store.user.role] || REDIRECT_TO.other;
+
+  // I shouldnt be on this page if im logged in
   if (redirectIfAuthenticated && store.isLoggedIn) {
     return (
       <Route
@@ -36,26 +46,36 @@ function ConnectedRoute({ isProtected, redirectIfAuthenticated, component: Compo
       />
     );
   }
-  if (isProtected === null || (isProtected && store.isLoggedIn)) {
-    if (!store.isAtLeast(allowIf)) {
-      return (
-        <Route
-          {...rest}
-          render={(renderedProps) => <ErrorPage {...renderedProps} status={403} message="Forbidden" />}
-        />
-      );
-    }
-    return <Route {...rest} render={(renderedProps) => <ComponentToRender {...renderedProps} />} />;
+
+  // if this route is protected and the user is logged in and they have permissions.. allow it
+  if (routeIsProtectedForSure && store.isLoggedIn && store.isAtLeast(allowIf)) {
+    return (
+      <Route
+        {...rest}
+        render={(renderedProps) => <ComponentToRender {...renderedProps} />}
+      />
+    );
   }
+
+  // somehow i think this is redundant...
+  if (isProtected === null) {
+    return (
+      <Route
+        {...rest}
+        render={(renderedProps) => <ComponentToRender {...renderedProps} />}
+      />
+    );
+  }
+
   return (
     <Route
       {...rest}
       render={({ location }) => (
-        <Redirect
-          to={{
-            pathname: `/`,
-            state: { from: location },
-          }}
+        <Route
+          {...rest}
+          render={(renderedProps) => (
+            <ErrorPage {...renderedProps} status={403} message="Forbidden" />
+          )}
         />
       )}
     />
