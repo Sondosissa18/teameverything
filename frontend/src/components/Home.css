@@ -9,12 +9,12 @@ h2 {
   margin-bottom: 5%;
   margin-left: 79%;
 }
-
+/* 
 .home:after {
   content: "";
   display: table;
   clear: both;
-}
+} */
 
  #home {
   background-image: url("https://images-na.ssl-images-amazon.com/images/I/71ny79-zrQL._AC_SY679_.jpg");

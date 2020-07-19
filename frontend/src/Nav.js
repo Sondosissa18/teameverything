@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import { NavLink, BrowserRouter } from "react-router-dom";
 import { Switch } from "react-router";
+import { Container } from "react-bootstrap";
+import { useObserver } from "mobx-react";
+
 import ConnectedRoute from "./components/ConnectedRoute";
 import Home from "./components/Home";
 import Blog from "./components/Blog";
@@ -15,8 +18,7 @@ import Errorpage from "./components/Errorpage";
 import Chat from "./components/Chat";
 import Login from "./components/Login";
 import { useStore } from "./store/useStore";
-import { useObserver } from "mobx-react";
-import './Nav.css';
+import "./Nav.css";
 import logo from "./images/eslogo.png";
 
 const Nav = () => {
@@ -29,7 +31,12 @@ const Nav = () => {
     return (
       <BrowserRouter>
         <div>
-          <img src={logo} alt="EverythingSports Logo" width="200" height="150" />
+          <img
+            src={logo}
+            alt="EverythingSports Logo"
+            width="200"
+            height="150"
+          />
           <ul className="header">
             <li>
               <NavLink exact to="/">
@@ -71,21 +78,46 @@ const Nav = () => {
               <Logout />
             </li>
           </ul>
-          <div className="content">
+          <Container style={{ margin: "0px", padding: "2px" }}>
             <Switch>
-              <ConnectedRoute exact redirectIfAuthenticated path="/" component={Login} />
+              <ConnectedRoute
+                exact
+                redirectIfAuthenticated
+                path="/"
+                component={Login}
+              />
               <ConnectedRoute exact isProtected path="/home" component={Home} />
               <ConnectedRoute exact path="/blog" component={Blog} />
               <ConnectedRoute exact path="/contact" component={Contact} />
-              <ConnectedRoute exact isProtected path="/profile" component={Profile} />
-              <ConnectedRoute exact isProtected path="/message" component={Message} />
+              <ConnectedRoute
+                exact
+                isProtected
+                path="/profile"
+                component={Profile}
+              />
+              <ConnectedRoute
+                exact
+                isProtected
+                path="/message"
+                component={Message}
+              />
               <ConnectedRoute exact path="/about" component={About} />
-              <ConnectedRoute exact isProtected path="/recview" component={RecView} />
-              <ConnectedRoute exact isProtected path="/collegesearch" component={CollegeSearch} />
+              <ConnectedRoute
+                exact
+                isProtected
+                path="/recview"
+                component={RecView}
+              />
+              <ConnectedRoute
+                exact
+                isProtected
+                path="/collegesearch"
+                component={CollegeSearch}
+              />
               <ConnectedRoute exact isProtected path="/chat" component={Chat} />
               <ConnectedRoute component={Errorpage} />
             </Switch>
-          </div>
+          </Container>
         </div>
       </BrowserRouter>
     );
