@@ -16,7 +16,7 @@ h2 {
   clear: both;
 }
 
-*/ #home {
+ #home {
   background-image: url("https://images-na.ssl-images-amazon.com/images/I/71ny79-zrQL._AC_SY679_.jpg");
   color: white;
 
@@ -44,12 +44,7 @@ h2 {
   border: solid thin black;
   padding: 10px; */
 /* } */
-.row {
-  float: left;
-  width: 33.33%;
-  padding: 10px;
-  height: 300px;
-}
+
 /* h3 {
   text-align: center;
   border-radius: 25px;
