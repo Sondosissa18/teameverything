@@ -92,7 +92,7 @@ const Nav = () => {
               <Logout />
             </li>
           </ul>
-          <Container style={{ margin: "0px", padding: "2px" }}>
+          <Container style={{ padding: "2px" }}>
             <Switch>
               <ConnectedRoute
                 exact
