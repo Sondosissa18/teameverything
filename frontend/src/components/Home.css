@@ -16,18 +16,17 @@ h2 {
   clear: both;
 } */
 
-#home {
+.image {
   background-image: url("https://img.pngio.com/football-field-png-free-download-fourjayorg-hd-football-field-png-986_555.png");
   color: white;
-  /* background-repeat: no-repeat center center fixed; */
-  /* -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-   */
 
-  /* background-repeat: no-repeat; */
+  /* background-repeat: center; */
+  /* -webkit-background-size: cover; */
+  /* -moz-background-size: cover; */
+  /* -o-background-size: cover; */
+  /* background-size: cover; */
 }
+
 /* h2 {
   font-family: "Anton", sans-serif;
 } */
