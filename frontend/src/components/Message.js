@@ -12,7 +12,13 @@ import { useObserver } from "mobx-react";
 export default function Message() {
   const store = useStore();
   return useObserver(() => (
-    <div style={{ display: "flex", flexDirection: "row", justifyContent: "space-around" }}>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "row",
+        justifyContent: "space-around",
+      }}
+    >
       <div>
         <h2>EverythingSports </h2>
         <p>The Facebook of Sports.</p>
@@ -39,7 +45,6 @@ export default function Message() {
       <div>
         {/* <Card /> */}
         <MessageForm />
-        <Button />
         <Messages />
       </div>
       <div>
