@@ -29,7 +29,7 @@ class About extends Component {
                 <h5>Morgan Farrell </h5>
               </li>
               <li>
-                <h5>Ralph Hernandez</h5>
+                <h5>Ralph Hernandezz</h5>
               </li>
               <li>
                 <h5>Jasmyne Ford</h5>
