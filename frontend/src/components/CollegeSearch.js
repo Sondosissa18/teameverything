@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from "react";
-// import { First } from "react-bootstrap/esm/PageItem";
 import axios from "axios";
 import { useDebounce } from "use-debounce";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import "./CollegeSearch.css";
-
 function getColleges(text, token) {
   return axios
     .get(`http://universities.hipolabs.com/search?name=${text}`, {
@@ -13,21 +11,26 @@ function getColleges(text, token) {
     })
     .then(({ data }) => data);
 }
-const URL = `http://universities.hipolabs.com/search?name=`;
-
 const CollegeSearch = () => {
   const [text, setText] = useState("");
   const [colleges, setColleges] = useState([]);
+  const [loading, setLoading] = useState(false);
   const [debouncedText] = useDebounce(text, 500);
   useEffect(() => {
     const source = axios.CancelToken.source();
     if (debouncedText) {
-      getColleges(debouncedText, source.token).catch((e) => {
-        if (axios.isCancel(source)) {
-          return;
-        }
-        setColleges([]);
-      });
+      setLoading(true);
+      getColleges(debouncedText, source.token)
+        .then((data) => setColleges(data))
+        .catch((err) => {
+          if (axios.isCancel(err)) {
+            return;
+          }
+          console.error("unable to fetch colleges", err);
+        })
+        .finally(() => {
+          setLoading(false);
+        });
     } else {
       setColleges([]);
     }
@@ -37,11 +40,8 @@ const CollegeSearch = () => {
       );
     };
   }, [debouncedText]);
-
-  console.log(colleges);
   return (
     <>
-      {/* <div className='college'> */}
       <div className="search">
         <Card>
           <h2>College Search</h2>
@@ -57,26 +57,24 @@ const CollegeSearch = () => {
             />
           </label>
         </Card>
-
-        {/* <input type="submit" value="Search" /> */}
+        {/* CREATE A LOADING INDICATOR */}
+        {loading && <p>Loading...</p>}
         <Button variant="primary">Search</Button>
         <Card>
           <ol>
-            {colleges.map((colleges) => (
+            {colleges.map((college) => (
               <li>
-                {colleges.name}
+                {college.name}
                 <br></br>
-                {colleges.country}
+                {college.country}
                 <br></br>
-                {colleges.alpha_two_code}
+                {college.alpha_two_code}
                 <br></br>
-                {colleges.web_pages}
+                {college.web_pages}
               </li>
             ))}
-            {/* {colleges.map(colleges => <li>{colleges.domain}</li>)} */}
           </ol>
         </Card>
-        {/* </div> */}
       </div>
     </>
   );
