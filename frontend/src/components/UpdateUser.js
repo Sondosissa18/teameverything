@@ -52,7 +52,9 @@ export default function UpdateUser() {
         border: "1px",
       }}
     >
-      <Card.Title style={{ fontSize: "16px", paddingTop: "10px" }}>
+      <Card.Title
+        style={{ fontSize: "16px", paddingTop: "10px", color: "white" }}
+      >
         Edit School:
       </Card.Title>
       <input
@@ -70,7 +72,9 @@ export default function UpdateUser() {
         value={state.school}
         onChange={handleChange}
       />
-      <Card.Title style={{ fontSize: "16px", paddingTop: "10px" }}>
+      <Card.Title
+        style={{ fontSize: "16px", paddingTop: "10px", color: "white" }}
+      >
         Edit Location:
       </Card.Title>
       <input
@@ -87,7 +91,9 @@ export default function UpdateUser() {
         value={state.location}
         onChange={handleChange}
       />
-      <Card.Title style={{ paddingTop: "10px", fontSize: "16px" }}>
+      <Card.Title
+        style={{ paddingTop: "10px", fontSize: "16px", color: "white" }}
+      >
         Edit Display Name:
       </Card.Title>
       <Card.Text>
@@ -112,7 +118,9 @@ export default function UpdateUser() {
           onChange={handleChange}
         />
         <br />
-        <Card.Title style={{ fontSize: "16px" }}>Edit Bio:</Card.Title>
+        <Card.Title style={{ fontSize: "16px", color: "white" }}>
+          Edit Bio:
+        </Card.Title>
         <textarea
           // <input
           style={{
