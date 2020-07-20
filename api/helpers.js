@@ -11,7 +11,7 @@ import { UserModel } from "./models/index.js";
 export const __dirname = path.resolve(path.dirname("."));
 export const staticDirectory = path.resolve(__dirname, "public");
 export const uploadDirectory = path.resolve(__dirname, "uploads");
-export const SERVER_PORT = process.env.SERVER_PORT || 4000;
+export const SERVER_PORT = process.env.PORT || 4000;
 
 export const storage = multer.diskStorage({
   destination: (req, file, callback) => {
