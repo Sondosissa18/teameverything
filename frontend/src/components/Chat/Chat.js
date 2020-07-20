@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useObserver } from "mobx-react";
-import { Row, Col, Container } from "react-bootstrap";
+import { Row, Col, Container, Card, Button } from "react-bootstrap";
 import ChatMessages from "./ChatMessages";
 import ThreadList from "./ThreadList";
 import UserSelect from "./UserSelect";
@@ -19,22 +19,26 @@ const Chat = () => {
   }, []);
   return useObserver(() => (
     <div>
-      <h2>EverythingSports </h2>
-      <p>The Facebook of Sports.</p>
+      <h2>Chat with a Player or Recruiter! </h2>
 
-      <Container>
+      <Container fluid>
         <Row>
           <Col>
             <UserSelect />
             <ThreadList />
           </Col>
           <Col>
-            <Row>
-              <ChatMessages />
-            </Row>
-            <Row>
-              <ChatInput />
-            </Row>
+            <Card>
+              <Card.Header>Chat Window</Card.Header>
+              <Card.Body>
+                <Row>
+                  <ChatMessages />
+                </Row>
+                <Row>
+                  <ChatInput />
+                </Row>
+              </Card.Body>
+            </Card>
           </Col>
         </Row>
       </Container>

@@ -1,5 +1,4 @@
 body {
-  /* background-color: rgb(245, 172, 78); */
   padding: 20px;
   margin: 0;
 }
@@ -21,6 +20,7 @@ ul.header {
   -webkit-box-shadow: 3px 7px 10px 0px rgba(45, 46, 67, 0.85);
   -moz-box-shadow: 3px 7px 10px 0px rgba(45, 46, 67, 0.85);
   box-shadow: 3px 7px 10px 0px rgba(45, 46, 67, 0.85);
+  border-radius: 6px;
 }
 ul.header li a {
   color: #fff;
@@ -28,9 +28,10 @@ ul.header li a {
   text-decoration: none;
   padding: 20px;
   display: inline-block;
+  border-radius: 6px;
 }
 .content {
-  background-color: #fff;
+  /* background-color: #fff; */
   padding: 20px;
   -webkit-box-shadow: 2px 4px 8px 0px rgba(45, 46, 67, 0.85);
   -moz-box-shadow: 2px 4px 8px 0px rgba(45, 46, 67, 0.85);
@@ -53,10 +54,12 @@ h1 {
 
 .card {
   width: 26rem;
+  border-radius: 6px;
 }
 
 .card-body {
   padding: 12px;
+  border-radius: 6px;
 }
 
 .reactions-count {

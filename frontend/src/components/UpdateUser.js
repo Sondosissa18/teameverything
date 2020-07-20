@@ -45,16 +45,23 @@ export default function UpdateUser() {
       onSubmit={handleSubmit}
       style={{
         display: "flex",
-        flexDirection: "row",
-        float: "right",
+        // flexDirection: "row",
+        // float: "right",
         flexWrap: "wrap",
         width: "250px",
         border: "1px",
       }}
     >
-      <Card.Title style={{ fontSize: "16px", paddingTop: "10px" }}>Edit School:</Card.Title>
+      <Card.Title style={{ fontSize: "16px", paddingTop: "10px" }}>
+        Edit School:
+      </Card.Title>
       <input
-        style={{ borderColor: "purple", display: "block", width: "400px", height: "50px" }}
+        style={{
+          borderColor: "purple",
+          display: "block",
+          width: "400px",
+          height: "50px",
+        }}
         name="school"
         type="text"
         placeholder="text here"
@@ -63,9 +70,16 @@ export default function UpdateUser() {
         value={state.school}
         onChange={handleChange}
       />
-      <Card.Title style={{ fontSize: "16px", paddingTop: "10px" }}>Edit Location:</Card.Title>
+      <Card.Title style={{ fontSize: "16px", paddingTop: "10px" }}>
+        Edit Location:
+      </Card.Title>
       <input
-        style={{ display: "block", width: "400px", height: "50px", borderColor: "purple" }}
+        style={{
+          display: "block",
+          width: "400px",
+          height: "50px",
+          borderColor: "purple",
+        }}
         name="location"
         type="text"
         placeholder="text here"
@@ -73,7 +87,9 @@ export default function UpdateUser() {
         value={state.location}
         onChange={handleChange}
       />
-      <Card.Title style={{ paddingTop: "10px", fontSize: "16px" }}>Edit Display Name:</Card.Title>
+      <Card.Title style={{ paddingTop: "10px", fontSize: "16px" }}>
+        Edit Display Name:
+      </Card.Title>
       <Card.Text>
         <input
           style={{
