@@ -1,6 +1,7 @@
 import React, { useRef, useState } from "react";
 import { useObserver } from "mobx-react";
 import { useStore } from "../../store/useStore";
+import Chat from "./Chat.css";
 
 const ChatInput = () => {
   const store = useStore();
@@ -24,7 +25,7 @@ const ChatInput = () => {
         <input type="text" placeholder="Send a message..." ref={messageRef} />
       </form>
     ),
-    [],
+    []
   );
 };
 

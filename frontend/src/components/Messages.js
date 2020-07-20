@@ -2,6 +2,7 @@ import React from "react";
 import { useStore } from "../store/useStore";
 import { useObserver } from "mobx-react";
 import { Button } from "react-bootstrap";
+import Button from "./Buttons";
 
 export default function Messages() {
   const store = useStore();
@@ -12,6 +13,7 @@ export default function Messages() {
           return (
             <tr key={message._id}>
               <td>{message}</td>
+              <Button />
             </tr>
           );
         })}
