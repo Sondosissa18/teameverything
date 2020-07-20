@@ -14,7 +14,7 @@ export default function Home() {
   return useObserver(() => (
     <>
       <div className="image">
-        <Container style={{ width: "100%", padding: "2px" }}>
+        <Container style={{ padding: "2px" }}>
           <Row>
             <Col>
               <Image
