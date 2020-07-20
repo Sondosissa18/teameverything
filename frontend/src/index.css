@@ -1,5 +1,7 @@
 body {
   /* background-color: rgb(245, 172, 78); */
+  /* background-color: rgb(128, 128, 128); */
+  background-color: lightgray;
   padding: 20px;
   margin: 0;
 }
@@ -32,7 +34,7 @@ ul.header li a {
   border-radius: 6px;
 }
 .content {
-  background-color: #fff;
+  /* background-color: #fff; */
   padding: 20px;
   -webkit-box-shadow: 2px 4px 8px 0px rgba(45, 46, 67, 0.85);
   -moz-box-shadow: 2px 4px 8px 0px rgba(45, 46, 67, 0.85);
