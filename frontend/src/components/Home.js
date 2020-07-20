@@ -47,7 +47,7 @@ export default function Home() {
                   <Card.Title>Checkout Our College Search!</Card.Title>
                   <Card.Text>
                     Search for colleges here and abroad. Get their information
-                    and then chat with a coach!
+                    and then chat with a coach!!
                   </Card.Text>
                   <Button variant="primary">College Search</Button>
                 </Card.Body>
