@@ -45,7 +45,7 @@ const UserSelect = () => {
           <br />
           <Button
             type="button"
-            class="btn btn-outline-danger btn-sm"
+            className="btn btn-outline-danger btn-sm"
             onClick={() => store.chatStore.startThread(selectRef.current)}
           >
             Start Thread
