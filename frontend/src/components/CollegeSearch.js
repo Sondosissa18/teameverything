@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 // import { First } from "react-bootstrap/esm/PageItem";
 import axios from "axios";
 import { useDebounce } from "use-debounce";
-import Card from 'react-bootstrap/Card'
-import Button from 'react-bootstrap/Button'
-import './CollegeSearch.css'
+import Card from "react-bootstrap/Card";
+import Button from "react-bootstrap/Button";
+import "./CollegeSearch.css";
 
 function getColleges(text, token) {
   return axios
@@ -44,44 +44,43 @@ const CollegeSearch = () => {
   console.log(colleges);
   return (
     <>
-    {/* <div className='college'> */}
-    <div className='search'>
-      <Card >
-      <h2>College Search</h2>
-      <label>
-        Enter a college name below
-        <br></br>
-        <input
-          value={text}
-          onChange={(e) => setText(e.target.value)}
-          type="text"
-          name="college"
-          placeholder="Enter College Here"
-        />
-      </label>
-      </Card>
-      
-      {/* <input type="submit" value="Search" /> */}
-      <Button variant = 'primary'>Search</Button>
-      <Card>
-      <ol>
-        {colleges.map((colleges) => (
-          <li>
-            {colleges.name}
+      {/* <div className='college'> */}
+      <div className="search">
+        <Card>
+          <h2>College Search</h2>
+          <label>
+            Enter a college name below
             <br></br>
-            {colleges.country}
-            <br></br>
-            {colleges.alpha_two_code}
-            <br></br>
-            {colleges.web_pages}
-          </li>
-        ))}
-        {/* {colleges.map(colleges => <li>{colleges.domain}</li>)} */}
-      </ol>
-      </Card>
-      {/* </div> */}
-    </div>
+            <input
+              value={text}
+              onChange={(e) => setText(e.target.value)}
+              type="text"
+              name="college"
+              placeholder="Enter College Here"
+            />
+          </label>
+        </Card>
 
+        {/* <input type="submit" value="Search" /> */}
+        <Button variant="primary">Search</Button>
+        <Card>
+          <ol>
+            {colleges.map((colleges) => (
+              <li>
+                {colleges.name}
+                <br></br>
+                {colleges.country}
+                <br></br>
+                {colleges.alpha_two_code}
+                <br></br>
+                {colleges.web_pages}
+              </li>
+            ))}
+            {/* {colleges.map(colleges => <li>{colleges.domain}</li>)} */}
+          </ol>
+        </Card>
+        {/* </div> */}
+      </div>
     </>
   );
 };
