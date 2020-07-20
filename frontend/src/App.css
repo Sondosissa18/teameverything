@@ -1,5 +1,5 @@
-body {
-  background-color: white;
+/* body {
+  background-color: blue;
   padding: 20px;
   margin: 0;
 }
@@ -51,7 +51,7 @@ h1 {
   background-color: white;
 }
 body {
-  background-color: white;
+  background-color: blue;
   padding: 20px;
   margin: 0;
 }
@@ -82,8 +82,8 @@ ul.header li a {
   display: inline-block;
 }
 .content {
-  background-color: #fff;
-  padding: 20px;
+  /* background-color: #fff; */
+/* padding: 20px;
   -webkit-box-shadow: 2px 4px 8px 0px rgba(45, 46, 67, 0.85);
   -moz-box-shadow: 2px 4px 8px 0px rgba(45, 46, 67, 0.85);
   box-shadow: 2px 4px 8px 0px rgba(45, 46, 67, 0.85);
@@ -101,4 +101,4 @@ h1 {
 
 .active {
   background-color: white;
-}
+} */
