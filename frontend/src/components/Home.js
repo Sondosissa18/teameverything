@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Row, Col, Image, Card, Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./Home.css";
 import { useStore } from "../store/useStore";
@@ -49,7 +50,18 @@ export default function Home() {
                     Search for colleges here and abroad. Get their information
                     and then chat with a coach!!
                   </Card.Text>
-                  <Button variant="primary">College Search</Button>
+                  <Button variant="primary">
+                    <Link
+                      to="/collegesearch"
+                      style={{
+                        fontSize: "15px",
+                        color: "white",
+                        padding: "2px",
+                      }}
+                    >
+                      College Search
+                    </Link>{" "}
+                  </Button>
                 </Card.Body>
               </Card>
               <Card style={{ width: "18rem" }}>
@@ -60,7 +72,18 @@ export default function Home() {
                     Once you find the perfect college, contact the recruiter
                     right here using our recruiter chat
                   </Card.Text>
-                  <Button variant="primary">Online Chat</Button>
+                  <Button variant="primary">
+                    <Link
+                      to="/chat"
+                      style={{
+                        fontSize: "15px",
+                        color: "white",
+                        padding: "2px",
+                      }}
+                    >
+                      Online Chat
+                    </Link>{" "}
+                  </Button>
                 </Card.Body>
               </Card>
             </Col>
