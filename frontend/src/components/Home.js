@@ -24,13 +24,15 @@ export default function Home() {
                 thumbnail
               />
               <>
-                <h3>
+                <h3 style={{ color: "white" }}>
                   {store.user.displayName ||
-                    "Welcome!!! Click On Profile & Add Your Info!"}
+                    "Welcome!!! Go To Edit Profile & Add Your Info!"}
                 </h3>
-                <h6>Bio: {store.user.about} </h6>
-                <h6> School: {store.user.school}</h6>
-                <h6> Location: {store.user.location}</h6>
+                <h6 style={{ color: "white" }}> Bio: {store.user.about} </h6>
+                <h6 style={{ color: "white" }}> School: {store.user.school}</h6>
+                <h6 style={{ color: "white" }}>
+                  Location: {store.user.location}
+                </h6>
               </>
             </Col>
             <Col>
