@@ -27,11 +27,15 @@ const LoginForm = () => {
       e.preventDefault();
       await store.login({ email: state.email, password: state.password });
     } catch (err) {
-      console.error(err);
-      //
+      console.log(err);
+
       state.setError(err.message);
     }
   };
+
+  // if (res.status === 500) {
+  //   return useObserver(() => <h3>Wrong Password</h3>);
+  // }
 
   return useObserver(
     () => (
@@ -63,7 +67,12 @@ const LoginForm = () => {
           type="submit"
           variant="primary"
           size="1g"
-          style={{ marginLeft: "1%", marginRight: "1%", backgroundColor: "#FCCA03", size: "px" }}
+          style={{
+            marginLeft: "1%",
+            marginRight: "1%",
+            backgroundColor: "#FCCA03",
+            size: "px",
+          }}
         >
           Login
         </Button>{" "}
@@ -78,7 +87,7 @@ const LoginForm = () => {
       // </>
       // </Link>
     ),
-    [],
+    []
   );
 };
 

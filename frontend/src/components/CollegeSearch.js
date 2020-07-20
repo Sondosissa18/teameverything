@@ -22,19 +22,22 @@ const CollegeSearch = () => {
   useEffect(() => {
     const source = axios.CancelToken.source();
     if (debouncedText) {
-      getColleges(debouncedText, source.token)
-        .then(setColleges)
-        .catch((e) => {
-          if (axios.isCancel(source)) {
-            return;
-          }
-          setColleges([]);
-        });
+      getColleges(
+        debouncedText,
+        source.token
+      )(setColleges).catch((e) => {
+        if (axios.isCancel(source)) {
+          return;
+        }
+        setColleges([]);
+      });
     } else {
       setColleges([]);
     }
     return () => {
-      source.cancel("Canceled because of component unmounted or debounce Text changed");
+      source.cancel(
+        "Canceled because of component unmounted or debounce Text changed"
+      );
     };
   }, [debouncedText]);
 

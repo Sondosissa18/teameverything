@@ -60,7 +60,9 @@ class Store {
       this.handleAccessToken(accessToken);
       this.getUser();
     } catch (err) {
-      console.error("store.login failed", err);
+    
+      console.error("wrong password", err);
+      console.log(err);
     }
   }
   @action
