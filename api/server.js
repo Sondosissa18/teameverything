@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 import Bluebird from "bluebird";
 import cors from "cors";
 import { staticDirectory, SERVER_PORT, logger, uploadDirectory } from "./helpers.js";
-
+import path from "path";
 import { registerExpressRoutes } from "./routes/index.js";
 
 const startServer = async () => {
@@ -23,7 +23,13 @@ const startServer = async () => {
   app.use((req, res, next) => {
     next();
   });
-
+if (process.env.NODE_ENV=== 'production') {
+  app.use(express.static('frontend/build'));
+  
+  app.get('*', (req,res)=> {
+  res.sendFile(path.resolve(__dirname, 'frontend','build', 'index.html'));
+  });
+}
   registerExpressRoutes(app);
   app.listen(SERVER_PORT, () => logger.info(`Example app listening at http://localhost:${SERVER_PORT}`));
 };
