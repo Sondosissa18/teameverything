@@ -1,19 +1,15 @@
 {
-  "name": "teameverything",
+  "name": "team-everything",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+ssh://git@gitlab.com/bethsheba/teameverything.git"
+    "start": "node api/index.js",
+    "build": "cd api && npm install && cd ../frontend && npm install && npm run build && mv ./build ../api/public",
+    "clean": "rm -rf api/node_modules api/public frontend/node_modules",
+    "rebuild": "npm run clean && npm run build",
+    "oops": "npm run rebuild && npm start"
   },
   "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://gitlab.com/bethsheba/teameverything/issues"
-  },
-  "homepage": "https://gitlab.com/bethsheba/teameverything#readme"
+  "license": "ISC"
 }
