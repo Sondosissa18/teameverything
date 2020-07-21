@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "engines": {
+    "node": "14.x"
+  },
   "scripts": {
     "start": "node api/index.js",
     "build": "cd api && npm install && cd ../frontend && npm install && npm run build && mv ./build ../api/public && cd ..",
