@@ -9,16 +9,8 @@ import bcrypt from "bcrypt";
 import { UserModel } from "./models/index.js";
 
 export const __dirname = path.resolve(path.dirname("."));
-export const staticDirectory = path.resolve(
-  CURRENT_SERVER_DIRECTORY,
-  "api",
-  "public"
-);
-export const uploadDirectory = path.resolve(
-  CURRENT_SERVER_DIRECTORY,
-  "api",
-  "uploads"
-);
+export const staticDirectory = path.resolve(__dirname, "api", "public");
+export const uploadDirectory = path.resolve(__dirname, "api", "uploads");
 export const SERVER_PORT = process.env.PORT || 4000;
 
 export const storage = multer.diskStorage({
