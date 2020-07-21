@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Row, Col, Image, Card, Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./Home.css";
 import { useStore } from "../store/useStore";
@@ -15,7 +16,7 @@ export default function Home() {
   return useObserver(() => (
     <>
       <div className="image">
-        <Container style={{ width: "100%", padding: "2px" }}>
+        <Container style={{ padding: "2px" }}>
           <Row>
             <Col>
               <Image
@@ -27,12 +28,15 @@ export default function Home() {
                 thumbnail
               />
               <>
-                <h3>
+                <h3 style={{ color: "white" }}>
                   {store.user.displayName ||
-                    "Welcome!!! Click On Profile & Add Your Info!"}
+                    "Welcome!!! Go To Edit Profile & Add Your Info!"}
                 </h3>
-                <h6>Bio: {store.user.about} </h6>
-                <h6> Location: {store.user.location}</h6>
+                <h6 style={{ color: "white" }}> Bio: {store.user.about} </h6>
+                <h6 style={{ color: "white" }}> School: {store.user.school}</h6>
+                <h6 style={{ color: "white" }}>
+                  Location: {store.user.location}
+                </h6>
               </>
             </Col>
             <Col>
@@ -45,9 +49,20 @@ export default function Home() {
                   <Card.Title>Checkout Our College Search!</Card.Title>
                   <Card.Text>
                     Search for colleges here and abroad. Get their information
-                    and then chat with a coach!
+                    and then chat with a coach!!
                   </Card.Text>
-                  <Button variant="primary">College Search</Button>
+                  <Button variant="primary">
+                    <Link
+                      to="/collegesearch"
+                      style={{
+                        fontSize: "15px",
+                        color: "white",
+                        padding: "2px",
+                      }}
+                    >
+                      College Search
+                    </Link>{" "}
+                  </Button>
                 </Card.Body>
               </Card>
               <Card style={{ width: "18rem" }}>
@@ -58,7 +73,18 @@ export default function Home() {
                     Once you find the perfect college, contact the recruiter
                     right here using our recruiter chat
                   </Card.Text>
-                  <Button variant="primary">Online Chat</Button>
+                  <Button variant="primary">
+                    <Link
+                      to="/chat"
+                      style={{
+                        fontSize: "15px",
+                        color: "white",
+                        padding: "2px",
+                      }}
+                    >
+                      Online Chat
+                    </Link>{" "}
+                  </Button>
                 </Card.Body>
               </Card>
             </Col>

@@ -18,7 +18,9 @@ export const storage = multer.diskStorage({
     callback(null, uploadDirectory);
   },
   filename: (req, file, callback) => {
-    const fileName = `${uuidv4()}${path.extname(file.originalname.toLowerCase())}`;
+    const fileName = `${uuidv4()}${path.extname(
+      file.originalname.toLowerCase()
+    )}`;
     callback(null, fileName);
   },
 });
@@ -48,7 +50,10 @@ export const signToken = (data) => {
 };
 
 export const verifyToken = async (token) => {
-  const { _id: userId, exp, ...rest } = jwt.verify(token, process.env.AUTH_SECRET);
+  const { _id: userId, exp, ...rest } = jwt.verify(
+    token,
+    process.env.AUTH_SECRET
+  );
   if (exp < Date.now().valueOf() / 1000) {
     throw new Error("Unable to verify token");
   }

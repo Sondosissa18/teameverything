@@ -25,7 +25,7 @@ export default function UploadImg() {
   };
 
   return useObserver(() => (
-    <Card onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "row" }}>
+    <Card onSubmit={handleSubmit} style={{ display: "flex" }}>
       {/* <div> */}
       <input
         onChange={handleChange}
@@ -37,7 +37,14 @@ export default function UploadImg() {
         name="picture"
         accept="image/png, image/jpeg, image/gif"
       />
-      <Button onClick={handleSubmit} squared="true" theme="primary" size="sm" type="submit" value="Upload-Pic">
+      <Button
+        onClick={handleSubmit}
+        squared="true"
+        theme="primary"
+        size="sm"
+        type="submit"
+        value="Upload-Pic"
+      >
         Upload
       </Button>
       {/* </div> */}
