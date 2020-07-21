@@ -11,5 +11,6 @@
     "oops": "npm run rebuild && npm start"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {}
 }
