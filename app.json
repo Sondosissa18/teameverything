@@ -6,7 +6,7 @@
     "node": "12.x"
   },
   "scripts": {
-    "start": "node backend/index.js",
+    "start": "node api/index.js",
     "build": "cd api && npm install && cd ../frontend && npm install && npm run build && mv ./build ../api/public"
   },
   "cacheDirectories": ["frontend/node_modules", "api/node_modules"],

@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node api/index.js",
-    "build": "cd api && npm install && cd ../frontend && npm install && npm run build && mv ./build ../api/public",
+    "build": "cd api && npm install && cd ../frontend && npm install && npm run build && mv ./build ../api/public && cd ..",
     "clean": "rm -rf api/node_modules api/public frontend/node_modules",
     "rebuild": "npm run clean && npm run build",
     "oops": "npm run rebuild && npm start"
