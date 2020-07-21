@@ -19,6 +19,9 @@ import logo from "./images/eslogo.png";
 import { useStore } from "./store/useStore";
 import Restrictor from "./components/Restrictor";
 import Container from "react-bootstrap/Container";
+import Jumbo from "react-bootstrap/Jumbotron";
+import { size } from "lodash";
+import { Row, Col } from "react-bootstrap";
 
 const Nav = () => {
   const store = useStore();
@@ -28,13 +31,60 @@ const Nav = () => {
     }
     return (
       <BrowserRouter>
+        <Jumbo
+          className="jumbo"
+          style={{
+            padding: "0px",
+            height: "125px",
+            backgroundSize: "cover",
+            backgroundColor: "white",
+            marginRight: "0px",
+
+            // marginLeft: "2px",
+          }}
+        >
+          <Container
+            className="inContainer"
+            style={{
+              marginLeft: "0px",
+              marginRight: "0px",
+              padding: "0px",
+            }}
+          >
+            <img
+              src={logo}
+              alt="EverythingSports Logo"
+              width="345"
+              height="125"
+            />
+            <img
+              width="340"
+              height="125"
+              src="https://previews.123rf.com/images/kunchit123/kunchit1231802/kunchit123180200081/96473981-basketball-red-blue-yellow-isolated-on-white-background-.jpg"
+            />
+            <img
+              width="130"
+              height="120"
+              src="https://www.omegasports.com/prodimages/7398-DEFAULT-l.jpg"
+            />
+            <img
+              width="80"
+              height="110"
+              src="https://images-na.ssl-images-amazon.com/images/I/81U84dNaCcL._AC_SL1500_.jpg"
+            />
+            <img
+              width="123"
+              height="125"
+              src="https://www.ansaldideportes.cl/wp-content/uploads/2016/04/Balon_esponja_poliuretano_futbol_8_amarillo-azul_SOLAR_deportes.jpg"
+            />
+            <img
+              width="122"
+              height="120"
+              src="https://4.imimg.com/data4/EI/YG/MY-20347603/volleyball-250x250.jpg"
+            />
+          </Container>
+        </Jumbo>
         <div>
-          <img
-            src={logo}
-            alt="EverythingSports Logo"
-            width="200"
-            height="150"
-          />
           <ul className="header">
             {!store.isLoggedIn && (
               <li>
@@ -53,7 +103,7 @@ const Nav = () => {
             <Restrictor role="other">
               <li>
                 <NavLink exact to="/profile">
-                  Profile
+                  Edit Profile
                 </NavLink>{" "}
               </li>
             </Restrictor>

@@ -11,16 +11,25 @@ export default function Profile() {
   return useObserver(() => (
     <Row>
       <Col>
-        <ProfileCard />
-        <UpdateUser />
-        <DeleteUser />
+        <div style={{ padding: "0px", marginLeft: "0px" }}>
+          <img
+            style={{
+              padding: "0px",
+              width: "1200px",
+              height: "1700px",
+              //marginRight: "1000px",
+            }}
+            alt="basketball picture"
+            src="https://www.ncronline.org/sites/default/files/styles/article_full_width/public/web%20markus-spiske-1269203-unsplash.jpg?itok=lWd1zVUF"
+          />
+        </div>
       </Col>
       <Col>
-        <img
-          //style={{ padding: "5px" }}
-          alt="basketball picture"
-          src="https://www.ncronline.org/sites/default/files/styles/article_full_width/public/web%20markus-spiske-1269203-unsplash.jpg?itok=lWd1zVUF"
-        />
+        <div style={{ marginLeft: "202px" }}>
+          <ProfileCard />
+          <UpdateUser />
+          <DeleteUser />
+        </div>
       </Col>
     </Row>
   ));

@@ -1,11 +1,15 @@
 import axios from "axios";
 
+const APP_API_URL =
+  process.env.NODE_ENV === "production"
+    ? "https://team-everything.herokuapp.com/"
+    : process.env.REACT_APP_API_URL;
 class API {
   axiosInstance = null;
 
   constructor() {
     const axiosInstance = axios.create({
-      baseURL: process.env.REACT_APP_API_URL,
+      baseURL: APP_API_URL,
       timeout: 30000,
     });
 
@@ -23,12 +27,12 @@ class API {
           this.logout();
         }
         Promise.reject(error);
-      },
+      }
     );
 
     axiosInstance.interceptors.response.use(
       ({ data }) => data,
-      (error) => Promise.reject(error),
+      (error) => Promise.reject(error)
     );
 
     this.axiosInstance = axiosInstance;
@@ -39,6 +43,7 @@ class API {
       return await this.axiosInstance.post("/auth/login", data);
     } catch (err) {
       console.error(err);
+      window.alert("Invalid login , please try again");
       throw err;
     }
   }
@@ -57,6 +62,7 @@ class API {
       return await this.axiosInstance.post("/auth/register", data);
     } catch (err) {
       console.error(err);
+      window.alert("Invalid email and password, please try again");
       throw err;
     }
   }

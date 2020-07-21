@@ -1,0 +1,20 @@
+{
+  "name": "team-everything",
+  "version": "0.0.1",
+  "description": "CRA with node",
+  "engines": {
+    "node": "14.x"
+  },
+  "scripts": {
+    "start": "node api/index.js",
+    "build": "rm -rf api/public && cd api && npm install && cd ../frontend && npm install && npm run build && mv ./build ../api/public"
+  },
+  "cacheDirectories": ["frontend/node_modules", "api/node_modules"],
+  "repository": {
+    "type": "git",
+    "url": "https://gitlab.com/bethsheba/teameverything.git"
+  },
+  "keywords": ["node", "heroku", "create-react-app", "react"],
+  "license": "MIT",
+  "devDependencies": {}
+}

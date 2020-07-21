@@ -5,13 +5,15 @@ import { useStore } from "../../store/useStore";
 const ChatMessage = ({ message }) =>
   useObserver(
     () => (
-      <li>
-        {message.text}
-        <span>{message.createdAt}</span>
+      <>
+        <li>
+          <li>{message.text}</li>
+          <span>{message.createdAt}</span>
+        </li>
         <span>{message.displayName}</span>
-      </li>
+      </>
     ),
-    [],
+    []
   );
 
 const ChatMessages = () => {
@@ -24,7 +26,7 @@ const ChatMessages = () => {
         ))}
       </ul>
     ),
-    [],
+    []
   );
 };
 
