@@ -1,11 +1,15 @@
 import axios from "axios";
 
+const APP_API_URL =
+  process.env.NODE_ENV === "production"
+    ? "https://team-everything.herokuapp.com/"
+    : process.env.REACT_APP_API_URL;
 class API {
   axiosInstance = null;
 
   constructor() {
     const axiosInstance = axios.create({
-      baseURL: process.env.REACT_APP_API_URL,
+      baseURL: APP_API_URL,
       timeout: 30000,
     });
 
